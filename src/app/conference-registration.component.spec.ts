@@ -16,9 +16,4 @@ describe('App: ConferenceRegistration', () => {
       inject([ConferenceRegistrationAppComponent], (app: ConferenceRegistrationAppComponent) => {
     expect(app).toBeTruthy();
   }));
-
-  it('should have as title \'conference-registration works!\'',
-      inject([ConferenceRegistrationAppComponent], (app: ConferenceRegistrationAppComponent) => {
-    expect(app.title).toEqual('conference-registration works!');
-  }));
 });
