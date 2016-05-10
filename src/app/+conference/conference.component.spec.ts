@@ -1,3 +1,5 @@
+// (c) 2016 Markus Jochim <markus.jochim@phonetik.uni-muenchen.de>
+
 import {
   beforeEach,
   beforeEachProviders,

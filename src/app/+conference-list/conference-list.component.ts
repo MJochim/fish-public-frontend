@@ -1,3 +1,5 @@
+// (c) 2016 Markus Jochim <markus.jochim@phonetik.uni-muenchen.de>
+
 import { Component, OnInit } from '@angular/core';
 import {ROUTER_DIRECTIVES} from "@angular/router";
 import {MD_LIST_DIRECTIVES} from "@angular2-material/list";

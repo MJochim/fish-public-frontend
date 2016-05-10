@@ -1,3 +1,5 @@
+// (c) 2016 Markus Jochim <markus.jochim@phonetik.uni-muenchen.de>
+
 import {Component} from '@angular/core';
 import {OnActivate, Router, RouteSegment} from '@angular/router';
 import {ConferenceStoreService, Conference} from "../conference-store.service";
