@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 export interface RegistrationItem {
   type:string;
   caption:string;
+  title?:string;
   key?:string;
   hint?:string;
   pattern?:string;
@@ -46,6 +47,7 @@ export class ConferenceStoreService {
     avatar: 'http://stuts.de/esh.png',
     registration: [{
       type: 'caption',
+      title: 'Willkommen!',
       caption: 'Willkommen bei der Anmeldung zur LX. StuTS'
     }, {
       type: 'textInput',

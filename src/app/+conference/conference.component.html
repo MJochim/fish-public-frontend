@@ -2,7 +2,7 @@
   <span><img [src]="conference?.avatar" alt="..." style="width: 40px;"> </span>
   <span>{{conference?.name}}</span>
   <span class="fill-space"></span>
-  <span>Registration</span>
+  <span>Anmeldung</span>
 </md-toolbar>
 
 
@@ -10,14 +10,17 @@
   <div [ngSwitch]="item.type">
     <div *ngSwitchWhen="'caption'">
       <md-card>
-        {{item.caption}}
+        <md-card-title>{{item.title}}</md-card-title>
+        <md-card-content>{{item.caption}}</md-card-content>
       </md-card>
     </div>
 
     <div *ngSwitchWhen="'textInput'">
-      <md-input floatingPlaceholder [placeholder]="item.caption">
-        <md-hint>{{item.hint}}</md-hint>
-      </md-input>
+      <md-card>
+        <md-input floatingPlaceholder [placeholder]="item.caption">
+          <md-hint>{{item.hint}}</md-hint>
+        </md-input>
+      </md-card>
     </div>
 
     <div *ngSwitchWhen="'singleChoice'">
