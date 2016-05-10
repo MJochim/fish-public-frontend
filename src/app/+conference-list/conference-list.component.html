@@ -1,0 +1,17 @@
+<md-toolbar color="primary">
+  <span>Conference Registration</span>
+  <span class="fill-space"></span>
+  <span>Junge Sprachwissenschaft e. V.</span>
+</md-toolbar>
+
+<md-nav-list>
+  <a md-list-item [routerLink]="['/conference']"
+     *ngFor="let conf of conferences">
+    <img md-list-avatar [src]="conf.avatar" alt="Conference logo">
+    <h3 md-line> {{conf.name}} </h3>
+    <p md-line>
+      <span> {{conf.date}} </span>
+      <span class="demo-2"> -- {{conf.place}} </span>
+    </p>
+  </a>
+</md-nav-list>
