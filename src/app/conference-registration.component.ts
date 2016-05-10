@@ -14,6 +14,7 @@ import {ConferenceComponent} from './+conference';
   directives: [ROUTER_DIRECTIVES]
 })
 @Routes([
+  {path: '/conference/:key', component: ConferenceComponent},
   {path: '/', component: ConferenceListComponent}
 ])
 export class ConferenceRegistrationAppComponent implements OnInit {
