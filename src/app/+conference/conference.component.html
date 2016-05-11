@@ -36,6 +36,13 @@
             </md-card>
           </div>
 
+          <div *ngSwitchWhen="'Link'">
+            <md-card>
+              <p><a target="_blank" [href]="item.href">{{item.label || item
+                .href}}</a></p>
+            </md-card>
+          </div>
+
           <div *ngSwitchWhen="'TextInput'">
             <md-card>
               <md-input floatingPlaceholder [placeholder]="item.caption"

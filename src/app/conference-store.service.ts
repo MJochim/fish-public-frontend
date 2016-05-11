@@ -2,16 +2,19 @@
 
 import {Injectable} from '@angular/core';
 
-export function isCaptionItem(item:CaptionItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem):item is CaptionItem {
+export function isCaptionItem(item:CaptionItem | LinkItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem):item is CaptionItem {
   return (item.type === 'Caption');
 }
-export function isTextInputItem(item:CaptionItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem):item is TextInputItem {
+export function isLinkItem(item:CaptionItem | LinkItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem):item is LinkItem {
+  return (item.type === 'Link');
+}
+export function isTextInputItem(item:CaptionItem | LinkItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem):item is TextInputItem {
   return (item.type === 'TextInput');
 }
-export function isSingleChoiceItem(item:CaptionItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem):item is SingleChoiceItem {
+export function isSingleChoiceItem(item:CaptionItem | LinkItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem):item is SingleChoiceItem {
   return (item.type === 'SingleChoice');
 }
-export function isMultipleChoiceItem(item:CaptionItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem):item is MultipleChoiceItem {
+export function isMultipleChoiceItem(item:CaptionItem | LinkItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem):item is MultipleChoiceItem {
   return (item.type === 'MultipleChoice');
 }
 
@@ -19,6 +22,12 @@ export interface CaptionItem {
   type:'Caption';
   title?:string;
   text?:string;
+}
+
+export interface LinkItem {
+  type:'Link';
+  href:string;
+  label?:string;
 }
 
 export interface TextInputItem {
@@ -59,7 +68,7 @@ export interface Conference {
   avatar:string;
   showBackButton:boolean;
   labels:LabelList;
-  registration:Array<CaptionItem|SingleChoiceItem|MultipleChoiceItem|TextInputItem>;
+  registration:Array<CaptionItem|LinkItem|SingleChoiceItem|MultipleChoiceItem|TextInputItem>;
 }
 
 export var stuts60:Conference = {
@@ -162,8 +171,12 @@ export var pundp12:Conference = {
     text: 'Auf dieser Seite können Sie sich zur P&P12 anmelden, welche am' +
     ' 13./14.10.2016 an der München Ludwig-Maximilians-Universität, am' +
     ' Institut für Phonetik und Sprachverarbeitung, stattfinden wird. Alle' +
-    ' Informationen rund um die Tagung finden Sie auf der Homepage unter' +
-    ' http://phonetik.uni-muenchen.de/institut/veranstaltung'
+    ' Informationen rund um die Tagung finden Sie auf der unten' +
+    ' verlinkten Homepage.'
+  }, {
+    type: 'Link',
+    href: 'http://phonetik.uni-muenchen.de/institut/veranstaltungen/pundp12',
+    label: 'Tagungshomepage'
   }]
 };
 
