@@ -2,14 +2,45 @@
 
 import {Injectable} from '@angular/core';
 
-export interface RegistrationItem {
-  type:string;
-  caption:string;
+export function isCaptionItem(item: CaptionItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem):item is CaptionItem {
+  return (item.type === 'Caption');
+}
+export function isTextInputItem(item: CaptionItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem):item is TextInputItem {
+  return (item.type === 'TextInput');
+}
+export function isSingleChoiceItem(item: CaptionItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem):item is SingleChoiceItem {
+  return (item.type === 'SingleChoice');
+}
+export function isMultipleChoiceItem(item: CaptionItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem):item is MultipleChoiceItem {
+  return (item.type === 'MultipleChoice');
+}
+
+export interface CaptionItem {
+  type:'Caption';
   title?:string;
-  key?:string;
+  text?:string;
+}
+
+export interface TextInputItem {
+  type:'TextInput';
+  key:string;
+  caption:string;
+  optional?:boolean;
   hint?:string;
   pattern?:string;
-  choices?:string[];
+}
+
+export interface SingleChoiceItem {
+  type:'SingleChoice';
+  key:string;
+  choices:string[];
+}
+
+export interface MultipleChoiceItem {
+  type:'MultipleChoice';
+  key:string;
+  caption:string;
+  choices:Array<{key:string, caption:string}>;
 }
 
 export interface Conference {
@@ -18,7 +49,7 @@ export interface Conference {
   place:string;
   date:string;
   avatar:string;
-  registration:RegistrationItem[];
+  registration:Array<CaptionItem|SingleChoiceItem|MultipleChoiceItem|TextInputItem>;
 }
 
 @Injectable()
@@ -48,41 +79,55 @@ export class ConferenceStoreService {
     date: 'Herbst 2016',
     avatar: 'http://stuts.de/esh.png',
     registration: [{
-      type: 'caption',
+      type: 'Caption',
       title: 'Willkommen!',
-      caption: 'Willkommen bei der Anmeldung zur LX. StuTS'
+      text: 'Willkommen bei der Anmeldung zur LX. StuTS'
     }, {
-      type: 'textInput',
+      type: 'TextInput',
+      key: 'name',
       caption: 'Name',
-      hint: 'Optional'
     }, {
-      type: 'textInput',
+      type: 'TextInput',
+      key: 'vorname',
       caption: 'Vorname'
     }, {
-      type: 'textInput',
-      caption: 'Universität'
+      type: 'TextInput',
+      key: 'affiliation',
+      caption: 'Universität',
+      optional: true
     }, {
-      type: 'textInput',
+      type: 'TextInput',
+      key: 'email',
       caption: 'E-Mail',
-      pattern: 'email'
+      pattern: 'email',
+      hint: 'kurzer(!) info-text'
     }, {
-      type: 'multipleChoice',
+      type: 'MultipleChoice',
+      key: 'tage',
       caption: 'An welchen Tagen möchtest Du zur StuTS kommen?',
-      choices: [
-        'Donnerstag',
-        'Freitag',
-        'Samstag',
-        'Sonntag'
-      ]
+      choices: [{
+        key: 'do',
+        caption: 'Donnerstag'
+      }, {
+        key: 'fr',
+        caption: 'Freitag'
+      }, {
+        key: 'sa',
+        caption: 'Samstag'
+      }, {
+        key: 'so',
+        caption: 'Sonntag'
+      }]
     }, {
-      type: 'singleChoice',
+      type: 'SingleChoice',
+      key: 'brunch',
       caption: 'Nimmst Du am Abschlussbrunch am Sonntag teil?',
       choices: [
         'Ja',
         'Nein'
       ]
     }, {
-      type: 'singleChoice',
+      type: 'SingleChoice',
       key: 'bufata',
       caption: 'Nimmst Du an der BuFaTa teil?',
       choices: [
@@ -97,10 +142,11 @@ export class ConferenceStoreService {
     date: 'Herbst 2016',
     avatar: 'http://staps.stuts.eu/wp-content/uploads/2013/07/STaPs_Logo.png',
     registration: [{
-      type: 'caption',
-      caption: 'Willkommen bei der Anmeldung zur 9. STaPs'
+      type: 'Caption',
+      title: 'Willkommen bei der Anmeldung zur 9. STaPs'
     }, {
-      type: 'textInput',
+      type: 'TextInput',
+      key: 'name',
       caption: 'Name'
     }]
   }];

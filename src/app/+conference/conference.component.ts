@@ -2,7 +2,10 @@
 
 import {Component} from '@angular/core';
 import {OnActivate, Router, RouteSegment} from '@angular/router';
-import {ConferenceStoreService, Conference} from "../conference-store.service";
+import {
+  ConferenceStoreService, Conference,
+  isTextInputItem, isMultipleChoiceItem, isSingleChoiceItem
+} from "../conference-store.service";
 import {MdButton} from "@angular2-material/button";
 import {MdCard} from "@angular2-material/card";
 import {MdCheckbox} from "@angular2-material/checkbox";
@@ -26,6 +29,7 @@ import {MdToolbar} from "@angular2-material/toolbar";
 })
 export class ConferenceComponent implements OnActivate {
   conference:Conference;
+  inputModel:Object = {};
 
   constructor(private router:Router, private _conferenceStore:ConferenceStoreService) {
   }
@@ -35,12 +39,24 @@ export class ConferenceComponent implements OnActivate {
     this.conference = this._conferenceStore.getConference(key);
     if (this.conference === null) {
       this.router.navigate(['/']);
-    }
-  }
+    } else {
+      for (let i = 0; i < this.conference.registration.length; ++i) {
+        let item = this.conference.registration[i];
+        if (isTextInputItem(item)) {
+          this.inputModel[item.key] = '';
+        }
 
-  private submit(form) {
-    console.log('submitting form', form);
-    form.submit();
+        if (isSingleChoiceItem(item)) {
+          this.inputModel[item.key] = item.choices[0];
+        }
+
+        if (isMultipleChoiceItem(item)) {
+          for (let j = 0; j < item.choices.length; ++j) {
+            this.inputModel[item.choices[j].key] = false;
+          }
+        }
+      }
+    }
   }
   private navigateBack() {
     this.router.navigate(['/']);
