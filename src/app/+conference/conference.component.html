@@ -1,4 +1,5 @@
-<form action="submit.php" (submit)="sidenav.open()" #form>
+<form action="submit.php" (submit)="sidenav.opened = true"
+      (change)="sidenav.opened = false">
   <md-toolbar color="primary">
     <span><img [src]="conference?.avatar" alt="..."
                style="width: 40px;"> </span>
@@ -7,13 +8,18 @@
     <span>Anmeldung</span>
   </md-toolbar>
 
-  <md-sidenav-layout class="centralArea">
-    <md-sidenav #sidenav align="end">
+  <md-sidenav-layout>
+    <md-sidenav #sidenav align="end"
+                (open)="abortBtn.elementRef.nativeElement.focus();">
       <div>
         <p>Soll die Anmeldung abgeschickt werden?</p>
-        <button md-raised-button type="button" color="primary"
+        <button #submitBtn md-raised-button type="button" color="primary"
                 (click)="submit()">
           Abschicken!
+        </button>
+        <button #abortBtn md-raised-button type="button" color="warn"
+                (click)="sidenav.opened = false">
+          Abbrechen
         </button>
       </div>
     </md-sidenav>
@@ -85,11 +91,6 @@
               type="button"
               (click)="navigateBack()">
         Zurück
-      </button>
-      <button *ngIf="sidenav.opened" color="warn" md-raised-button
-              type="button"
-              (click)="sidenav.opened = false">
-        Abbrechen
       </button>
     </span>
   </md-toolbar>
