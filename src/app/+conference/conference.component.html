@@ -1,4 +1,4 @@
-<form action="submit.php" #form>
+<form action="submit.php" (submit)="sidenav.open()" #form>
   <md-toolbar color="primary">
     <span><img [src]="conference?.avatar" alt="..."
                style="width: 40px;"> </span>
@@ -7,64 +7,89 @@
     <span>Anmeldung</span>
   </md-toolbar>
 
-  <div class="items">
-    <div *ngFor="let item of conference?.registration" class="registrationItem">
-      <div [ngSwitch]="item.type">
-        <div *ngSwitchWhen="'caption'">
-          <md-card>
-            <md-card-title>{{item.title}}</md-card-title>
-            <md-card-content>{{item.caption}}</md-card-content>
-          </md-card>
-        </div>
+  <md-sidenav-layout class="centralArea">
+    <md-sidenav #sidenav align="end">
+      <div>
+        <p>Soll die Anmeldung abgeschickt werden?</p>
+        <button md-raised-button type="button" color="primary"
+                (click)="submit()">
+          Abschicken!
+        </button>
+      </div>
+    </md-sidenav>
 
-        <div *ngSwitchWhen="'textInput'">
-          <md-card>
-            <md-input floatingPlaceholder [placeholder]="item.caption">
-              <md-hint>{{item.hint}}</md-hint>
-            </md-input>
-          </md-card>
-        </div>
+    <div class="items">
+      <div *ngFor="let item of conference?.registration"
+           class="registrationItem">
+        <div [ngSwitch]="item.type">
+          <div *ngSwitchWhen="'Caption'">
+            <md-card>
+              <md-card-title *ngIf="item.title">{{item.title}}</md-card-title>
+              <md-card-content *ngIf="item.text">{{item .text}}
+              </md-card-content>
+            </md-card>
+          </div>
 
-        <div *ngSwitchWhen="'singleChoice'">
-          <md-card>
-            <p>{{item.caption}}</p>
-            <md-radio-group name="{{item.key}}">
+          <div *ngSwitchWhen="'TextInput'">
+            <md-card>
+              <md-input floatingPlaceholder [placeholder]="item.caption"
+                        [required]="!item.optional"
+                        [(ngModel)]="inputModel[item.key]">
+                <md-hint>{{item.hint}}</md-hint>
+              </md-input>
+            </md-card>
+          </div>
+
+          <div *ngSwitchWhen="'SingleChoice'">
+            <md-card>
+              <p>{{item.caption}}</p>
+              <md-radio-group [(ngModel)]="inputModel[item.key]">
+                <md-list>
+                  <md-list-item *ngFor="let choice of item.choices">
+                    <md-radio-button [value]="choice">
+                      {{choice}}
+                    </md-radio-button>
+                  </md-list-item>
+                </md-list>
+              </md-radio-group>
+            </md-card>
+          </div>
+
+          <div *ngSwitchWhen="'MultipleChoice'">
+            <md-card>
+              <p>{{item.caption}}</p>
               <md-list>
                 <md-list-item *ngFor="let choice of item.choices">
-                  <md-radio-button name="{{item.key}}">
-                    {{choice}}
-                  </md-radio-button>
+                  <md-checkbox [(ngModel)]="inputModel[choice.key]">
+                    {{choice.caption}}
+                  </md-checkbox>
                 </md-list-item>
               </md-list>
-            </md-radio-group>
-          </md-card>
-        </div>
-
-        <div *ngSwitchWhen="'multipleChoice'">
-          <md-card>
-            <p>{{item.caption}}</p>
-            <md-list>
-              <md-list-item *ngFor="let choice of item.choices">
-                <md-checkbox>{{choice}}</md-checkbox>
-              </md-list-item>
-            </md-list>
-          </md-card>
+            </md-card>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </md-sidenav-layout>
+
 
   <md-toolbar>
     <span>
-      <button color="primary" md-raised-button type="submit"
-              (click)="submit(form)">
+      <button color="primary" md-raised-button type="submit">
         Abschicken
       </button>
     </span>
     <span class="fill-space"></span>
     <span>
-      <button color="warn" md-raised-button type="button" (click)="navigateBack()">
+      <button *ngIf="!sidenav.opened" color="warn" md-raised-button
+              type="button"
+              (click)="navigateBack()">
         Zurück
+      </button>
+      <button *ngIf="sidenav.opened" color="warn" md-raised-button
+              type="button"
+              (click)="sidenav.opened = false">
+        Abbrechen
       </button>
     </span>
   </md-toolbar>
