@@ -1,3 +1,12 @@
+# 0.0.2 (2016-05-11)
+
+- Registration form gathers data as object now
+- Scrollable design
+- Radio buttons do work
+- Link items
+- Back button that navigates from registration to list
+- Changed JSON schema for conferences
+
 # 0.0.1 (2016-05-10)
 
 - Initial version
