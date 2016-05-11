@@ -10,3 +10,24 @@
 md-toolbar img {
   margin-right: 20px;
 }
+
+:host {
+  display: flex;
+}
+
+:host > form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+:host > form > div {
+  flex-basis: 100%;
+  flex-grow: 1;
+  overflow: auto;
+}
+
+:host > form > md-toolbar {
+  flex-basis: 40px;
+  flex-grow: 0;
+}

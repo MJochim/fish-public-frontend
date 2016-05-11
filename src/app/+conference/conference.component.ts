@@ -37,4 +37,12 @@ export class ConferenceComponent implements OnActivate {
       this.router.navigate(['/']);
     }
   }
+
+  private submit(form) {
+    console.log('submitting form', form);
+    form.submit();
+  }
+  private navigateBack() {
+    this.router.navigate(['/']);
+  }
 }
