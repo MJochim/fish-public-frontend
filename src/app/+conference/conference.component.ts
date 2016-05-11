@@ -31,16 +31,39 @@ import {MdToolbar} from "@angular2-material/toolbar";
 export class ConferenceComponent implements OnActivate {
   conference:Conference;
   inputModel:Object = {};
+  labels:Object = {
+    headline: 'Anmeldung',
+    submit: 'Abschicken',
+    abort: 'Abbrechen',
+    back: 'Zurück',
+    submitQuestion: 'Soll die Anmeldung abgeschickt werden?'
+  };
 
   constructor(private router:Router, private _conferenceStore:ConferenceStoreService) {
   }
 
   routerOnActivate(curr:RouteSegment) {
+    // Get conference data
     let key = curr.getParam('key');
     this.conference = this._conferenceStore.getConference(key);
+
     if (this.conference === null) {
+      // Go back if conference data could not be loaded
       this.router.navigate(['/']);
     } else {
+      //////////
+      // Initialise labels
+      //
+      for (let key in this.conference.labels) {
+        this.labels[key] = this.conference.labels[key];
+        console.log(key);
+      }
+      //
+      //////////
+
+      //////////
+      // Initialise inputModel
+      //
       for (let i = 0; i < this.conference.registration.length; ++i) {
         let item = this.conference.registration[i];
         if (isTextInputItem(item)) {
@@ -57,6 +80,8 @@ export class ConferenceComponent implements OnActivate {
           }
         }
       }
+      //
+      //////////
     }
   }
 

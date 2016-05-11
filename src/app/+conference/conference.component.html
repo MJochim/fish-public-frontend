@@ -5,21 +5,21 @@
                style="width: 40px;"> </span>
     <span>{{conference?.name}}</span>
     <span class="fill-space"></span>
-    <span>Anmeldung</span>
+    <span>{{labels.headline}}</span>
   </md-toolbar>
 
   <md-sidenav-layout>
     <md-sidenav #sidenav align="end"
                 (open)="abortBtn.elementRef.nativeElement.focus();">
       <div>
-        <p>Soll die Anmeldung abgeschickt werden?</p>
+        <p>{{labels.submitQuestion}}</p>
         <button #submitBtn md-raised-button type="button" color="primary"
                 (click)="submit()">
-          Abschicken!
+          {{labels.submit}}
         </button>
         <button #abortBtn md-raised-button type="button" color="warn"
                 (click)="sidenav.opened = false">
-          Abbrechen
+          {{labels.abort}}
         </button>
       </div>
     </md-sidenav>
@@ -82,15 +82,15 @@
   <md-toolbar>
     <span>
       <button color="primary" md-raised-button type="submit">
-        Abschicken
+        {{labels.submit}}
       </button>
     </span>
     <span class="fill-space"></span>
     <span>
-      <button *ngIf="!sidenav.opened" color="warn" md-raised-button
-              type="button"
+      <button *ngIf="!sidenav.opened && conference?.showBackButton"
+              color="warn" md-raised-button type="button"
               (click)="navigateBack()">
-        Zurück
+        {{labels.back}}
       </button>
     </span>
   </md-toolbar>
