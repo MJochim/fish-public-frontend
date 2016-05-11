@@ -59,7 +59,7 @@
               <md-radio-group [(ngModel)]="inputModel[item.key]">
                 <md-list>
                   <md-list-item *ngFor="let choice of item.choices">
-                    <md-radio-button [value]="choice">
+                    <md-radio-button [value]="choice" name="{{item.key}}">
                       {{choice}}
                     </md-radio-button>
                   </md-list-item>
