@@ -33,17 +33,24 @@
   -->
 </head>
 <body>
-  <conference-registration-app>Loading...</conference-registration-app>
+<conference-registration-app>
+  <p>
+    Die Webapp zur Konferenz-Anmeldung zu laden, kann einige Sekunden dauern.
+  </p>
+  <p>
+    Loading the conference registration webapp might take a few seconds.
+  </p>
+</conference-registration-app>
 
-  <script src="vendor/es6-shim/es6-shim.js"></script>
-  <script src="vendor/reflect-metadata/Reflect.js"></script>
-  <script src="vendor/systemjs/dist/system.src.js"></script>
-  <script src="vendor/zone.js/dist/zone.js"></script>
+<script src="vendor/es6-shim/es6-shim.js"></script>
+<script src="vendor/reflect-metadata/Reflect.js"></script>
+<script src="vendor/systemjs/dist/system.src.js"></script>
+<script src="vendor/zone.js/dist/zone.js"></script>
 
-  <script>
-    System.import('system-config.js').then(function () {
-      System.import('main');
-    }).catch(console.error.bind(console));
-  </script>
+<script>
+  System.import('system-config.js').then(function () {
+    System.import('main');
+  }).catch(console.error.bind(console));
+</script>
 </body>
 </html>
