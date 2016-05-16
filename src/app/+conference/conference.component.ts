@@ -112,7 +112,13 @@ export class ConferenceComponent implements OnActivate {
           // @todo TextDecoder not supported in IE
           var dataView = new DataView(request.response);
           var decoder = new TextDecoder();
-          resolve(decoder.decode(dataView));
+          var status = decoder.decode(dataView);
+
+          if (status === 'SUCCESS') {
+            resolve(decoder.decode(dataView));
+          } else {
+            reject();
+          }
         }
       });
 
@@ -132,7 +138,6 @@ export class ConferenceComponent implements OnActivate {
     console.log(JSON.stringify(this.inputModel));
     this.submitToServer().then((value) => {
       alert('Die Anmeldung wurde gespeichert.');
-
     }).catch((reason) => {
       alert('Die Anmeldung wurde NICHT gespeichert.');
     });

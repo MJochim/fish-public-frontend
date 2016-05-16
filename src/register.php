@@ -21,8 +21,6 @@ $contents = fread($fh, filesize($filename));
 fclose($fh);
 
 $registrations = json_decode($contents);
-var_dump ($registrations);
-var_dump ($newRegistration);
 
 //////////
 // Append new registration

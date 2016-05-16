@@ -1,3 +1,7 @@
+# 0.0.4 (2016-05-16)
+
+- QuickFix: Status returned by server was ignored
+
 # 0.0.3 (2016-05-16)
 
 - Changed text displayed while loading
