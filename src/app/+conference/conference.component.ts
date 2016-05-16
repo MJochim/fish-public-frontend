@@ -114,7 +114,7 @@ export class ConferenceComponent implements OnActivate {
           var decoder = new TextDecoder();
           var status = decoder.decode(dataView);
 
-          if (status === 'SUCCESS') {
+          if (status.substr(0,7) === 'SUCCESS') {
             resolve(decoder.decode(dataView));
           } else {
             reject();
