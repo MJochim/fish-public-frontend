@@ -1,3 +1,9 @@
+# 0.0.3 (2016-05-16)
+
+- Changed text displayed while loading
+- Fixed radio buttons
+- Registration is now saved via a server-side PHP script
+
 # 0.0.2 (2016-05-11)
 
 - Registration form gathers data as object now
