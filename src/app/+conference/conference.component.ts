@@ -19,6 +19,14 @@ import {
 import {MD_SIDENAV_DIRECTIVES} from "@angular2-material/sidenav";
 import {MdToolbar} from "@angular2-material/toolbar";
 
+// TextDecoder is an experimental browser API
+interface TextDecoder {
+  decode(dataView:DataView);
+}
+interface TextDecoderConstructor {
+  new (utfLabel?:string, options?:{fatal:boolean}):TextDecoder;
+}
+declare var TextDecoder:TextDecoderConstructor;
 
 @Component({
   moduleId: module.id,
@@ -64,6 +72,8 @@ export class ConferenceComponent implements OnActivate {
       //////////
       // Initialise inputModel
       //
+      this.inputModel['conferenceKey'] = this.conference.key;
+
       for (let i = 0; i < this.conference.registration.length; ++i) {
         let item = this.conference.registration[i];
         if (isTextInputItem(item)) {
@@ -85,8 +95,47 @@ export class ConferenceComponent implements OnActivate {
     }
   }
 
+  private submitToServer():Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      var request:XMLHttpRequest = new XMLHttpRequest();
+      request.timeout = 20000; // milliseconds
+      request.responseType = 'arraybuffer';
+
+      request.open('GET', 'https://anmeldung.stuts.de/register.php?registration=' + JSON.stringify(this.inputModel));
+
+      request.addEventListener('load', () => {
+        if (request.response === null) {
+          reject('Request repsonse is null');
+        } else if (request.status < 200 || request.status >= 300) {
+          reject('HTTP error: ' + request.status + '/' + request.statusText);
+        } else {
+          // @todo TextDecoder not supported in IE
+          var dataView = new DataView(request.response);
+          var decoder = new TextDecoder();
+          resolve(decoder.decode(dataView));
+        }
+      });
+
+      request.addEventListener('error', () => {
+        reject('Unknown error');
+      });
+
+      request.addEventListener('timeout', () => {
+        reject('Timeout')
+      });
+
+      request.send();
+    });
+  }
+
   private submit() {
     console.log(JSON.stringify(this.inputModel));
+    this.submitToServer().then((value) => {
+      alert('Die Anmeldung wurde gespeichert.');
+
+    }).catch((reason) => {
+      alert('Die Anmeldung wurde NICHT gespeichert.');
+    });
   }
 
   private navigateBack() {
