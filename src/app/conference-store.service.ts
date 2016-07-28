@@ -102,34 +102,34 @@ export var stuts60:Conference = {
     caption: 'E-Mail',
     pattern: 'email',
   }, {
-   type: 'SingleChoice',
-   key: 'ausheidelberg',
-   caption: 'Bis du aus Heidelberg oder brauchst aus irgendeinem anderen Grund keine Übernachtungsmöglichkeit?',
-   choices: [{
-   key: 'ja',
-   caption: 'Ja.'
-   }, {
-   key: 'no',
-   caption: 'Nein, ich brauche eine Übernachtungsmöglichkeit.'
-   }]
-   }, {
-   type: 'SingleChoice',
-   key: 'teilnahme',
-   caption: 'An welchen Tagen möchtest du an der StuTS teilnehmen?',
-   choices: [{
-   key: 'do',
-   caption: 'Nur am Donnerstag (ohne Übernachtung). (12 Euro)'
-   }, {
-   key: 'fr',
-   caption: 'Nur am Freitag (ohne Übernachtung). (12 Euro)'
-   }, {
-   key: 'sa',
-   caption: 'Nur am Samstag (ohne Übernachtung). (12 Euro)'
-   }, {
-   key: 'ganz',
-   caption: 'Zwei Tage oder die gesamte Tagung (mit Übernachtungen). (30 Euro für Auswärtige, 15 Euro für Heidelberger Studierende)'
-   }]
-   }, {
+    type: 'SingleChoice',
+    key: 'ausheidelberg',
+    caption: 'Bis du aus Heidelberg oder brauchst aus irgendeinem anderen Grund keine Übernachtungsmöglichkeit?',
+    choices: [{
+      key: 'ja',
+      caption: 'Ja.'
+    }, {
+      key: 'no',
+      caption: 'Nein, ich brauche eine Übernachtungsmöglichkeit.'
+    }]
+  }, {
+    type: 'SingleChoice',
+    key: 'teilnahme',
+    caption: 'An welchen Tagen möchtest du an der StuTS teilnehmen?',
+    choices: [{
+      key: 'do',
+      caption: 'Nur am Donnerstag (ohne Übernachtung). (12 Euro)'
+    }, {
+      key: 'fr',
+      caption: 'Nur am Freitag (ohne Übernachtung). (12 Euro)'
+    }, {
+      key: 'sa',
+      caption: 'Nur am Samstag (ohne Übernachtung). (12 Euro)'
+    }, {
+      key: 'ganz',
+      caption: 'Zwei Tage oder die gesamte Tagung (mit Übernachtungen). (30 Euro für Auswärtige, 15 Euro für Heidelberger Studierende)'
+    }]
+  }, {
     type: 'MultipleChoice',
     key: 'schlafangebote',
     caption: 'Für die Heidelberger Studierenden: Für welche Nächte kannst' +
@@ -149,41 +149,41 @@ export var stuts60:Conference = {
       caption: 'Von Samstag auf Sonntag.'
     }]
   }, {
-   type: 'SingleChoice',
-   key: 'essen',
-   choices: [{
-   key: 'fleisch',
-   caption: 'Ich esse Fleisch.'
-   }, {
-   key: 'vegetarisch',
-   caption: 'Ich esse vegetarisch (d. h. auch Tierprodukte)'
-   }, {
-   key: 'vegan',
-   caption: 'Ich esse vegan.'
-   }]
-   }, {
-   type: 'SingleChoice',
-   key: 'brunch',
-   caption: 'Nimmst Du am Abschlussbrunch am Sonntag teil? Das kostet 8 Euro mehr.',
-   choices: [{
-   key: 'ja',
-   caption: 'Ja.'
-   }, {
-   key: 'no',
-   caption: 'Nein.'
-   }]
-   }, {
-   type: 'SingleChoice',
-   title: 'Zustimmung für Bilder',
-   caption: 'Gibst du den Organisierenden der 60. StuTS die Erlaubnis, Bilder von der StuTS zu veröffentlichen, auf denen du abgebildest bist?',
-   choices: [{
-   key: 'ja',
-   caption: 'Ja.'
-   }, {
-   key: 'nein',
-   caption: 'Nein.'
-   }]
-   }, {
+    type: 'SingleChoice',
+    key: 'essen',
+    choices: [{
+      key: 'fleisch',
+      caption: 'Ich esse Fleisch.'
+    }, {
+      key: 'vegetarisch',
+      caption: 'Ich esse vegetarisch (d. h. auch Tierprodukte)'
+    }, {
+      key: 'vegan',
+      caption: 'Ich esse vegan.'
+    }]
+  }, {
+    type: 'SingleChoice',
+    key: 'brunch',
+    caption: 'Nimmst Du am Abschlussbrunch am Sonntag teil? Das kostet 8 Euro mehr.',
+    choices: [{
+      key: 'ja',
+      caption: 'Ja.'
+    }, {
+      key: 'no',
+      caption: 'Nein.'
+    }]
+  }, {
+    type: 'SingleChoice',
+    title: 'Zustimmung für Bilder',
+    caption: 'Gibst du den Organisierenden der 60. StuTS die Erlaubnis, Bilder von der StuTS zu veröffentlichen, auf denen du abgebildest bist?',
+    choices: [{
+      key: 'ja',
+      caption: 'Ja.'
+    }, {
+      key: 'nein',
+      caption: 'Nein.'
+    }]
+  }, {
     type: 'Caption',
     title: 'Abschluss der Anmeldung',
     text: 'Nach dem Abschicken der Anmeldung, erhältst du eine E-Mail mit den Kontoinformationen. Bitte überweise dahin das Geld.<br>Bei weiteren Fragen könnt ihr uns eine E-Mail an stuts60@stuts.de schicken.'

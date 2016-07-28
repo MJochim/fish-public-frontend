@@ -1,6 +1,9 @@
 # 0.0.5 (...)
 
+- Updated angular from 2.0.0-rc.1 to rc.4
+- Updated angular router
 - Updated angular-material2 from alpha.4 to alpha.6
+- Changed SingleChoiceItem interface
 - Changed cache control
 
 # 0.0.4 (2016-05-16)
