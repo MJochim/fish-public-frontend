@@ -1,6 +1,6 @@
 // (c) 2016 Markus Jochim <markus.jochim@phonetik.uni-muenchen.de>
 
-import {Injectable} from '@angular/core';
+import {Injectable} from "@angular/core";
 
 export function isCaptionItem(item:CaptionItem | LinkItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem):item is CaptionItem {
   return (item.type === 'Caption');
@@ -42,7 +42,7 @@ export interface TextInputItem {
 export interface SingleChoiceItem {
   type:'SingleChoice';
   key:string;
-  choices:string[];
+  choices:Array<{key:string, caption:string}>;
 }
 
 export interface MultipleChoiceItem {
@@ -94,47 +94,99 @@ export var stuts60:Conference = {
   }, {
     type: 'TextInput',
     key: 'affiliation',
-    caption: 'Universität',
+    caption: 'Hochschule',
     optional: true
   }, {
     type: 'TextInput',
     key: 'email',
     caption: 'E-Mail',
     pattern: 'email',
-    hint: 'kurzer(!) info-text'
   }, {
+   type: 'SingleChoice',
+   key: 'ausheidelberg',
+   caption: 'Bis du aus Heidelberg oder brauchst aus irgendeinem anderen Grund keine Übernachtungsmöglichkeit?',
+   choices: [{
+   key: 'ja',
+   caption: 'Ja.'
+   }, {
+   key: 'no',
+   caption: 'Nein, ich brauche eine Übernachtungsmöglichkeit.'
+   }]
+   }, {
+   type: 'SingleChoice',
+   key: 'teilnahme',
+   caption: 'An welchen Tagen möchtest du an der StuTS teilnehmen?',
+   choices: [{
+   key: 'do',
+   caption: 'Nur am Donnerstag (ohne Übernachtung). (12 Euro)'
+   }, {
+   key: 'fr',
+   caption: 'Nur am Freitag (ohne Übernachtung). (12 Euro)'
+   }, {
+   key: 'sa',
+   caption: 'Nur am Samstag (ohne Übernachtung). (12 Euro)'
+   }, {
+   key: 'ganz',
+   caption: 'Zwei Tage oder die gesamte Tagung (mit Übernachtungen). (30 Euro für Auswärtige, 15 Euro für Heidelberger Studierende)'
+   }]
+   }, {
     type: 'MultipleChoice',
-    key: 'tage',
-    caption: 'An welchen Tagen möchtest Du zur StuTS kommen?',
+    key: 'schlafangebote',
+    caption: 'Für die Heidelberger Studierenden: Für welche Nächte kannst' +
+    ' du auswärtigen Studierenden Übernachtungsmöglichkeiten anbieten?',
+    hint: 'Näheres zur Aktion der Übernachtungsmöglichkeiten für Studierende findet ihr unter https://60.stuts.de/foobar.',
     choices: [{
-      key: 'do',
-      caption: 'Donnerstag'
+      key: 'mido',
+      caption: 'Von Mittwoch auf Donnerstag.'
     }, {
-      key: 'fr',
-      caption: 'Freitag'
+      key: 'dofr',
+      caption: 'Von Donnerstag auf Freitag.'
     }, {
-      key: 'sa',
-      caption: 'Samstag'
+      key: 'frsa',
+      caption: 'Von Freitag auf Samstag.'
     }, {
-      key: 'so',
-      caption: 'Sonntag'
+      key: 'saso',
+      caption: 'Von Samstag auf Sonntag.'
     }]
   }, {
-    type: 'SingleChoice',
-    key: 'brunch',
-    caption: 'Nimmst Du am Abschlussbrunch am Sonntag teil?',
-    choices: [
-      'Ja',
-      'Nein'
-    ]
-  }, {
-    type: 'SingleChoice',
-    key: 'bufata',
-    caption: 'Nimmst Du an der BuFaTa teil?',
-    choices: [
-      'Ja',
-      'Nein'
-    ]
+   type: 'SingleChoice',
+   key: 'essen',
+   choices: [{
+   key: 'fleisch',
+   caption: 'Ich esse Fleisch.'
+   }, {
+   key: 'vegetarisch',
+   caption: 'Ich esse vegetarisch (d. h. auch Tierprodukte)'
+   }, {
+   key: 'vegan',
+   caption: 'Ich esse vegan.'
+   }]
+   }, {
+   type: 'SingleChoice',
+   key: 'brunch',
+   caption: 'Nimmst Du am Abschlussbrunch am Sonntag teil? Das kostet 8 Euro mehr.',
+   choices: [{
+   key: 'ja',
+   caption: 'Ja.'
+   }, {
+   key: 'no',
+   caption: 'Nein.'
+   }]
+   }, {
+   type: 'SingleChoice',
+   title: 'Zustimmung für Bilder',
+   caption: 'Gibst du den Organisierenden der 60. StuTS die Erlaubnis, Bilder von der StuTS zu veröffentlichen, auf denen du abgebildest bist?',
+   choices: [{
+   key: 'ja',
+   caption: 'Ja.'
+   }, {
+   key: 'nein',
+   caption: 'Nein.'
+   }]
+   }, {
+    type: 'Caption',
+    title: 'Abschluss der Anmeldung',
+    text: 'Nach dem Abschicken der Anmeldung, erhältst du eine E-Mail mit den Kontoinformationen. Bitte überweise dahin das Geld.<br>Bei weiteren Fragen könnt ihr uns eine E-Mail an stuts60@stuts.de schicken.'
   }]
 };
 

@@ -88,7 +88,7 @@ export class ConferenceComponent implements OnInit {
         }
 
         if (isSingleChoiceItem(item)) {
-          this.inputModel[item.key] = item.choices[0];
+          this.inputModel[item.key] = item.choices[0].key;
         }
 
         if (isMultipleChoiceItem(item)) {

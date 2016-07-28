@@ -28,7 +28,7 @@
       <div *ngFor="let item of conference?.registration"
            class="registrationItem">
         <div [ngSwitch]="item.type">
-          <div *ngSwitchWhen="'Caption'">
+          <div *ngSwitchCase="'Caption'">
             <md-card>
               <md-card-title *ngIf="item.title">{{item.title}}</md-card-title>
               <md-card-content *ngIf="item.text">{{item .text}}
@@ -36,31 +36,32 @@
             </md-card>
           </div>
 
-          <div *ngSwitchWhen="'Link'">
+          <div *ngSwitchCase="'Link'">
             <md-card>
               <p><a target="_blank" [href]="item.href">{{item.label || item
                 .href}}</a></p>
             </md-card>
           </div>
 
-          <div *ngSwitchWhen="'TextInput'">
+          <div *ngSwitchCase="'TextInput'">
             <md-card>
               <md-input floatingPlaceholder [placeholder]="item.caption"
                         [required]="!item.optional"
-                        [(ngModel)]="inputModel[item.key]">
+                        [(ngModel)]="inputModel[item.key]"
+                        [ngModelOptions]="{standalone: true}">
                 <md-hint>{{item.hint}}</md-hint>
               </md-input>
             </md-card>
           </div>
 
-          <div *ngSwitchWhen="'SingleChoice'">
+          <div *ngSwitchCase="'SingleChoice'">
             <md-card>
               <p>{{item.caption}}</p>
-              <md-radio-group [(ngModel)]="inputModel[item.key]">
+              <md-radio-group [(ngModel)]="inputModel[item.key]" [ngModelOptions]="{standalone: true}">
                 <md-list>
                   <md-list-item *ngFor="let choice of item.choices">
-                    <md-radio-button [value]="choice" name="{{item.key}}">
-                      {{choice}}
+                    <md-radio-button [value]="choice.key" name="{{item.key}}">
+                      {{choice.caption}}
                     </md-radio-button>
                   </md-list-item>
                 </md-list>
@@ -68,12 +69,12 @@
             </md-card>
           </div>
 
-          <div *ngSwitchWhen="'MultipleChoice'">
+          <div *ngSwitchCase="'MultipleChoice'">
             <md-card>
               <p>{{item.caption}}</p>
               <md-list>
                 <md-list-item *ngFor="let choice of item.choices">
-                  <md-checkbox [(ngModel)]="inputModel[choice.key]">
+                  <md-checkbox [ngModelOptions]="{standalone: true}" [(ngModel)]="inputModel[choice.key]">
                     {{choice.caption}}
                   </md-checkbox>
                 </md-list-item>
