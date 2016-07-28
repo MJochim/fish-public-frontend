@@ -174,6 +174,7 @@ export var stuts60:Conference = {
     }]
   }, {
     type: 'SingleChoice',
+    key: 'bilder',
     title: 'Zustimmung für Bilder',
     caption: 'Gibst du den Organisierenden der 60. StuTS die Erlaubnis, Bilder von der StuTS zu veröffentlichen, auf denen du abgebildest bist?',
     choices: [{
@@ -186,7 +187,8 @@ export var stuts60:Conference = {
   }, {
     type: 'Caption',
     title: 'Abschluss der Anmeldung',
-    text: 'Nach dem Abschicken der Anmeldung, erhältst du eine E-Mail mit den Kontoinformationen. Bitte überweise dahin das Geld.<br>Bei weiteren Fragen könnt ihr uns eine E-Mail an stuts60@stuts.de schicken.'
+    text: 'Nach dem Abschicken der Anmeldung, erhältst du eine E-Mail mit' +
+    ' den Kontoinformationen. Bitte überweise dahin das Geld. Bei weiteren Fragen könnt ihr uns eine E-Mail an stuts60@stuts.de schicken.'
   }]
 };
 
