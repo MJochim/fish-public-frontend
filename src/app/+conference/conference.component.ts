@@ -14,7 +14,7 @@ import {MD_LIST_DIRECTIVES} from "@angular2-material/list";
 import {
   MdRadioButton,
   MdRadioGroup,
-  MdRadioDispatcher
+  MdUniqueSelectionDispatcher
 } from "@angular2-material/radio";
 import {MD_SIDENAV_DIRECTIVES} from "@angular2-material/sidenav";
 import {MdToolbar} from "@angular2-material/toolbar";
@@ -33,7 +33,7 @@ declare var TextDecoder:TextDecoderConstructor;
   selector: 'app-conference',
   templateUrl: 'conference.component.html',
   styleUrls: ['conference.component.css'],
-  providers: [MdRadioDispatcher],
+  providers: [MdUniqueSelectionDispatcher],
   directives: [MdButton, MdCard, MdCheckbox, MD_INPUT_DIRECTIVES, MD_LIST_DIRECTIVES, MdRadioButton, MdRadioGroup, MD_SIDENAV_DIRECTIVES, MdToolbar]
 })
 export class ConferenceComponent implements OnActivate {

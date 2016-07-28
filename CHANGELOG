@@ -1,3 +1,8 @@
+# 0.0.5 (...)
+
+- Updated angular-material2 from alpha.4 to alpha.6
+- Changed cache control
+
 # 0.0.4 (2016-05-16)
 
 - QuickFix: Status returned by server was ignored
