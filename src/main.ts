@@ -2,11 +2,16 @@
 
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {enableProdMode} from '@angular/core';
-import {ROUTER_PROVIDERS} from '@angular/router';
+import {disableDeprecatedForms, provideForms} from '@angular/forms';
 import {ConferenceRegistrationAppComponent, environment} from './app/';
+import {appRouterProviders} from "./app/conference-registration.routes";
 
 if (environment.production) {
   enableProdMode();
 }
 
-bootstrap(ConferenceRegistrationAppComponent, [ROUTER_PROVIDERS]);
+bootstrap(ConferenceRegistrationAppComponent, [
+  appRouterProviders,
+  disableDeprecatedForms(),
+  provideForms()
+]);

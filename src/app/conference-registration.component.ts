@@ -1,11 +1,8 @@
 // (c) 2016 Markus Jochim <markus.jochim@phonetik.uni-muenchen.de>
 
-import {Component, OnInit} from '@angular/core';
-import {Routes, Router, ROUTER_DIRECTIVES} from '@angular/router';
-
-import {ConferenceStoreService} from './conference-store.service';
-import {ConferenceListComponent} from './+conference-list';
-import {ConferenceComponent} from './+conference';
+import {Component, OnInit} from "@angular/core";
+import {ROUTER_DIRECTIVES} from "@angular/router";
+import {ConferenceStoreService} from "./conference-store.service";
 
 @Component({
   moduleId: module.id,
@@ -15,12 +12,8 @@ import {ConferenceComponent} from './+conference';
   providers: [ConferenceStoreService],
   directives: [ROUTER_DIRECTIVES]
 })
-@Routes([
-  {path: '/conference/:key', component: ConferenceComponent},
-  {path: '/', component: ConferenceListComponent}
-])
 export class ConferenceRegistrationAppComponent implements OnInit {
-  constructor(private router:Router, private _conferenceStore:ConferenceStoreService) {
+  constructor() {
   }
 
   ngOnInit():any {

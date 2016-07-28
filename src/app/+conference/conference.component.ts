@@ -1,10 +1,13 @@
 // (c) 2016 Markus Jochim <markus.jochim@phonetik.uni-muenchen.de>
 
-import {Component} from '@angular/core';
-import {OnActivate, Router, RouteSegment} from '@angular/router';
+import {Component, OnInit} from "@angular/core";
+import {Router, ActivatedRoute} from "@angular/router";
 import {
-  ConferenceStoreService, Conference,
-  isTextInputItem, isMultipleChoiceItem, isSingleChoiceItem
+  ConferenceStoreService,
+  Conference,
+  isTextInputItem,
+  isMultipleChoiceItem,
+  isSingleChoiceItem
 } from "../conference-store.service";
 import {MdButton} from "@angular2-material/button";
 import {MdCard} from "@angular2-material/card";
@@ -36,7 +39,7 @@ declare var TextDecoder:TextDecoderConstructor;
   providers: [MdUniqueSelectionDispatcher],
   directives: [MdButton, MdCard, MdCheckbox, MD_INPUT_DIRECTIVES, MD_LIST_DIRECTIVES, MdRadioButton, MdRadioGroup, MD_SIDENAV_DIRECTIVES, MdToolbar]
 })
-export class ConferenceComponent implements OnActivate {
+export class ConferenceComponent implements OnInit {
   conference:Conference;
   inputModel:Object = {};
   labels:Object = {
@@ -47,13 +50,17 @@ export class ConferenceComponent implements OnActivate {
     submitQuestion: 'Soll die Anmeldung abgeschickt werden?'
   };
 
-  constructor(private router:Router, private _conferenceStore:ConferenceStoreService) {
+  sub:any;
+
+  constructor(private router:Router, private route:ActivatedRoute, private _conferenceStore:ConferenceStoreService) {
   }
 
-  routerOnActivate(curr:RouteSegment) {
+  ngOnInit() {
     // Get conference data
-    let key = curr.getParam('key');
-    this.conference = this._conferenceStore.getConference(key);
+    this.sub = this.route.params.subscribe(params => {
+      this.conference = this._conferenceStore.getConference(params['key']);
+      this.sub = null;
+    });
 
     if (this.conference === null) {
       // Go back if conference data could not be loaded
