@@ -6,6 +6,15 @@
 
 $filename = "registrations.json";
 
+
+/////////
+// Dependencies
+//
+
+require 'Mail.php';
+require 'Mail/mime.php';
+
+
 //////////
 // Parse JSON input
 //
@@ -35,19 +44,19 @@ if (!is_array($registrations)) {
 	fwrite($fh, json_encode($registrations));
 	fclose($fh);
 
-	mail($newRegistration);
+	sendMail($newRegistration);
 
 	echo "SUCCESS";
 }
 
-function mail ($newRegistration) {
+function sendMail ($newRegistration) {
 
 	// E-Mail verschicken
 	$from = "noreply@stuts.de";
 	$subject = "Konferenz-Anmeldung";
 	$message = "";
 
-	$email = $newRegistration['email'];
+	$email = $newRegistration->email;
 	$ccAddress = "stuts60@stuts.de";
 
 	$headers = array (
@@ -73,13 +82,15 @@ function mail ($newRegistration) {
 
 	$mail = Mail::factory('smtp', array(
 	  "host" => "mailout.lrz.de",
-	  "localhost" => "junge-sprachwissenschaft.de"
+	  "localhost" => "jungesprawi.itz.fak13.lmu.de"
 	));
-	
+
 	$return = $mail->send(array(
 	  'To'=>$email,
 	  'Cc'=>$ccAddress
 	), $headers, $body);
+
+	return $return;
 }
 
 ?>
