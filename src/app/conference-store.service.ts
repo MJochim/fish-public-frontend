@@ -71,7 +71,7 @@ export interface Conference {
   registration:Array<CaptionItem|LinkItem|SingleChoiceItem|MultipleChoiceItem|TextInputItem>;
 }
 
-export var stuts60:Conference = {
+export var stuts60_de: Conference = {
   name: 'LX. StuTS',
   key: 'stuts60',
   place: 'Heidelberg',
@@ -86,7 +86,7 @@ export var stuts60:Conference = {
   }, {
     type: 'TextInput',
     key: 'name',
-    caption: 'Name',
+    caption: 'Nachname',
   }, {
     type: 'TextInput',
     key: 'vorname',
@@ -104,7 +104,8 @@ export var stuts60:Conference = {
   }, {
     type: 'SingleChoice',
     key: 'ausheidelberg',
-    caption: 'Bis du aus Heidelberg oder brauchst aus irgendeinem anderen Grund keine Übernachtungsmöglichkeit?',
+    caption: 'Bist du aus Heidelberg oder brauchst aus irgendeinem anderen' +
+    ' Grund keine Übernachtungsmöglichkeit?',
     choices: [{
       key: 'ja',
       caption: 'Ja.'
@@ -132,9 +133,8 @@ export var stuts60:Conference = {
   }, {
     type: 'MultipleChoice',
     key: 'schlafangebote',
-    caption: 'Für die Heidelberger Studierenden: Für welche Nächte kannst' +
-    ' du auswärtigen Studierenden Übernachtungsmöglichkeiten anbieten?',
-    hint: 'Näheres zur Aktion der Übernachtungsmöglichkeiten für Studierende findet ihr unter https://60.stuts.de/foobar.',
+    caption: 'Für die Heidelberger Studierenden: Für welche Nächte kannst du auswärtigen Studierenden Übernachtungsmöglichkeiten anbieten?',
+    hint: 'Näheres zur Aktion der Übernachtungsmöglichkeiten für Studierende findet ihr auf unserer Webseite.',
     choices: [{
       key: 'mido',
       caption: 'Von Mittwoch auf Donnerstag.'
@@ -150,21 +150,9 @@ export var stuts60:Conference = {
     }]
   }, {
     type: 'SingleChoice',
-    key: 'essen',
-    choices: [{
-      key: 'fleisch',
-      caption: 'Ich esse Fleisch.'
-    }, {
-      key: 'vegetarisch',
-      caption: 'Ich esse vegetarisch (d. h. auch Tierprodukte)'
-    }, {
-      key: 'vegan',
-      caption: 'Ich esse vegan.'
-    }]
-  }, {
-    type: 'SingleChoice',
-    key: 'brunch',
-    caption: 'Nimmst Du am Abschlussbrunch am Sonntag teil? Das kostet 8 Euro mehr.',
+    key: 'anreise',
+    caption: 'Für die auswärtigen Studierenden: Reist du bereits am Mittwoch' +
+    ' an?',
     choices: [{
       key: 'ja',
       caption: 'Ja.'
@@ -174,9 +162,41 @@ export var stuts60:Conference = {
     }]
   }, {
     type: 'SingleChoice',
-    key: 'bilder',
+    key: 'vortrag',
+    caption: 'Planst du einen Vortrag zu halten?',
+    choices: [{
+      key: 'ja',
+      caption: 'Ja.'
+    }, {
+      key: 'no',
+      caption: 'Nein.'
+    }]
+  }, {
+    type: 'SingleChoice',
+    key: 'essen',
+    caption: 'Wie steht es um deine Ernährung?',
+    choices: [{
+      key: 'fleisch',
+      caption: 'Ich esse Fleisch.'
+    }, {
+      key: 'vegetarian',
+      caption: 'Ich esse vegan oder vegetarisch.
+    }]
+  }, {
+    type: 'SingleChoice',
+    key: 'brunch',
+    caption: 'Nimmst Du am Abschlussbrunch am Sonntag teil?',
+    choices: [{
+      key: 'ja',
+      caption: 'Ja.'
+    }, {
+      key: 'no',
+      caption: 'Nein.'
+    }]
+  }, {
+    type: 'SingleChoice',
     title: 'Zustimmung für Bilder',
-    caption: 'Gibst du den Organisierenden der 60. StuTS die Erlaubnis, Bilder von der StuTS zu veröffentlichen, auf denen du abgebildest bist?',
+    caption: 'Gibst du dem Organisationsteam der 60. StuTS die Erlaubnis, Bilder von der StuTS zu veröffentlichen, auf denen du abgebildest bist.'
     choices: [{
       key: 'ja',
       caption: 'Ja.'
@@ -188,49 +208,146 @@ export var stuts60:Conference = {
     type: 'Caption',
     title: 'Abschluss der Anmeldung',
     text: 'Nach dem Abschicken der Anmeldung, erhältst du eine E-Mail mit' +
-    ' den Kontoinformationen. Bitte überweise dahin das Geld. Bei weiteren Fragen könnt ihr uns eine E-Mail an stuts60@stuts.de schicken.'
+    ' den Kontoinformationen. Bitte überweise den Teilnahmebetrag so bald' +
+    ' wie möglich. Bei weiteren Fragen könnt ihr uns eine E-Mail an' +
+    ' stuts60@stuts.de schicken.'
   }]
 };
 
-export var staps9:Conference = {
-  name: '9. STaPS',
-  key: 'staps9',
-  place: 'Köln',
+export var stuts60_en: Conference = {
+  name: 'LX. StuTS',
+  key: 'stuts60',
+  place: 'Heidelberg',
   date: 'Herbst 2016',
-  avatar: 'http://staps.stuts.eu/wp-content/uploads/2013/07/STaPs_Logo.png',
+  avatar: 'http://stuts.de/esh.png',
   showBackButton: true,
   labels: {},
   registration: [{
     type: 'Caption',
-    title: 'Willkommen bei der Anmeldung zur 9. STaPs'
+    title: 'Welcome!',
+    text: 'Welcome to the registration for the LX. StuTS'
   }, {
     type: 'TextInput',
     key: 'name',
-    caption: 'Name'
-  }]
-};
-
-export var pundp12:Conference = {
-  name: 'P&P 12',
-  key: 'pundp12',
-  place: 'LMU München, Institut für Phonetik und Sprachverarbeitung',
-  date: '13./14.10.2016',
-  avatar: '',
-  showBackButton: false,
-  labels: {},
-  registration: [{
-    type: 'Caption',
-    title: 'Willkommen zur 12. Tagung Phonetik & Phonologie im' +
-    ' deutschsprachigen Raum!',
-    text: 'Auf dieser Seite können Sie sich zur P&P12 anmelden, welche am' +
-    ' 13./14.10.2016 an der München Ludwig-Maximilians-Universität, am' +
-    ' Institut für Phonetik und Sprachverarbeitung, stattfinden wird. Alle' +
-    ' Informationen rund um die Tagung finden Sie auf der unten' +
-    ' verlinkten Homepage.'
+    caption: 'Last Name',
   }, {
-    type: 'Link',
-    href: 'http://phonetik.uni-muenchen.de/institut/veranstaltungen/pundp12',
-    label: 'Tagungshomepage'
+    type: 'TextInput',
+    key: 'vorname',
+    caption: 'First Name'
+  }, {
+    type: 'TextInput',
+    key: 'affiliation',
+    caption: 'University',
+    optional: true
+  }, {
+    type: 'TextInput',
+    key: 'email',
+    caption: 'E-Mail',
+    pattern: 'email',
+  }, {
+    type: 'SingleChoice',
+    key: 'ausheidelberg',
+    caption: 'Do you live in Heidelberg or do you (for any other reason) <i>not</i> need accomodation?',
+    choices: [{
+      key: 'ja',
+      caption: 'Yes.'
+    }, {
+      key: 'no',
+      caption: 'No, I need accomodation.'
+    }]
+  }, {
+    type: 'SingleChoice',
+    key: 'teilnahme',
+    caption: 'When would you like to attend the StuTS?',
+    choices: [{
+      key: 'do',
+      caption: 'Thursday only (without accomodation). (12 Euro)'
+    }, {
+      key: 'fr',
+      caption: 'Friday only (without accomodation). (12 Euro)'
+    }, {
+      key: 'sa',
+      caption: 'Saturday only (without accomodation). (12 Euro)'
+    }, {
+      key: 'ganz',
+      caption: ' For 2 days or the entire congress (including accomodation). (30 Euro for Students from out-of-town, 15 Euro for Students from Heidelberg)'
+    }]
+  }, {
+    type: 'MultipleChoice',
+    key: 'schlafangebote',
+    caption: 'Students from Heidelberg: Would you be willing to accomodate students from out-of-town? If yes, when?'
+    hint: 'You can find further information on students from Heidelberg accomodating visitors on our website.',
+    choices: [{
+      key: 'mido',
+      caption: ' Staying Wednesday night.'
+    }, {
+      key: 'dofr',
+      caption: ' Staying Thursday night.'
+    }, {
+      key: 'frsa',
+      caption: ' Staying Friday night.'
+    }, {
+      key: 'saso',
+      caption: 'Staying Saturday night.'
+    }]
+  }, {
+    type: 'SingleChoice',
+    key: 'anreise',
+    caption 'Students from out-of-town: Are you arriving on Wednesday?',
+    choices: [{
+      key: 'ja',
+      caption: 'Yes.'
+    }, {
+      key: 'no',
+      caption: 'No.'
+    }]
+  }, {
+    type: 'SingleChoice',
+    key: 'vortrag',
+    caption: 'Are you planning to give a presentation?',
+    choices: [{
+      key: 'ja',
+      caption: 'Yes.'
+    }, {
+      key: 'no',
+      caption: 'No.'
+    }]
+  }, {
+    type: 'SingleChoice',
+    key: 'essen',
+    caption: 'What do you eat?',
+    choices: [{
+      key: 'fleisch',
+      caption: 'I eat meat.'
+    }, {
+      key: 'vegetarian',
+      caption: 'I’m vegan or vegetarian.
+    }]
+  }, {
+    type: 'SingleChoice',
+    key: 'brunch',
+    caption: 'Are you joining the brunch on Sunday?',
+    choices: [{
+      key: 'ja',
+      caption: 'Yes.'
+    }, {
+      key: 'no',
+      caption: 'No.'
+    }]
+  }, {
+    type: 'SingleChoice',
+    title: 'Agreement for pictures',
+    caption: 'Do you permit the organization team to publish pictures taken at the StuTS showing you?'
+    key: 'ja',
+    caption: 'Yes.'
+  }, {
+    key: 'nein',
+    caption: 'No.'
+  }, {
+    type: 'Caption',
+    title: 'Finishing your registration',
+    text: 'After finishing your registration, you will receive an email with' +
+    ' information regarding the bank account. Please transfer your fee to this account as soon as possible. For further questions feel free to send us an email to stuts60@stuts.de.'
   }]
 };
 
@@ -255,5 +372,5 @@ export class ConferenceStoreService {
     return null;
   }
 
-  private _conferences:Conference[] = [stuts60, staps9, pundp12];
+  private _conferences: Conference[] = [stuts60_de, stuts60_en];
 }
