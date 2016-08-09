@@ -42,6 +42,7 @@ export interface TextInputItem {
 export interface SingleChoiceItem {
   type:'SingleChoice';
   key:string;
+  caption:string;
   choices:Array<{key:string, caption:string}>;
 }
 
@@ -73,7 +74,7 @@ export interface Conference {
 
 export var stuts60_de: Conference = {
   name: 'LX. StuTS',
-  key: 'stuts60',
+  key: 'stuts60_de',
   place: 'Heidelberg',
   date: 'Herbst 2016',
   avatar: 'http://stuts.de/esh.png',
@@ -133,8 +134,9 @@ export var stuts60_de: Conference = {
   }, {
     type: 'MultipleChoice',
     key: 'schlafangebote',
-    caption: 'Für die Heidelberger Studierenden: Für welche Nächte kannst du auswärtigen Studierenden Übernachtungsmöglichkeiten anbieten?',
-    hint: 'Näheres zur Aktion der Übernachtungsmöglichkeiten für Studierende findet ihr auf unserer Webseite.',
+    caption: 'Für die Heidelberger Studierenden: Für welche Nächte kannst du' +
+    ' auswärtigen Studierenden Übernachtungsmöglichkeiten anbieten? (Näheres' +
+    ' zur Aktion der Übernachtungsmöglichkeiten für Studierende findet ihr auf unserer Webseite.)',
     choices: [{
       key: 'mido',
       caption: 'Von Mittwoch auf Donnerstag.'
@@ -180,7 +182,7 @@ export var stuts60_de: Conference = {
       caption: 'Ich esse Fleisch.'
     }, {
       key: 'vegetarian',
-      caption: 'Ich esse vegan oder vegetarisch.
+      caption: 'Ich esse vegan oder vegetarisch.'
     }]
   }, {
     type: 'SingleChoice',
@@ -195,8 +197,9 @@ export var stuts60_de: Conference = {
     }]
   }, {
     type: 'SingleChoice',
-    title: 'Zustimmung für Bilder',
-    caption: 'Gibst du dem Organisationsteam der 60. StuTS die Erlaubnis, Bilder von der StuTS zu veröffentlichen, auf denen du abgebildest bist.'
+    key: 'bilder',
+    caption: 'Gibst du dem Organisationsteam der 60. StuTS die Erlaubnis,' +
+    ' Bilder von der StuTS zu veröffentlichen, auf denen du abgebildest bist.',
     choices: [{
       key: 'ja',
       caption: 'Ja.'
@@ -216,7 +219,7 @@ export var stuts60_de: Conference = {
 
 export var stuts60_en: Conference = {
   name: 'LX. StuTS',
-  key: 'stuts60',
+  key: 'stuts60_en',
   place: 'Heidelberg',
   date: 'Herbst 2016',
   avatar: 'http://stuts.de/esh.png',
@@ -247,7 +250,7 @@ export var stuts60_en: Conference = {
   }, {
     type: 'SingleChoice',
     key: 'ausheidelberg',
-    caption: 'Do you live in Heidelberg or do you (for any other reason) <i>not</i> need accomodation?',
+    caption: 'Do you live in Heidelberg or do you (for any other reason) not need accomodation?',
     choices: [{
       key: 'ja',
       caption: 'Yes.'
@@ -275,8 +278,9 @@ export var stuts60_en: Conference = {
   }, {
     type: 'MultipleChoice',
     key: 'schlafangebote',
-    caption: 'Students from Heidelberg: Would you be willing to accomodate students from out-of-town? If yes, when?'
-    hint: 'You can find further information on students from Heidelberg accomodating visitors on our website.',
+    caption: 'Students from Heidelberg: Would you be willing to accomodate' +
+    ' students from out-of-town? If yes, when? (You can find further' +
+    ' information on students from Heidelberg accomodating visitors on our website.)',
     choices: [{
       key: 'mido',
       caption: ' Staying Wednesday night.'
@@ -293,7 +297,7 @@ export var stuts60_en: Conference = {
   }, {
     type: 'SingleChoice',
     key: 'anreise',
-    caption 'Students from out-of-town: Are you arriving on Wednesday?',
+    caption: 'Students from out-of-town: Are you arriving on Wednesday?',
     choices: [{
       key: 'ja',
       caption: 'Yes.'
@@ -321,7 +325,7 @@ export var stuts60_en: Conference = {
       caption: 'I eat meat.'
     }, {
       key: 'vegetarian',
-      caption: 'I’m vegan or vegetarian.
+      caption: 'I’m vegan or vegetarian.'
     }]
   }, {
     type: 'SingleChoice',
@@ -336,13 +340,16 @@ export var stuts60_en: Conference = {
     }]
   }, {
     type: 'SingleChoice',
-    title: 'Agreement for pictures',
-    caption: 'Do you permit the organization team to publish pictures taken at the StuTS showing you?'
-    key: 'ja',
-    caption: 'Yes.'
-  }, {
-    key: 'nein',
-    caption: 'No.'
+    key: 'bilder',
+    caption: 'Do you permit the organization team to publish pictures taken' +
+    ' at the StuTS showing you?',
+    choices: [{
+      key: 'ja',
+      caption: 'Yes.'
+    }, {
+      key: 'nein',
+      caption: 'No.'
+    }],
   }, {
     type: 'Caption',
     title: 'Finishing your registration',
