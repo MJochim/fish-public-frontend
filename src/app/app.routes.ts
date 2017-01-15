@@ -1,6 +1,6 @@
 import {Routes} from "@angular/router";
-import {ConferenceListComponent} from "./+conference-list/conference-list.component";
-import {ConferenceComponent} from "./+conference/conference.component";
+import {ConferenceListComponent} from "./conference-list/conference-list.component";
+import {ConferenceComponent} from "./conference/conference.component";
 
 
 export const appRoutes:Routes = [

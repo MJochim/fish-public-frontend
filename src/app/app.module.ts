@@ -5,8 +5,8 @@ import {HttpModule} from "@angular/http";
 import {RouterModule} from "@angular/router";
 import {appRoutes} from "./app.routes";
 import {ConferenceRegistrationComponent} from "./conference-registration.component";
-import {ConferenceListComponent} from "./+conference-list/conference-list.component";
-import {ConferenceComponent} from "./+conference/conference.component";
+import {ConferenceListComponent} from "./conference-list/conference-list.component";
+import {ConferenceComponent} from "./conference/conference.component";
 import {ConferenceStoreService} from "./core/conference-store.service";
 import {MaterialModule} from "@angular/material";
 
