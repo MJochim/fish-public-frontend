@@ -1,51 +1,51 @@
 .fill-space {
-  flex: 1 1 auto;
+    flex: 1 1 auto;
 }
 
 .registrationItem {
-  margin-top: 20px;
-  margin-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 md-input {
-  width: 100%;
+    width: 100%;
 }
 
 md-toolbar img {
-  margin-right: 20px;
+    margin-right: 20px;
 }
 
 :host {
-  display: flex;
+    display: flex;
 }
 
 :host > form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 md-sidenav-layout {
-  flex-basis: 100%;
-  flex-grow: 1;
+    flex-basis: 100%;
+    flex-grow: 1;
 }
 
 :host md-sidenav-layout > md-sidenav {
-  width: 33%;
-  padding: 10px;
+    width: 33%;
+    padding: 10px;
 
-  /* Flexbox for vertical alignment */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  text-align: center;
+    /* Flexbox for vertical alignment */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
 }
 
 :host > form > md-toolbar {
-  flex-basis: 40px;
-  flex-grow: 0;
+    flex-basis: 40px;
+    flex-grow: 0;
 }
 
 :host md-card {
-  overflow: auto;
+    overflow: auto;
 }

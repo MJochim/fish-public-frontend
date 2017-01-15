@@ -3,10 +3,10 @@ import {ConferenceListComponent} from "./conference-list/conference-list.compone
 import {ConferenceComponent} from "./conference/conference.component";
 
 
-export const appRoutes:Routes = [
+export const appRoutes: Routes = [
 	{path: 'conference/:key', component: ConferenceComponent},
 	{path: 'list', component: ConferenceListComponent},
 	{path: '', redirectTo: '/list', pathMatch: 'full'}
 ];
 
-export const appRoutingProviders:any[] = [];
+export const appRoutingProviders: any[] = [];

@@ -3,14 +3,14 @@
 import {Component, OnInit} from "@angular/core";
 
 @Component({
-  selector: 'conference-registration-app',
-  templateUrl: 'conference-registration.component.html',
-  styleUrls: ['conference-registration.component.css'],
+	selector: 'conference-registration-app',
+	templateUrl: 'conference-registration.component.html',
+	styleUrls: ['conference-registration.component.css'],
 })
 export class ConferenceRegistrationComponent implements OnInit {
-  constructor() {
-  }
+	constructor() {
+	}
 
-  ngOnInit():any {
-  }
+	ngOnInit(): any {
+	}
 }
