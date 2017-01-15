@@ -8,7 +8,7 @@ import {
   isTextInputItem,
   isMultipleChoiceItem,
   isSingleChoiceItem
-} from "../conference-store.service";
+} from "../core/conference-store.service";
 
 // TextDecoder is an experimental browser API
 interface TextDecoder {

@@ -7,7 +7,7 @@ import {appRoutes} from "./app.routes";
 import {ConferenceRegistrationComponent} from "./conference-registration.component";
 import {ConferenceListComponent} from "./+conference-list/conference-list.component";
 import {ConferenceComponent} from "./+conference/conference.component";
-import {ConferenceStoreService} from "./conference-store.service";
+import {ConferenceStoreService} from "./core/conference-store.service";
 import {MaterialModule} from "@angular/material";
 
 @NgModule({
