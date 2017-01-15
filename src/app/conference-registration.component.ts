@@ -4,8 +4,12 @@ import {Component, OnInit} from "@angular/core";
 
 @Component({
 	selector: 'conference-registration-app',
-	templateUrl: 'conference-registration.component.html',
-	styleUrls: ['conference-registration.component.css'],
+	template: '<router-outlet></router-outlet>',
+	styles: [`
+		:host > app-conference, :host > app-conference-list {
+	  		height: 100%;
+		}
+	`],
 })
 export class ConferenceRegistrationComponent implements OnInit {
 	constructor() {
