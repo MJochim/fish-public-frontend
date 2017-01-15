@@ -1,3 +1,11 @@
+# 0.1.0
+
+- Updated dependencies
+-- angular to 2.3.1 (from angular2-rc.4)
+-- angular-cli to 1.0.0-beta.24 (from 1.0.0-beta.1)
+-- dropped systemjs in favor of webpack
+-- angular-material to 2.0.0-beta.1 (from alpha.6)
+
 # 0.0.6 (2016-08-09)
 
 - Added mail function (testing)
