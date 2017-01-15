@@ -9,18 +9,6 @@ import {
   isMultipleChoiceItem,
   isSingleChoiceItem
 } from "../conference-store.service";
-import {MdButton} from "@angular2-material/button";
-import {MdCard} from "@angular2-material/card";
-import {MdCheckbox} from "@angular2-material/checkbox";
-import {MD_INPUT_DIRECTIVES} from "@angular2-material/input";
-import {MD_LIST_DIRECTIVES} from "@angular2-material/list";
-import {
-  MdRadioButton,
-  MdRadioGroup,
-  MdUniqueSelectionDispatcher
-} from "@angular2-material/radio";
-import {MD_SIDENAV_DIRECTIVES} from "@angular2-material/sidenav";
-import {MdToolbar} from "@angular2-material/toolbar";
 
 // TextDecoder is an experimental browser API
 interface TextDecoder {
@@ -35,8 +23,6 @@ declare var TextDecoder:TextDecoderConstructor;
   selector: 'app-conference',
   templateUrl: 'conference.component.html',
   styleUrls: ['conference.component.css'],
-  providers: [MdUniqueSelectionDispatcher],
-  directives: [MdButton, MdCard, MdCheckbox, MD_INPUT_DIRECTIVES, MD_LIST_DIRECTIVES, MdRadioButton, MdRadioGroup, MD_SIDENAV_DIRECTIVES, MdToolbar]
 })
 export class ConferenceComponent implements OnInit {
   conference:Conference;
