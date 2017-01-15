@@ -1,17 +1,12 @@
-// (c) 2016 Markus Jochim <markus.jochim@phonetik.uni-muenchen.de>
+import './polyfills.ts';
 
-import {bootstrap} from '@angular/platform-browser-dynamic';
-import {enableProdMode} from '@angular/core';
-import {disableDeprecatedForms, provideForms} from '@angular/forms';
-import {ConferenceRegistrationAppComponent, environment} from './app/';
-import {appRouterProviders} from "./app/conference-registration.routes";
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { enableProdMode } from '@angular/core';
+import { environment } from './environments/environment';
+import { AppModule } from './app/app.module';
 
 if (environment.production) {
   enableProdMode();
 }
 
-bootstrap(ConferenceRegistrationAppComponent, [
-  appRouterProviders,
-  disableDeprecatedForms(),
-  provideForms()
-]);
+platformBrowserDynamic().bootstrapModule(AppModule);

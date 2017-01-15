@@ -32,7 +32,6 @@ interface TextDecoderConstructor {
 declare var TextDecoder:TextDecoderConstructor;
 
 @Component({
-  moduleId: module.id,
   selector: 'app-conference',
   templateUrl: 'conference.component.html',
   styleUrls: ['conference.component.css'],

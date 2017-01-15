@@ -5,7 +5,6 @@ import {ROUTER_DIRECTIVES} from "@angular/router";
 import {ConferenceStoreService} from "./conference-store.service";
 
 @Component({
-  moduleId: module.id,
   selector: 'conference-registration-app',
   templateUrl: 'conference-registration.component.html',
   styleUrls: ['conference-registration.component.css'],

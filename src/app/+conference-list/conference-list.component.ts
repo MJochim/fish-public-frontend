@@ -8,7 +8,6 @@ import {ConferenceStoreService, Conference} from "../conference-store.service";
 
 
 @Component({
-  moduleId: module.id,
   selector: 'app-conference-list',
   templateUrl: 'conference-list.component.html',
   styleUrls: ['conference-list.component.css'],
