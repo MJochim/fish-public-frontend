@@ -19,7 +19,13 @@ export class ConferenceListComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.conferences = this._conferenceStoreService.conferences;
+		this._conferenceStoreService.getConferences()
+			.then(value => {
+				this.conferences = value;
+			})
+			.catch(error => {
+				console.log(error);
+			});
 	}
 
 }

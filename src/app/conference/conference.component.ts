@@ -43,48 +43,54 @@ export class ConferenceComponent implements OnInit {
 	ngOnInit() {
 		// Get conference data
 		this.sub = this.route.params.subscribe(params => {
-			this.conference = this._conferenceStore.getConference(params['key']);
+			this._conferenceStore.getConference(params['key'])
+				.then(value => {
+					this.conference = value;
+
+					if (this.conference === null) {
+						// Go back if conference data could not be loaded
+						this.router.navigate(['/']);
+					} else {
+						//////////
+						// Initialise labels
+						//
+						for (let key in this.conference.labels) {
+							this.labels[key] = this.conference.labels[key];
+							console.log(key);
+						}
+						//
+						//////////
+
+						//////////
+						// Initialise inputModel
+						//
+						this.inputModel['conferenceKey'] = this.conference.key;
+
+						for (let i = 0; i < this.conference.registration.length; ++i) {
+							let item = this.conference.registration[i];
+							if (isTextInputItem(item)) {
+								this.inputModel[item.key] = '';
+							}
+
+							if (isSingleChoiceItem(item)) {
+								this.inputModel[item.key] = item.choices[0].key;
+							}
+
+							if (isMultipleChoiceItem(item)) {
+								for (let j = 0; j < item.choices.length; ++j) {
+									this.inputModel[item.choices[j].key] = false;
+								}
+							}
+						}
+						//
+						//////////
+					}
+				})
+				.catch(error => {
+					this.router.navigate(['/']);
+				});
 			this.sub = null;
 		});
-
-		if (this.conference === null) {
-			// Go back if conference data could not be loaded
-			this.router.navigate(['/']);
-		} else {
-			//////////
-			// Initialise labels
-			//
-			for (let key in this.conference.labels) {
-				this.labels[key] = this.conference.labels[key];
-				console.log(key);
-			}
-			//
-			//////////
-
-			//////////
-			// Initialise inputModel
-			//
-			this.inputModel['conferenceKey'] = this.conference.key;
-
-			for (let i = 0; i < this.conference.registration.length; ++i) {
-				let item = this.conference.registration[i];
-				if (isTextInputItem(item)) {
-					this.inputModel[item.key] = '';
-				}
-
-				if (isSingleChoiceItem(item)) {
-					this.inputModel[item.key] = item.choices[0].key;
-				}
-
-				if (isMultipleChoiceItem(item)) {
-					for (let j = 0; j < item.choices.length; ++j) {
-						this.inputModel[item.choices[j].key] = false;
-					}
-				}
-			}
-			//
-			//////////
-		}
 	}
 
 	private submitToServer(): Promise<string> {
