@@ -8,7 +8,7 @@
 		<span>{{labels.headline}}</span>
 	</md-toolbar>
 
-	<md-sidenav-layout>
+	<md-sidenav-container>
 		<md-sidenav #sidenav align="end"
 		            (open)="abortBtn.focus();">
 			<div>
@@ -45,12 +45,14 @@
 
 					<div *ngSwitchCase="'TextInput'">
 						<md-card>
-							<md-input floatingPlaceholder [placeholder]="item.caption"
-							          [required]="!item.optional"
-							          [(ngModel)]="inputModel[item.key]"
-							          [ngModelOptions]="{standalone: true}">
+							<md-input-container>
+								<input mdInput floatingPlaceholder
+								       [placeholder]="item.caption"
+								       [required]="!item.optional"
+								       [(ngModel)]="inputModel[item.key]"
+								       [ngModelOptions]="{standalone: true}">
 								<md-hint>{{item.hint}}</md-hint>
-							</md-input>
+							</md-input-container>
 						</md-card>
 					</div>
 
@@ -61,7 +63,7 @@
 							                [ngModelOptions]="{standalone: true}">
 								<md-list>
 									<md-list-item *ngFor="let choice of item.choices">
-										<md-radio-button [value]="choice.key" name="{{item.key}}">
+										<md-radio-button [value]="choice.key" [name]="item.key">
 											{{choice.caption}}
 										</md-radio-button>
 									</md-list-item>
@@ -86,7 +88,7 @@
 				</div>
 			</div>
 		</div>
-	</md-sidenav-layout>
+	</md-sidenav-container>
 
 
 	<md-toolbar>

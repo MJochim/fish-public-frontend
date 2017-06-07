@@ -1,5 +1,6 @@
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {RouterModule} from "@angular/router";
@@ -8,7 +9,13 @@ import {ConferenceRegistrationComponent} from "./conference-registration.compone
 import {ConferenceListComponent} from "./conference-list/conference-list.component";
 import {ConferenceComponent} from "./conference/conference.component";
 import {ConferenceStoreService} from "./core/conference-store.service";
-import {MaterialModule} from "@angular/material";
+import {
+		MdCardModule,
+		MdInputModule,
+		MdRadioModule,
+		MdSidenavModule,
+		MdToolbarModule
+} from "@angular/material";
 
 @NgModule({
 	declarations: [
@@ -22,7 +29,12 @@ import {MaterialModule} from "@angular/material";
 		FormsModule,
 		HttpModule,
 		RouterModule.forRoot(appRoutes),
-		MaterialModule.forRoot()
+		BrowserAnimationsModule,
+		MdCardModule,
+		MdInputModule,
+		MdRadioModule,
+		MdSidenavModule,
+		MdToolbarModule
 	],
 	bootstrap: [ConferenceRegistrationComponent],
 	providers: [
