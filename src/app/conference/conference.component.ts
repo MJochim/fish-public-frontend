@@ -60,30 +60,6 @@ export class ConferenceComponent implements OnInit {
 						}
 						//
 						//////////
-
-						//////////
-						// Initialise inputModel
-						//
-						this.inputModel['conferenceKey'] = this.conference.key;
-
-						for (let i = 0; i < this.conference.registration.length; ++i) {
-							let item = this.conference.registration[i];
-							if (isTextInputItem(item)) {
-								this.inputModel[item.key] = '';
-							}
-
-							if (isSingleChoiceItem(item)) {
-								this.inputModel[item.key] = item.choices[0].key;
-							}
-
-							if (isMultipleChoiceItem(item)) {
-								for (let j = 0; j < item.choices.length; ++j) {
-									this.inputModel[item.choices[j].key] = false;
-								}
-							}
-						}
-						//
-						//////////
 					}
 				})
 				.catch(error => {

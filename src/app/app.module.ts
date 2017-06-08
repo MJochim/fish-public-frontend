@@ -16,12 +16,14 @@ import {
 		MdSidenavModule,
 		MdToolbarModule
 } from "@angular/material";
+import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
 
 @NgModule({
 	declarations: [
 		ConferenceRegistrationComponent,
 		ConferenceListComponent,
 		ConferenceComponent,
+		QuestionnaireComponent,
 	],
 	imports: [
 		// Angular stuff
