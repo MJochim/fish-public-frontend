@@ -11,7 +11,7 @@ import {Conference} from "../core/conference.interface";
 	styleUrls: ['conference-list.component.css'],
 })
 export class ConferenceListComponent implements OnInit {
-	private conferences: Conference[] = [];
+	public conferences: Conference[] = [];
 
 	constructor(private _conferenceStoreService: ConferenceStoreService) {
 	}

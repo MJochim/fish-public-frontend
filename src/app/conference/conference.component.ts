@@ -4,6 +4,7 @@ import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ConferenceStoreService} from "../core/conference-store.service";
 import {Conference} from "../core/conference.interface";
+import {LabelList} from "../core/label-list.interface";
 
 // TextDecoder is an experimental browser API
 interface TextDecoder {
@@ -21,8 +22,8 @@ declare var TextDecoder: TextDecoderConstructor;
 })
 export class ConferenceComponent implements OnInit {
 	conference: Conference;
-	inputModel: Object = {};
-	labels: Object = {
+	inputModel = {};
+	labels: LabelList = {
 		headline: 'Anmeldung',
 		submit: 'Abschicken',
 		abort: 'Abbrechen',
@@ -103,7 +104,7 @@ export class ConferenceComponent implements OnInit {
 		});
 	}
 
-	private submit() {
+	public submit() {
 		console.log(JSON.stringify(this.inputModel));
 		this.submitToServer().then((value) => {
 			alert('Die Anmeldung wurde gespeichert.');
@@ -112,7 +113,7 @@ export class ConferenceComponent implements OnInit {
 		});
 	}
 
-	private navigateBack() {
+	public navigateBack() {
 		this.router.navigate(['/']);
 	}
 }

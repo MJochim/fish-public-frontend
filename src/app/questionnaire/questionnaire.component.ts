@@ -87,7 +87,7 @@ export class QuestionnaireComponent implements OnChanges {
 		}
 	}
 
-	private toggleEditing (key:string) {
+	public toggleEditing (key:string) {
 		this.currentlyEditing[key] = !this.currentlyEditing[key];
 	}
 
