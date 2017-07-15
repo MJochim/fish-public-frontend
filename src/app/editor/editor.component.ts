@@ -1,8 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {
-	Conference,
-	ConferenceStoreService
-} from "../core/conference-store.service";
+import {ConferenceStoreService} from "../core/conference-store.service";
+import {Conference} from "../core/conference.interface";
 
 @Component({
 	selector: 'confreg-editor',

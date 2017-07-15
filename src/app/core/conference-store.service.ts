@@ -2,78 +2,7 @@
 
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
-
-export function isCaptionItem(item: CaptionItem | LinkItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem): item is CaptionItem {
-	return (item.type === 'Caption');
-}
-export function isLinkItem(item: CaptionItem | LinkItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem): item is LinkItem {
-	return (item.type === 'Link');
-}
-export function isTextInputItem(item: CaptionItem | LinkItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem): item is TextInputItem {
-	return (item.type === 'TextInput');
-}
-export function isSingleChoiceItem(item: CaptionItem | LinkItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem): item is SingleChoiceItem {
-	return (item.type === 'SingleChoice');
-}
-export function isMultipleChoiceItem(item: CaptionItem | LinkItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem): item is MultipleChoiceItem {
-	return (item.type === 'MultipleChoice');
-}
-
-export interface CaptionItem {
-	type: 'Caption';
-	key: string;
-	title?: string;
-	text?: string;
-}
-
-export interface LinkItem {
-	type: 'Link';
-	key: string;
-	href: string;
-	label?: string;
-}
-
-export interface TextInputItem {
-	type: 'TextInput';
-	key: string;
-	caption: string;
-	optional?: boolean;
-	hint?: string;
-	pattern?: string;
-}
-
-export interface SingleChoiceItem {
-	type: 'SingleChoice';
-	key: string;
-	caption: string;
-	choices: Array<{key: string, caption: string}>;
-}
-
-export interface MultipleChoiceItem {
-	type: 'MultipleChoice';
-	key: string;
-	caption: string;
-	choices: Array<{key: string, caption: string}>;
-}
-
-export interface LabelList {
-	headline?: string;
-	submit?: string;
-	abort?: string;
-	back?: string;
-	submitQuestion?: string;
-}
-
-export interface Conference {
-	name: string;
-	key: string;
-	place: string;
-	date: string;
-	avatar: string;
-	showBackButton: boolean;
-	labels: LabelList;
-	registration: Array<CaptionItem|LinkItem|SingleChoiceItem|MultipleChoiceItem|TextInputItem>;
-}
+import {Conference} from "app/core/conference.interface";
 
 @Injectable()
 export class ConferenceStoreService {

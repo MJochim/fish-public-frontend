@@ -6,14 +6,15 @@ import {
 	Output,
 	SimpleChanges
 } from "@angular/core";
-import {
-	CaptionItem,
-	Conference,
-	isMultipleChoiceItem,
-	isSingleChoiceItem,
-	isTextInputItem,
-	LinkItem, MultipleChoiceItem, SingleChoiceItem, TextInputItem,
-} from "../core/conference-store.service";
+import {Conference} from "../core/conference.interface";
+import {LinkItem} from "app/core/link-item.interface";
+import {CaptionItem} from "../core/caption-item.interface";
+import {TextInputItem} from "../core/text-input-item.interface";
+import {SingleChoiceItem} from "../core/single-choice-item.interface";
+import {MultipleChoiceItem} from "../core/multiple-choice-item.interface";
+import {isTextInputItem} from "../core/type-guards/is-text-input-item.function";
+import {isSingleChoiceItem} from "../core/type-guards/is-single-choice-item.function";
+import {isMultipleChoiceItem} from "app/core/type-guards/is-multiple-choice-item.function";
 
 @Component({
 	selector: 'confreg-questionnaire',

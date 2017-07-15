@@ -1,14 +1,9 @@
 // (c) 2016 Markus Jochim <markus.jochim@phonetik.uni-muenchen.de>
 
 import {Component, OnInit} from "@angular/core";
-import {Router, ActivatedRoute} from "@angular/router";
-import {
-	ConferenceStoreService,
-	Conference,
-	isTextInputItem,
-	isMultipleChoiceItem,
-	isSingleChoiceItem
-} from "../core/conference-store.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {ConferenceStoreService} from "../core/conference-store.service";
+import {Conference} from "../core/conference.interface";
 
 // TextDecoder is an experimental browser API
 interface TextDecoder {

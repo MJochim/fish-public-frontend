@@ -1,10 +1,8 @@
 // (c) 2016 Markus Jochim <markus.jochim@phonetik.uni-muenchen.de>
 
 import {Component, OnInit} from "@angular/core";
-import {
-	ConferenceStoreService,
-	Conference
-} from "../core/conference-store.service";
+import {ConferenceStoreService} from "../core/conference-store.service";
+import {Conference} from "../core/conference.interface";
 
 
 @Component({
