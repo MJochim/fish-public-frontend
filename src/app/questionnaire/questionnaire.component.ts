@@ -212,7 +212,7 @@ export class QuestionnaireComponent implements OnChanges {
 				distance -= itemContainer.querySelector('md-card').clientHeight;
 				distance += itemContainer.nextElementSibling.querySelector('md-card').clientHeight;
 
-				if (window.scrollY + distance <= document.querySelector('body').scrollHeight) {
+				if (window.scrollY + window.innerHeight + distance <= document.querySelector('body').scrollHeight) {
 					window.scrollBy(0, distance);
 				}
 

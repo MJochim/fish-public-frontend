@@ -3,8 +3,8 @@
 	<md-card [ngSwitch]="item.type">
 		<md-card-actions *ngIf="editable">
 			<button md-icon-button
-					(click)="moveUp(itemContainer, item.key)"
-					[disabled]="i === 0">
+			        (click)="moveUp(itemContainer, item.key)"
+			        [disabled]="i === 0">
 				<span class="material-icons">arrow_upward</span>
 			</button>
 
@@ -17,6 +17,12 @@
 			<md-slide-toggle (change)="toggleEditing(item.key)">
 				Edit
 			</md-slide-toggle>
+
+			<span class="fill-space"></span>
+
+			<button md-button>
+				Change key
+			</button>
 
 			<button md-button
 			        (click)="removeItem(item.key)"
@@ -35,6 +41,9 @@
 			</md-card-content>
 
 			<md-card-content *ngIf="currentlyEditing[item.key]">
+				<p>
+					Key: {{item.key}}
+				</p>
 				<p>
 					<md-input-container>
 						<input mdInput floatingPlaceholder
@@ -59,6 +68,9 @@
 			</p>
 
 			<div *ngIf="currentlyEditing[item.key]">
+				<p>
+					Key: {{item.key}}
+				</p>
 				<md-input-container>
 					<input mdInput floatingPlaceHolder
 					       placeholder="Label"
@@ -86,12 +98,9 @@
 			</md-card-content>
 
 			<md-card-content *ngIf="currentlyEditing[item.key]">
-				<md-input-container>
-					<input mdInput floatingPlaceholder
-					       [required]="true"
-					       placeholder="Key"
-					       [(ngModel)]="item.key">
-				</md-input-container>
+				<p>
+					Key: {{item.key}}
+				</p>
 
 				<md-input-container>
 					<input mdInput floatingPlaceholder
@@ -100,34 +109,72 @@
 					       [(ngModel)]="item.caption">
 				</md-input-container>
 
+				<md-input-container>
+					<input mdInput floatingPlaceholder
+					       placeholder="Hint"
+					       [(ngModel)]="item.hint">
+				</md-input-container>
+
 				<md-checkbox [(ngModel)]="item.optional">Optional</md-checkbox>
 			</md-card-content>
 		</div>
 
 		<div *ngSwitchCase="'SingleChoice'">
-			<p>{{item.caption}}</p>
-			<md-radio-group [(ngModel)]="inputModel[item.key]"
-			                [ngModelOptions]="{standalone: true}">
-				<md-list>
-					<md-list-item *ngFor="let choice of item.choices">
-						<md-radio-button [value]="choice.key" [name]="item.key">
-							{{choice.caption}}
-						</md-radio-button>
-					</md-list-item>
-				</md-list>
-			</md-radio-group>
+			<md-card-content *ngIf="!currentlyEditing[item.key]">
+				<p>{{item.caption}}</p>
+
+				<md-radio-group [(ngModel)]="inputModel[item.key]"
+				                [ngModelOptions]="{standalone: true}">
+					<md-list>
+						<md-list-item *ngFor="let choice of item.choices">
+							<md-radio-button [value]="choice.key" [name]="item.key">
+								{{choice.caption}}
+							</md-radio-button>
+						</md-list-item>
+					</md-list>
+				</md-radio-group>
+			</md-card-content>
+
+			<md-card-content *ngIf="currentlyEditing[item.key]">
+				<p>
+					Key: {{item.key}}
+				</p>
+
+				<md-input-container>
+					<input mdInput floatingPlaceholder
+					       [required]="true"
+					       placeholder="Caption"
+					       [(ngModel)]="item.caption">
+				</md-input-container>
+			</md-card-content>
 		</div>
 
 		<div *ngSwitchCase="'MultipleChoice'">
-			<p>{{item.caption}}</p>
-			<md-list>
-				<md-list-item *ngFor="let choice of item.choices">
-					<md-checkbox [ngModelOptions]="{standalone: true}"
-					             [(ngModel)]="inputModel[choice.key]">
-						{{choice.caption}}
-					</md-checkbox>
-				</md-list-item>
-			</md-list>
+			<md-card-content *ngIf="!currentlyEditing[item.key]">
+				<p>{{item.caption}}</p>
+
+				<md-list>
+					<md-list-item *ngFor="let choice of item.choices">
+						<md-checkbox [ngModelOptions]="{standalone: true}"
+						             [(ngModel)]="inputModel[choice.key]">
+							{{choice.caption}}
+						</md-checkbox>
+					</md-list-item>
+				</md-list>
+			</md-card-content>
+
+			<md-card-content *ngIf="currentlyEditing[item.key]">
+				<p>
+					Key: {{item.key}}
+				</p>
+
+				<md-input-container>
+					<input mdInput floatingPlaceholder
+					       [required]="true"
+					       placeholder="Caption"
+					       [(ngModel)]="item.caption">
+				</md-input-container>
+			</md-card-content>
 		</div>
 	</md-card>
 </div>

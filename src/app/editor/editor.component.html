@@ -1,6 +1,6 @@
 <md-toolbar color="primary">
     <span *ngIf="!previewMode" class="toolbar-heading" >
-	    Registration Form Editor
+	    Conference data
     </span>
 
 	<img *ngIf="previewMode" [src]="conference?.avatar">
@@ -16,10 +16,6 @@
 			Preview
 		</md-slide-toggle>
 	</div>
-</md-toolbar>
-
-<md-toolbar *ngIf="!previewMode">
-	<span class="toolbar-heading">Conference data</span>
 </md-toolbar>
 
 <md-card *ngIf="!previewMode">
@@ -44,14 +40,10 @@
 			<input mdInput placeholder="Picture URL" [(ngModel)]="conference.avatar">
 		</md-input-container>
 	</md-card-content>
-
-	<md-card-actions>
-		<button md-button>Save</button>
-	</md-card-actions>
 </md-card>
 
-<md-toolbar *ngIf="!previewMode">
-	<span class="toolbar-heading">Items</span>
+<md-toolbar *ngIf="!previewMode" color="primary">
+	<span class="toolbar-heading">Registration items/questions</span>
 
 	<span class="fill-space"></span>
 
