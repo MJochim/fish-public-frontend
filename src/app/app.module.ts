@@ -10,13 +10,20 @@ import {ConferenceListComponent} from "./conference-list/conference-list.compone
 import {ConferenceComponent} from "./conference/conference.component";
 import {ConferenceStoreService} from "./core/conference-store.service";
 import {
-		MdCardModule,
-		MdInputModule,
-		MdRadioModule,
-		MdSidenavModule,
-		MdToolbarModule
+	MdButtonModule,
+	MdButtonToggleModule,
+	MdCardModule,
+	MdCheckboxModule,
+	MdChipsModule,
+	MdIconModule,
+	MdInputModule,
+	MdRadioModule,
+	MdSlideToggleModule,
+	MdSidenavModule,
+	MdToolbarModule
 } from "@angular/material";
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
+import { EditorComponent } from './editor/editor.component';
 
 @NgModule({
 	declarations: [
@@ -24,6 +31,7 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
 		ConferenceListComponent,
 		ConferenceComponent,
 		QuestionnaireComponent,
+		EditorComponent,
 	],
 	imports: [
 		// Angular stuff
@@ -32,10 +40,16 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
 		HttpModule,
 		RouterModule.forRoot(appRoutes),
 		BrowserAnimationsModule,
+		MdButtonModule,
+		MdButtonToggleModule,
 		MdCardModule,
+		MdCheckboxModule,
+		MdChipsModule,
+		MdIconModule,
 		MdInputModule,
 		MdRadioModule,
 		MdSidenavModule,
+		MdSlideToggleModule,
 		MdToolbarModule
 	],
 	bootstrap: [ConferenceRegistrationComponent],

@@ -1,0 +1,70 @@
+<md-toolbar color="primary">
+    <span *ngIf="!previewMode" class="toolbar-heading" >
+	    Registration Form Editor
+    </span>
+
+	<img *ngIf="previewMode" [src]="conference?.avatar">
+
+	<span *ngIf="previewMode">
+		{{conference?.name}}
+	</span>
+
+	<span class="fill-space"></span>
+
+	<div class="toolbar-actions">
+		<md-slide-toggle (change)="previewMode = $event.checked">
+			Preview
+		</md-slide-toggle>
+	</div>
+</md-toolbar>
+
+<md-toolbar *ngIf="!previewMode">
+	<span class="toolbar-heading">Conference data</span>
+</md-toolbar>
+
+<md-card *ngIf="!previewMode">
+	<md-card-content>
+		<md-input-container>
+			<input mdInput placeholder="Name" [(ngModel)]="conference.name">
+		</md-input-container>
+
+		<md-input-container>
+			<input mdInput placeholder="Key" [(ngModel)]="conference.key">
+		</md-input-container>
+
+		<md-input-container>
+			<input mdInput placeholder="Place" [(ngModel)]="conference.place">
+		</md-input-container>
+
+		<md-input-container>
+			<input mdInput placeholder="Date" [(ngModel)]="conference.date">
+		</md-input-container>
+
+		<md-input-container>
+			<input mdInput placeholder="Picture URL" [(ngModel)]="conference.avatar">
+		</md-input-container>
+	</md-card-content>
+
+	<md-card-actions>
+		<button md-button>Save</button>
+	</md-card-actions>
+</md-card>
+
+<md-toolbar *ngIf="!previewMode">
+	<span class="toolbar-heading">Items</span>
+
+	<span class="fill-space"></span>
+
+	<div class="toolbar-actions">
+		<button md-button (click)="questionnaire.addItem('Caption')">Caption</button>
+		<button md-button (click)="questionnaire.addItem('Link')">Link</button>
+		<button md-button (click)="questionnaire.addItem('TextInput')">Text input</button>
+		<button md-button (click)="questionnaire.addItem('SingleChoice')">Single choice</button>
+		<button md-button (click)="questionnaire.addItem('MultipleChoice')">Multiple choice</button>
+	</div>
+</md-toolbar>
+
+<confreg-questionnaire #questionnaire
+                       [editable]="!previewMode"
+                       [conference]="conference">
+</confreg-questionnaire>

@@ -21,12 +21,14 @@ export function isMultipleChoiceItem(item: CaptionItem | LinkItem | TextInputIte
 
 export interface CaptionItem {
 	type: 'Caption';
+	key: string;
 	title?: string;
 	text?: string;
 }
 
 export interface LinkItem {
 	type: 'Link';
+	key: string;
 	href: string;
 	label?: string;
 }

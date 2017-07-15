@@ -1,23 +1,80 @@
-<div *ngFor="let item of conference?.registration" class="registrationItem">
-	<div [ngSwitch]="item.type">
+<div *ngFor="let item of conference?.registration; let i = index" class="registrationItem"
+     #itemContainer>
+	<md-card [ngSwitch]="item.type">
+		<md-card-actions *ngIf="editable">
+			<button md-icon-button
+					(click)="moveUp(itemContainer, item.key)"
+					[disabled]="i === 0">
+				<span class="material-icons">arrow_upward</span>
+			</button>
+
+			<button md-icon-button
+			        (click)="moveDown(itemContainer, item.key)"
+			        [disabled]="i + 1 === conference.registration.length">
+				<span class="material-icons">arrow_downward</span>
+			</button>
+
+			<md-slide-toggle (change)="toggleEditing(item.key)">
+				Edit
+			</md-slide-toggle>
+
+			<button md-button
+			        (click)="removeItem(item.key)"
+			        color="warn">
+				Delete
+			</button>
+		</md-card-actions>
+
 		<div *ngSwitchCase="'Caption'">
-			<md-card>
-				<md-card-title *ngIf="item.title">{{item.title}}</md-card-title>
-				<md-card-content *ngIf="item.text">{{item .text}}
-				</md-card-content>
-			</md-card>
+			<md-card-title *ngIf="item.title && !currentlyEditing[item.key]">
+				{{item.title}}
+			</md-card-title>
+
+			<md-card-content *ngIf="item.text && !currentlyEditing[item.key]">
+				{{item.text}}
+			</md-card-content>
+
+			<md-card-content *ngIf="currentlyEditing[item.key]">
+				<p>
+					<md-input-container>
+						<input mdInput floatingPlaceholder
+						       placeholder="Title"
+						       [(ngModel)]="item.title">
+					</md-input-container>
+				</p>
+				<p>
+					<md-input-container>
+						<textarea mdInput floatingPlaceholder
+						          placeholder="Text"
+						          [(ngModel)]="item.text">
+						</textarea>
+					</md-input-container>
+				</p>
+			</md-card-content>
 		</div>
 
 		<div *ngSwitchCase="'Link'">
-			<md-card>
-				<p>
-					<a target="_blank" [href]="item.href">{{item.label || item.href}}</a>
-				</p>
-			</md-card>
+			<p *ngIf="!currentlyEditing[item.key]">
+				<a target="_blank" [href]="item.href">{{item.label || item.href}}</a>
+			</p>
+
+			<div *ngIf="currentlyEditing[item.key]">
+				<md-input-container>
+					<input mdInput floatingPlaceHolder
+					       placeholder="Label"
+					       [(ngModel)]="item.label">
+				</md-input-container>
+
+				<md-input-container>
+					<input mdInput floatingPlaceholder
+					       placeholder="Address"
+					       [(ngModel)]="item.href">
+				</md-input-container>
+			</div>
 		</div>
 
 		<div *ngSwitchCase="'TextInput'">
-			<md-card>
+			<md-card-content *ngIf="!currentlyEditing[item.key]">
 				<md-input-container>
 					<input mdInput floatingPlaceholder
 					       [placeholder]="item.caption"
@@ -26,37 +83,51 @@
 					       [ngModelOptions]="{standalone: true}">
 					<md-hint>{{item.hint}}</md-hint>
 				</md-input-container>
-			</md-card>
+			</md-card-content>
+
+			<md-card-content *ngIf="currentlyEditing[item.key]">
+				<md-input-container>
+					<input mdInput floatingPlaceholder
+					       [required]="true"
+					       placeholder="Key"
+					       [(ngModel)]="item.key">
+				</md-input-container>
+
+				<md-input-container>
+					<input mdInput floatingPlaceholder
+					       [required]="true"
+					       placeholder="Caption"
+					       [(ngModel)]="item.caption">
+				</md-input-container>
+
+				<md-checkbox [(ngModel)]="item.optional">Optional</md-checkbox>
+			</md-card-content>
 		</div>
 
 		<div *ngSwitchCase="'SingleChoice'">
-			<md-card>
-				<p>{{item.caption}}</p>
-				<md-radio-group [(ngModel)]="inputModel[item.key]"
-				                [ngModelOptions]="{standalone: true}">
-					<md-list>
-						<md-list-item *ngFor="let choice of item.choices">
-							<md-radio-button [value]="choice.key" [name]="item.key">
-								{{choice.caption}}
-							</md-radio-button>
-						</md-list-item>
-					</md-list>
-				</md-radio-group>
-			</md-card>
+			<p>{{item.caption}}</p>
+			<md-radio-group [(ngModel)]="inputModel[item.key]"
+			                [ngModelOptions]="{standalone: true}">
+				<md-list>
+					<md-list-item *ngFor="let choice of item.choices">
+						<md-radio-button [value]="choice.key" [name]="item.key">
+							{{choice.caption}}
+						</md-radio-button>
+					</md-list-item>
+				</md-list>
+			</md-radio-group>
 		</div>
 
 		<div *ngSwitchCase="'MultipleChoice'">
-			<md-card>
-				<p>{{item.caption}}</p>
-				<md-list>
-					<md-list-item *ngFor="let choice of item.choices">
-						<md-checkbox [ngModelOptions]="{standalone: true}"
-						             [(ngModel)]="inputModel[choice.key]">
-							{{choice.caption}}
-						</md-checkbox>
-					</md-list-item>
-				</md-list>
-			</md-card>
+			<p>{{item.caption}}</p>
+			<md-list>
+				<md-list-item *ngFor="let choice of item.choices">
+					<md-checkbox [ngModelOptions]="{standalone: true}"
+					             [(ngModel)]="inputModel[choice.key]">
+						{{choice.caption}}
+					</md-checkbox>
+				</md-list-item>
+			</md-list>
 		</div>
-	</div>
+	</md-card>
 </div>
