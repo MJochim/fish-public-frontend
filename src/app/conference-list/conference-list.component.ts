@@ -27,13 +27,15 @@ export class ConferenceListComponent implements OnInit {
 			.catch(error => {
 				console.log(error);
 			});
+
+		this.signIn('NotTried');
 	}
 
 	public toggleSignInForm() {
 		this.showSignInForm = !this.showSignInForm;
 	}
 
-	public signIn() {
+	public signIn(errorState: 'NotTried' | 'Trying' | 'Successful' | 'Unsuccessful' = 'Unsuccessful') {
 		if (this.loginState !== 'Trying') {
 			this.loginState = 'Trying';
 
@@ -43,11 +45,11 @@ export class ConferenceListComponent implements OnInit {
 						this.loginState = 'Successful';
 						this.showSignInForm = false;
 					} else {
-						this.loginState = 'Unsuccessful';
+						this.loginState = errorState;
 					}
 				})
 				.catch(() => {
-					this.loginState = 'Unsuccessful'
+					this.loginState = errorState;
 				});
 		}
 	}
