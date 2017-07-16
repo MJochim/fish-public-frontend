@@ -6,7 +6,6 @@ import {
 	Output,
 	SimpleChanges
 } from "@angular/core";
-import {Conference} from "../core/conference.interface";
 import {LinkItem} from "app/core/link-item.interface";
 import {CaptionItem} from "../core/caption-item.interface";
 import {TextInputItem} from "../core/text-input-item.interface";
@@ -22,21 +21,14 @@ import {isMultipleChoiceItem} from "app/core/type-guards/is-multiple-choice-item
 	styleUrls: ['./questionnaire.component.css']
 })
 export class QuestionnaireComponent implements OnChanges {
-	@Input() set conference (c: Conference) {
-		this._conference = c;
-		if (c) {
-			this.nextKey = c.registration.length;
-		} else {
-			this.nextKey = 1;
-		}
-	};
-	get conference (): Conference {
-		return this._conference;
-	}
+	@Input() conferenceKey: string;
 	@Input() editable: boolean;
+	@Input() set items (i: Array<CaptionItem|LinkItem|SingleChoiceItem|MultipleChoiceItem|TextInputItem>) { this.setItems(i); }
+	get items (): Array<CaptionItem|LinkItem|SingleChoiceItem|MultipleChoiceItem|TextInputItem> { return this._items; }
 	@Output() onChange = new EventEmitter<Object>();
+	@Output() onEdit = new EventEmitter<Array<CaptionItem|LinkItem|SingleChoiceItem|MultipleChoiceItem|TextInputItem>>();
 
-	private _conference: Conference;
+	private _items: Array<CaptionItem|LinkItem|SingleChoiceItem|MultipleChoiceItem|TextInputItem> = [];
 	private currentlyEditing = {};
 	private _inputModel: Object = {};
 	private nextKey: number = 1;
@@ -54,16 +46,16 @@ export class QuestionnaireComponent implements OnChanges {
 	}
 
 	ngOnChanges(changes: SimpleChanges) {
-		if (!this.conference) {
+		if (!this.items) {
 			this.inputModel = {};
 		} else {
 			//////////
 			// Initialise inputModel
 			//
-			this.inputModel['conferenceKey'] = this.conference.key;
+			this.inputModel['conferenceKey'] = this.conferenceKey;
 
-			for (let i = 0; i < this.conference.registration.length; ++i) {
-				let item = this.conference.registration[i];
+			for (let i = 0; i < this.items.length; ++i) {
+				let item = this.items[i];
 				if (isTextInputItem(item)) {
 					this.inputModel[item.key] = '';
 				}
@@ -89,8 +81,11 @@ export class QuestionnaireComponent implements OnChanges {
 
 	public toggleEditing (key:string) {
 		this.currentlyEditing[key] = !this.currentlyEditing[key];
-	}
 
+		if (this.currentlyEditing[key] === false) {
+			this.onEdit.emit(this.items);
+		}
+	}
 
 	public addItem (type: string) {
 		let newItem: CaptionItem | LinkItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem;
@@ -147,13 +142,15 @@ export class QuestionnaireComponent implements OnChanges {
 				break;
 		}
 
-		this.conference.registration.push(newItem);
+		this.items.push(newItem);
+		this.onEdit.emit(this.items);
 	}
 
 	public removeItem(key: string) {
-		for (let i = 0; i < this.conference.registration.length; ++i) {
-			if (this.conference.registration[i].key === key) {
-				this.conference.registration.splice(i, 1);
+		for (let i = 0; i < this.items.length; ++i) {
+			if (this.items[i].key === key) {
+				this.items.splice(i, 1);
+				this.onEdit.emit(this.items);
 				return;
 			}
 		}
@@ -161,16 +158,18 @@ export class QuestionnaireComponent implements OnChanges {
 
 	public moveUp (itemContainer: HTMLElement, key: string) {
 		// We start at 1 instead of 0 because 0 can't be moved up
-		for (let i = 1; i < this.conference.registration.length; ++i) {
-			if (this.conference.registration[i].key === key) {
+		for (let i = 1; i < this.items.length; ++i) {
+			if (this.items[i].key === key) {
 				// Split array into four slices
-				let a = this.conference.registration.slice(0, i - 1);
-				let b = this.conference.registration.slice(i - 1, i);
-				let c = this.conference.registration.slice(i, i + 1);
-				let d = this.conference.registration.slice(i + 1);
+				let a = this.items.slice(0, i - 1);
+				let b = this.items.slice(i - 1, i);
+				let c = this.items.slice(i, i + 1);
+				let d = this.items.slice(i + 1);
 
 				// Stick the four slices back together in their new order
-				this.conference.registration = a.concat(c).concat(b).concat(d);
+				this.items = a.concat(c).concat(b).concat(d);
+
+				this.onEdit.emit(this.items);
 
 				//
 				// Try to scroll to the new position of the clicked button
@@ -192,16 +191,18 @@ export class QuestionnaireComponent implements OnChanges {
 	public moveDown (itemContainer: HTMLElement, key: string) {
 		// We stop right before the last element because the last one cannot
 		// be moved down
-		for (let i = 0; i < this.conference.registration.length - 1; ++i) {
-			if (this.conference.registration[i].key === key) {
+		for (let i = 0; i < this.items.length - 1; ++i) {
+			if (this.items[i].key === key) {
 				// Split array into four slices
-				let a = this.conference.registration.slice(0, i);
-				let b = this.conference.registration.slice(i, i + 1);
-				let c = this.conference.registration.slice(i + 1, i + 2);
-				let d = this.conference.registration.slice(i + 2);
+				let a = this.items.slice(0, i);
+				let b = this.items.slice(i, i + 1);
+				let c = this.items.slice(i + 1, i + 2);
+				let d = this.items.slice(i + 2);
 
 				// Stick the four slices back together in their new order
-				this.conference.registration = a.concat(c).concat(b).concat(d);
+				this.items = a.concat(c).concat(b).concat(d);
+
+				this.onEdit.emit(this.items);
 
 				//
 				// Try to scroll to the new position of the clicked button
@@ -219,6 +220,14 @@ export class QuestionnaireComponent implements OnChanges {
 
 				return;
 			}
+		}
+	}
+
+	private setItems (i: Array<CaptionItem|LinkItem|SingleChoiceItem|MultipleChoiceItem|TextInputItem>) {
+		if (i) {
+			this._items = i;
+			this.nextKey = i.length;
+			this.onEdit.emit(i);
 		}
 	}
 }

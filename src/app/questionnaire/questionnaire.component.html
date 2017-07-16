@@ -1,4 +1,4 @@
-<div *ngFor="let item of conference?.registration; let i = index" class="registrationItem"
+<div *ngFor="let item of items; let i = index" class="registrationItem"
      #itemContainer>
 	<md-card [ngSwitch]="item.type">
 		<md-card-actions *ngIf="editable">
@@ -10,7 +10,7 @@
 
 			<button md-icon-button
 			        (click)="moveDown(itemContainer, item.key)"
-			        [disabled]="i + 1 === conference.registration.length">
+			        [disabled]="i + 1 === items.length">
 				<span class="material-icons">arrow_downward</span>
 			</button>
 

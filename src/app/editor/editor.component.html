@@ -57,6 +57,8 @@
 </md-toolbar>
 
 <confreg-questionnaire #questionnaire
+                       [conferenceKey]="conference.key"
                        [editable]="!previewMode"
-                       [conference]="conference">
+                       [items]="conference.registration"
+                       (onEdit)="edited($event)">
 </confreg-questionnaire>

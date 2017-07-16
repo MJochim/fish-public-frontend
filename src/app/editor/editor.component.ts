@@ -31,4 +31,8 @@ export class EditorComponent implements OnInit {
 			console.log(error);
 		}
 	}
+
+	edited (event) {
+		console.log(event);
+	}
 }

@@ -25,7 +25,8 @@
 		</md-sidenav>
 
 		<div class="items">
-			<confreg-questionnaire [conference]="conference"
+			<confreg-questionnaire [conferenceKey]="conference.key"
+			                       [items]="conference.registration"
 			                       (onChange)="inputModel = $event"></confreg-questionnaire>
 		</div>
 	</md-sidenav-container>
