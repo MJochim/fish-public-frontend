@@ -3,16 +3,38 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import {Conference} from "app/core/conference.interface";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class ConferenceStoreService {
-	private url: string = 'https://anmeldung.stuts.de/data/conferences.json';
+	private password: string = '';
+	private urls = {
+		authenticate: 'https://anmeldung.stuts.de/backend/authenticate.php',
+		getConferences: 'https://anmeldung.stuts.de/data/conferences.json',
+		pushConference: 'https://anmeldung.stuts.de/backend/push-conference.php'
+	};
 
 	constructor(private http: Http) {
 	}
 
+	authenticate (password?: string): Promise<boolean> {
+		if (password) {
+			this.password = password;
+		}
+
+		return this.http.post(this.urls.authenticate, {password: this.password})
+			.map(response => {
+				let object = response.json();
+				return (object.success === true);
+			})
+			.catch(() => {
+				return Observable.create(false);
+			})
+			.toPromise();
+	}
+
 	getConferences(): Promise<Conference[]> {
-		return this.http.get(this.url)
+		return this.http.get(this.urls.getConferences)
 			.toPromise()
 			.then(response => response.json() as Conference[])
 			.catch(() => {
@@ -33,6 +55,20 @@ export class ConferenceStoreService {
 			})
 			.catch(() => {
 				return Promise.reject('Could not load conferences');
+			});
+	}
+
+	pushConference(conference: Conference) {
+		let data = {
+			password: this.password,
+			conference: conference
+		};
+
+		return this.http.post(this.urls.pushConference, data)
+			.toPromise()
+			.then(() => true)
+			.catch(() => {
+				throw 'Storing conference data on the server failed.'
 			});
 	}
 }
