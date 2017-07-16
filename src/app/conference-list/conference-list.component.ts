@@ -12,6 +12,9 @@ import {Conference} from "../core/conference.interface";
 })
 export class ConferenceListComponent implements OnInit {
 	public conferences: Conference[] = [];
+	public loginState: 'NotTried' | 'Trying' | 'Successful' | 'Unsuccessful' = 'NotTried';
+	public password: string = '';
+	public showSignInForm: boolean = false;
 
 	constructor(private _conferenceStoreService: ConferenceStoreService) {
 	}
@@ -26,4 +29,26 @@ export class ConferenceListComponent implements OnInit {
 			});
 	}
 
+	public toggleSignInForm() {
+		this.showSignInForm = !this.showSignInForm;
+	}
+
+	public signIn() {
+		if (this.loginState !== 'Trying') {
+			this.loginState = 'Trying';
+
+			this._conferenceStoreService.authenticate(this.password)
+				.then((success) => {
+					if (success) {
+						this.loginState = 'Successful';
+						this.showSignInForm = false;
+					} else {
+						this.loginState = 'Unsuccessful';
+					}
+				})
+				.catch(() => {
+					this.loginState = 'Unsuccessful'
+				});
+		}
+	}
 }

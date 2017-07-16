@@ -4,6 +4,49 @@
 	<span>Junge Sprachwissenschaft e. V.</span>
 </md-toolbar>
 
+<md-toolbar class="small-font">
+	<span class="fill-space"></span>
+
+	<button md-button
+	        (click)="toggleSignInForm()"
+			[disabled]="loginState === 'Trying'"
+			*ngIf = "loginState !== 'Successful'">
+		<span *ngIf="showSignInForm">Cancel</span>
+		<span *ngIf="!showSignInForm">Admin</span>
+	</button>
+
+	<span *ngIf="loginState==='Successful'" class="iconAndText">
+		<i class="material-icons">
+			thumb_up
+		</i>
+
+		Login successful!
+	</span>
+
+	<md-toolbar-row *ngIf="showSignInForm && loginState !== 'Successful'">
+		<span class="fill-space"></span>
+
+		<md-spinner *ngIf="loginState === 'Trying'"></md-spinner>
+
+		<form (submit)="signIn()" *ngIf="loginState !== 'Successful'">
+			<md-input-container>
+				<input mdInput type="password"
+				       placeholder="Password"
+				       [(ngModel)]="password"
+				         name="password">
+			</md-input-container>
+
+			<span *ngIf="loginState==='Unsuccessful'">
+				<i class="material-icons">thumb_down</i>
+			</span>
+
+			<button md-button color="primary" type="submit">
+				Sign in
+			</button>
+		</form>
+	</md-toolbar-row>
+</md-toolbar>
+
 <md-nav-list>
 	<a md-list-item [routerLink]="['/', conf.key]"
 	   *ngFor="let conf of conferences">

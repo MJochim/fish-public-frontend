@@ -1,3 +1,15 @@
 .fill-space {
     flex: 1 1 auto;
 }
+
+md-toolbar.small-font {
+    font-size: 16px;
+}
+
+.iconAndText * {
+    vertical-align: text-bottom;
+}
+
+md-spinner {
+    height: 50%;
+}
