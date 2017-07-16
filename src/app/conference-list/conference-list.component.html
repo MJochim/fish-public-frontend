@@ -48,10 +48,10 @@
 </md-toolbar>
 
 <md-nav-list>
-	<md-list-item *ngFor="let conf of conferences">
+	<md-list-item *ngFor="let conf of conferences" [routerLink]="['/', conf.key]">
 		<img md-list-avatar [src]="conf.avatar" alt="Conference logo">
 
-		<a md-line [routerLink]="['/', conf.key]">{{conf.name}}</a>
+		<a md-line>{{conf.name}}</a>
 
 		<p md-line>
 			<span> {{conf.date}} </span>
