@@ -17,10 +17,11 @@ import {
 	MdChipsModule,
 	MdIconModule,
 	MdInputModule,
+	MdListModule,
 	MdRadioModule,
 	MdSlideToggleModule,
 	MdSidenavModule,
-	MdToolbarModule
+	MdToolbarModule,
 } from "@angular/material";
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
 import { EditorComponent } from './editor/editor.component';
@@ -47,6 +48,7 @@ import { EditorComponent } from './editor/editor.component';
 		MdChipsModule,
 		MdIconModule,
 		MdInputModule,
+		MdListModule,
 		MdRadioModule,
 		MdSidenavModule,
 		MdSlideToggleModule,
