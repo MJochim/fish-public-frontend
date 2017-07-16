@@ -48,13 +48,20 @@
 </md-toolbar>
 
 <md-nav-list>
-	<a md-list-item [routerLink]="['/', conf.key]"
-	   *ngFor="let conf of conferences">
+	<md-list-item *ngFor="let conf of conferences">
 		<img md-list-avatar [src]="conf.avatar" alt="Conference logo">
-		<h3 md-line> {{conf.name}} </h3>
+
+		<a md-line [routerLink]="['/', conf.key]">{{conf.name}}</a>
+
 		<p md-line>
 			<span> {{conf.date}} </span>
 			<span class="demo-2"> -- {{conf.place}} </span>
 		</p>
-	</a>
+
+		<button md-icon-button
+				*ngIf="loginState === 'Successful'"
+				[routerLink]="['/editor', conf.key]">
+			<span class="material-icons">edit</span>
+		</button>
+	</md-list-item>
 </md-nav-list>

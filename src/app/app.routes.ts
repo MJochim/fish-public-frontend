@@ -5,7 +5,7 @@ import {EditorComponent} from "./editor/editor.component";
 
 
 export const appRoutes: Routes = [
-	{path: 'editor', component: EditorComponent},
+	{path: 'editor/:key', component: EditorComponent},
 	{path: ':key', component: ConferenceComponent},
 	{path: '', component: ConferenceListComponent},
 ];
