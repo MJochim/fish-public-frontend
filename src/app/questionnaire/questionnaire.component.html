@@ -146,6 +146,38 @@
 					       placeholder="Caption"
 					       [(ngModel)]="item.caption">
 				</md-input-container>
+
+				<h2>Options:</h2>
+
+				<p>
+					<button md-icon-button
+					        (click)="addChoice(item)">
+						<span class="material-icons">add_circle</span>
+					</button>
+				</p>
+
+				<md-list>
+					<md-list-item *ngFor="let choice of item.choices">
+						<button md-icon-button
+						        (click)="removeChoice(item, choice.key)">
+							<span class="material-icons">remove_circle</span>
+						</button>
+
+						<md-input-container>
+							<input mdInput floatingPlaceholder
+							       [required]="true"
+							       placeholder="Key"
+							       [(ngModel)]="choice.key">
+						</md-input-container>
+
+						<md-input-container>
+							<input mdInput floatingPlaceholder
+							       [required]="true"
+							       placeholder="Caption"
+							       [(ngModel)]="choice.caption">
+						</md-input-container>
+					</md-list-item>
+				</md-list>
 			</md-card-content>
 		</div>
 
@@ -174,6 +206,38 @@
 					       placeholder="Caption"
 					       [(ngModel)]="item.caption">
 				</md-input-container>
+
+				<h2>Options:</h2>
+
+				<p>
+					<button md-icon-button
+					        (click)="addChoice(item)">
+						<span class="material-icons">add_circle</span>
+					</button>
+				</p>
+
+				<md-list>
+					<md-list-item *ngFor="let choice of item.choices">
+						<button md-icon-button
+						        (click)="removeChoice(item, choice.key)">
+							<span class="material-icons">remove_circle</span>
+						</button>
+
+						<md-input-container>
+							<input mdInput floatingPlaceholder
+							       [required]="true"
+							       placeholder="Key"
+							       [(ngModel)]="choice.key">
+						</md-input-container>
+
+						<md-input-container>
+							<input mdInput floatingPlaceholder
+							       [required]="true"
+							       placeholder="Caption"
+							       [(ngModel)]="choice.caption">
+						</md-input-container>
+					</md-list-item>
+				</md-list>
 			</md-card-content>
 		</div>
 	</md-card>

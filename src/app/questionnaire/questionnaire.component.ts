@@ -156,6 +156,31 @@ export class QuestionnaireComponent implements OnChanges {
 		}
 	}
 
+	public addChoice(item: MultipleChoiceItem|SingleChoiceItem) {
+		// Determine an unused key for the new choice
+		let nextKey:number = item.choices.length + 1;
+
+		let keys: string[] = item.choices.map(x => x.key);
+
+		while (keys.indexOf('choice' + nextKey) !== -1) {
+			++nextKey;
+		}
+
+		item.choices.push({
+			key: 'choice' + nextKey,
+			caption: ''
+		});
+	}
+
+	public removeChoice(item: MultipleChoiceItem|SingleChoiceItem, choiceKey: string) {
+		for (let i = 0; i < item.choices.length; ++i) {
+			if (item.choices[i].key === choiceKey) {
+				item.choices.splice(i, 1);
+				return;
+			}
+		}
+	}
+
 	public moveUp (itemContainer: HTMLElement, key: string) {
 		// We start at 1 instead of 0 because 0 can't be moved up
 		for (let i = 1; i < this.items.length; ++i) {
