@@ -14,6 +14,8 @@ import {MultipleChoiceItem} from "../core/multiple-choice-item.interface";
 import {isTextInputItem} from "../core/type-guards/is-text-input-item.function";
 import {isSingleChoiceItem} from "../core/type-guards/is-single-choice-item.function";
 import {isMultipleChoiceItem} from "app/core/type-guards/is-multiple-choice-item.function";
+import {MdDialog} from "@angular/material";
+import {UserAlertComponent} from "app/user-alert/user-alert.component";
 
 @Component({
 	selector: 'confreg-questionnaire',
@@ -65,7 +67,7 @@ export class QuestionnaireComponent implements OnChanges {
 		return this._inputModel;
 	}
 
-	constructor() {
+	constructor(private dialog: MdDialog) {
 	}
 
 	ngOnChanges(changes: SimpleChanges) {
@@ -108,6 +110,44 @@ export class QuestionnaireComponent implements OnChanges {
 		if (this.currentlyEditing[key] === false) {
 			this.onEdit.emit(this.items);
 		}
+	}
+
+	public changeKey(item: CaptionItem
+		| LinkItem
+		| SingleChoiceItem
+		| MultipleChoiceItem
+		| TextInputItem,
+	                 newKey: string) {
+
+		let oldKey = item.key;
+
+		if (oldKey === newKey) {
+			this.dialog.open(UserAlertComponent, {
+				data: {message: 'Enter a new key first'}
+			});
+			return;
+		}
+
+		for (let currentItem of this.items) {
+			if (currentItem.key === newKey) {
+				this.dialog.open(UserAlertComponent, {
+					data: {message: 'Key "' + newKey + '" already exists.'}
+				});
+				return;
+			}
+		}
+
+		let editing = this.currentlyEditing[item.key];
+		delete this.currentlyEditing[item.key];
+		this.currentlyEditing[newKey] = editing;
+
+		item.key = newKey;
+
+		this.onEdit.emit(this.items);
+
+		this.dialog.open(UserAlertComponent, {
+			data: {message: 'Key was changed from "' + oldKey + '" to "' + newKey + '"'}
+		});
 	}
 
 	public addItem(type: string) {

@@ -17,6 +17,12 @@ md-input-container {
     width: 100%;
 }
 
+md-input-container.non-full-width {
+    width: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 md-slide-toggle {
     vertical-align: middle;
 }

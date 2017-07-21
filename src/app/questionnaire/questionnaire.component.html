@@ -20,9 +20,18 @@
 
 			<span class="fill-space"></span>
 
-			<button md-button>
-				Change key
-			</button>
+			<form (submit)="changeKey(item, newKey.value)">
+				<md-input-container class="non-full-width">
+					<input mdInput floatingPlaceholder
+					       placeholder="Key"
+					       [value]="item.key"
+					       #newKey>
+				</md-input-container>
+
+				<button md-button>
+					Change key
+				</button>
+			</form>
 
 			<button md-button
 			        (click)="removeItem(item.key)"

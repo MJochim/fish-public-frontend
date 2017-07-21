@@ -15,6 +15,7 @@ import {
 	MdCardModule,
 	MdCheckboxModule,
 	MdChipsModule,
+	MdDialogModule,
 	MdIconModule,
 	MdInputModule,
 	MdListModule,
@@ -26,6 +27,7 @@ import {
 } from "@angular/material";
 import {QuestionnaireComponent} from "./questionnaire/questionnaire.component";
 import {EditorComponent} from "./editor/editor.component";
+import {UserAlertComponent} from "./user-alert/user-alert.component";
 
 @NgModule({
 	declarations: [
@@ -34,6 +36,7 @@ import {EditorComponent} from "./editor/editor.component";
 		ConferenceComponent,
 		QuestionnaireComponent,
 		EditorComponent,
+		UserAlertComponent,
 	],
 	imports: [
 		// Angular stuff
@@ -47,6 +50,7 @@ import {EditorComponent} from "./editor/editor.component";
 		MdCardModule,
 		MdCheckboxModule,
 		MdChipsModule,
+		MdDialogModule,
 		MdIconModule,
 		MdInputModule,
 		MdListModule,
@@ -57,6 +61,9 @@ import {EditorComponent} from "./editor/editor.component";
 		MdToolbarModule
 	],
 	bootstrap: [ConferenceRegistrationComponent],
+	entryComponents: [
+		UserAlertComponent
+	],
 	providers: [
 		ConferenceStoreService
 	]
