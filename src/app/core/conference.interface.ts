@@ -13,5 +13,9 @@ export interface Conference {
 	avatar: string;
 	showBackButton: boolean;
 	labels: LabelList;
-	registration: Array<CaptionItem|LinkItem|SingleChoiceItem|MultipleChoiceItem|TextInputItem>;
+	registration: Array<CaptionItem
+		| LinkItem
+		| SingleChoiceItem
+		| MultipleChoiceItem
+		| TextInputItem>;
 }

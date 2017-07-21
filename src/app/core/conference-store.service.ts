@@ -21,7 +21,7 @@ export class ConferenceStoreService {
 	constructor(private http: Http) {
 	}
 
-	authenticate (password?: string): Promise<boolean> {
+	authenticate(password?: string): Promise<boolean> {
 		if (password) {
 			this.password = password;
 		}

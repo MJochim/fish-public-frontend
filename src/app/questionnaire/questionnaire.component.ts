@@ -23,12 +23,35 @@ import {isMultipleChoiceItem} from "app/core/type-guards/is-multiple-choice-item
 export class QuestionnaireComponent implements OnChanges {
 	@Input() conferenceKey: string;
 	@Input() editable: boolean;
-	@Input() set items (i: Array<CaptionItem|LinkItem|SingleChoiceItem|MultipleChoiceItem|TextInputItem>) { this.setItems(i); }
-	get items (): Array<CaptionItem|LinkItem|SingleChoiceItem|MultipleChoiceItem|TextInputItem> { return this._items; }
-	@Output() onChange = new EventEmitter<Object>();
-	@Output() onEdit = new EventEmitter<Array<CaptionItem|LinkItem|SingleChoiceItem|MultipleChoiceItem|TextInputItem>>();
 
-	private _items: Array<CaptionItem|LinkItem|SingleChoiceItem|MultipleChoiceItem|TextInputItem> = [];
+	@Input() set items(i: Array<CaptionItem
+		| LinkItem
+		| SingleChoiceItem
+		| MultipleChoiceItem
+		| TextInputItem>) {
+		this.setItems(i);
+	}
+
+	get items(): Array<CaptionItem
+		| LinkItem
+		| SingleChoiceItem
+		| MultipleChoiceItem
+		| TextInputItem> {
+		return this._items;
+	}
+
+	@Output() onChange = new EventEmitter<Object>();
+	@Output() onEdit = new EventEmitter<Array<CaptionItem
+		| LinkItem
+		| SingleChoiceItem
+		| MultipleChoiceItem
+		| TextInputItem>>();
+
+	private _items: Array<CaptionItem
+		| LinkItem
+		| SingleChoiceItem
+		| MultipleChoiceItem
+		| TextInputItem> = [];
 	private currentlyEditing = {};
 	private _inputModel: Object = {};
 	private nextKey: number = 1;
@@ -79,7 +102,7 @@ export class QuestionnaireComponent implements OnChanges {
 		}
 	}
 
-	public toggleEditing (key:string) {
+	public toggleEditing(key: string) {
 		this.currentlyEditing[key] = !this.currentlyEditing[key];
 
 		if (this.currentlyEditing[key] === false) {
@@ -87,8 +110,12 @@ export class QuestionnaireComponent implements OnChanges {
 		}
 	}
 
-	public addItem (type: string) {
-		let newItem: CaptionItem | LinkItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem;
+	public addItem(type: string) {
+		let newItem: CaptionItem
+			| LinkItem
+			| TextInputItem
+			| SingleChoiceItem
+			| MultipleChoiceItem;
 		let key: string = 'item' + this.nextKey;
 		++this.nextKey;
 
@@ -156,9 +183,9 @@ export class QuestionnaireComponent implements OnChanges {
 		}
 	}
 
-	public addChoice(item: MultipleChoiceItem|SingleChoiceItem) {
+	public addChoice(item: MultipleChoiceItem | SingleChoiceItem) {
 		// Determine an unused key for the new choice
-		let nextKey:number = item.choices.length + 1;
+		let nextKey: number = item.choices.length + 1;
 
 		let keys: string[] = item.choices.map(x => x.key);
 
@@ -172,7 +199,8 @@ export class QuestionnaireComponent implements OnChanges {
 		});
 	}
 
-	public removeChoice(item: MultipleChoiceItem|SingleChoiceItem, choiceKey: string) {
+	public removeChoice(item: MultipleChoiceItem
+		| SingleChoiceItem, choiceKey: string) {
 		for (let i = 0; i < item.choices.length; ++i) {
 			if (item.choices[i].key === choiceKey) {
 				item.choices.splice(i, 1);
@@ -181,7 +209,7 @@ export class QuestionnaireComponent implements OnChanges {
 		}
 	}
 
-	public moveUp (itemContainer: HTMLElement, key: string) {
+	public moveUp(itemContainer: HTMLElement, key: string) {
 		// We start at 1 instead of 0 because 0 can't be moved up
 		for (let i = 1; i < this.items.length; ++i) {
 			if (this.items[i].key === key) {
@@ -213,7 +241,7 @@ export class QuestionnaireComponent implements OnChanges {
 		}
 	}
 
-	public moveDown (itemContainer: HTMLElement, key: string) {
+	public moveDown(itemContainer: HTMLElement, key: string) {
 		// We stop right before the last element because the last one cannot
 		// be moved down
 		for (let i = 0; i < this.items.length - 1; ++i) {
@@ -248,7 +276,11 @@ export class QuestionnaireComponent implements OnChanges {
 		}
 	}
 
-	private setItems (i: Array<CaptionItem|LinkItem|SingleChoiceItem|MultipleChoiceItem|TextInputItem>) {
+	private setItems(i: Array<CaptionItem
+		| LinkItem
+		| SingleChoiceItem
+		| MultipleChoiceItem
+		| TextInputItem>) {
 		if (i) {
 			this._items = i;
 			this.nextKey = i.length;

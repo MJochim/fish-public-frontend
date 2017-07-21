@@ -11,7 +11,7 @@ interface TextDecoder {
 	decode(dataView: DataView);
 }
 interface TextDecoderConstructor {
-	new (utfLabel?: string, options?: {fatal: boolean}): TextDecoder;
+	new (utfLabel?: string, options?: { fatal: boolean }): TextDecoder;
 }
 declare var TextDecoder: TextDecoderConstructor;
 

@@ -12,7 +12,11 @@ import {Conference} from "../core/conference.interface";
 })
 export class ConferenceListComponent implements OnInit {
 	public conferences: Conference[] = [];
-	public loginState: 'NotTried' | 'Trying' | 'Successful' | 'Unsuccessful' = 'NotTried';
+	public loginState:
+		'NotTried'
+		| 'Trying'
+		| 'Successful'
+		| 'Unsuccessful' = 'NotTried';
 	public password: string = '';
 	public showSignInForm: boolean = false;
 
@@ -35,7 +39,11 @@ export class ConferenceListComponent implements OnInit {
 		this.showSignInForm = !this.showSignInForm;
 	}
 
-	public signIn(errorState: 'NotTried' | 'Trying' | 'Successful' | 'Unsuccessful' = 'Unsuccessful') {
+	public signIn(errorState:
+		              'NotTried'
+		              | 'Trying'
+		              | 'Successful'
+		              | 'Unsuccessful' = 'Unsuccessful') {
 		if (this.loginState !== 'Trying') {
 			this.loginState = 'Trying';
 

@@ -20,12 +20,12 @@ import {
 	MdListModule,
 	MdProgressSpinnerModule,
 	MdRadioModule,
-	MdSlideToggleModule,
 	MdSidenavModule,
-	MdToolbarModule,
+	MdSlideToggleModule,
+	MdToolbarModule
 } from "@angular/material";
-import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
-import { EditorComponent } from './editor/editor.component';
+import {QuestionnaireComponent} from "./questionnaire/questionnaire.component";
+import {EditorComponent} from "./editor/editor.component";
 
 @NgModule({
 	declarations: [

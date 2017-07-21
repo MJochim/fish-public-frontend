@@ -4,6 +4,10 @@ import {TextInputItem} from "../text-input-item.interface";
 import {SingleChoiceItem} from "../single-choice-item.interface";
 import {MultipleChoiceItem} from "../multiple-choice-item.interface";
 
-export function isMultipleChoiceItem(item: CaptionItem | LinkItem | TextInputItem | SingleChoiceItem | MultipleChoiceItem): item is MultipleChoiceItem {
+export function isMultipleChoiceItem(item: CaptionItem
+	| LinkItem
+	| TextInputItem
+	| SingleChoiceItem
+	| MultipleChoiceItem): item is MultipleChoiceItem {
 	return (item.type === 'MultipleChoice');
 }

@@ -7,9 +7,9 @@ import "rxjs/add/operator/toPromise";
 	selector: 'conference-registration-app',
 	template: '<router-outlet></router-outlet>',
 	styles: [`
-		:host > app-conference, :host > app-conference-list {
-	  		height: 100%;
-		}
+        :host > app-conference, :host > app-conference-list {
+            height: 100%;
+        }
 	`],
 })
 export class ConferenceRegistrationComponent implements OnInit {
