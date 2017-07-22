@@ -1,11 +1,13 @@
 <form action="submit.php" (submit)="sidenav.opened = true"
       (change)="sidenav.opened = false">
-	<md-toolbar color="primary">
-    <span><img [src]="conference?.avatar" alt="..."
-               style="width: 40px;"> </span>
-		<span>{{conference?.name}}</span>
-		<span class="fill-space"></span>
-		<span>{{labels.headline}}</span>
+	<md-toolbar color="primary" class="top">
+		<img [src]="conference?.avatar" alt="..." style="width: 40px;">
+
+		<div class="flex">
+			<span> {{conference?.name}} </span>
+
+			<span>{{labels.headline}}</span>
+		</div>
 	</md-toolbar>
 
 	<md-sidenav-container>
@@ -32,19 +34,19 @@
 	</md-sidenav-container>
 
 
-	<md-toolbar>
-    <span>
-      <button color="primary" md-raised-button type="submit">
-        {{labels.submit}}
-      </button>
-    </span>
-		<span class="fill-space"></span>
-		<span>
-      <button *ngIf="!sidenav.opened && conference?.showBackButton"
-              color="warn" md-raised-button type="button"
-              (click)="navigateBack()">
-        {{labels.back}}
-      </button>
-    </span>
+	<md-toolbar class="bottom">
+	    <span>
+	      <button color="primary" md-raised-button type="submit">
+	        {{labels.submit}}
+	      </button>
+	    </span>
+			<span class="fill-space"></span>
+			<span>
+	      <button *ngIf="!sidenav.opened && conference?.showBackButton"
+	              color="warn" md-raised-button type="button"
+	              (click)="navigateBack()">
+	        {{labels.back}}
+	      </button>
+	    </span>
 	</md-toolbar>
 </form>

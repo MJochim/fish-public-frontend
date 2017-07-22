@@ -2,6 +2,27 @@
     flex: 1 1 auto;
 }
 
+md-toolbar {
+    overflow: auto;
+    position: sticky;
+    z-index: 10;
+}
+
+md-toolbar.top {
+    top: 0;
+}
+
+md-toolbar.bottom {
+    bottom: 0;
+}
+
+/deep/ md-toolbar-row .flex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
 .registrationItem {
     margin-top: 20px;
     margin-bottom: 20px;
