@@ -6,7 +6,7 @@ md-toolbar {
     overflow: auto;
 }
 
-/deep/ md-toolbar-row {
+/deep/ .conference-list-toolbar md-toolbar-row {
     justify-content: space-between;
     flex-wrap: wrap;
 }
