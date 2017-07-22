@@ -26,3 +26,8 @@ md-input-container.non-full-width {
 md-slide-toggle {
     vertical-align: middle;
 }
+
+md-radio-button {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
