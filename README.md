@@ -12,3 +12,5 @@ The webapp was developed by Markus Johim for the association Junge
 Sprachwissenschaft e. V. It is licensed under the terms of the MIT License.
 
 <http://junge-sprachwissenschaft.de/>
+
+<http://anmeldung.stuts.de/> - The registration form in production use
