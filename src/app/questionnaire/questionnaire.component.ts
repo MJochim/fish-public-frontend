@@ -63,6 +63,12 @@ export class QuestionnaireComponent implements OnChanges {
 		this.onChange.emit(inputModel);
 	}
 
+	public changeInputModel(key: string, value: string) {
+		console.log('Setting field:', key, value);
+		this.inputModel[key] = value;
+		this.onChange.emit(this.inputModel);
+	}
+
 	get inputModel() {
 		return this._inputModel;
 	}
@@ -71,36 +77,38 @@ export class QuestionnaireComponent implements OnChanges {
 	}
 
 	ngOnChanges(changes: SimpleChanges) {
-		if (!this.items) {
-			this.inputModel = {};
-		} else {
-			//////////
-			// Initialise inputModel
-			//
-			this.inputModel['conferenceKey'] = this.conferenceKey;
+		if (changes.hasOwnProperty('items')) {
+			if (!this.items) {
+				this.inputModel = {};
+			} else {
+				//////////
+				// Initialise inputModel
+				//
+				this.inputModel['conferenceKey'] = this.conferenceKey;
 
-			for (let i = 0; i < this.items.length; ++i) {
-				let item = this.items[i];
-				if (isTextInputItem(item)) {
-					this.inputModel[item.key] = '';
-				}
+				for (let i = 0; i < this.items.length; ++i) {
+					let item = this.items[i];
+					if (isTextInputItem(item)) {
+						this.inputModel[item.key] = '';
+					}
 
-				if (isSingleChoiceItem(item)) {
-					if (item.choices.length > 0) {
-						this.inputModel[item.key] = item.choices[0].key;
-					} else {
-						this.inputModel[item.key] = null;
+					if (isSingleChoiceItem(item)) {
+						if (item.choices.length > 0) {
+							this.inputModel[item.key] = item.choices[0].key;
+						} else {
+							this.inputModel[item.key] = null;
+						}
+					}
+
+					if (isMultipleChoiceItem(item)) {
+						for (let j = 0; j < item.choices.length; ++j) {
+							this.inputModel[item.choices[j].key] = false;
+						}
 					}
 				}
-
-				if (isMultipleChoiceItem(item)) {
-					for (let j = 0; j < item.choices.length; ++j) {
-						this.inputModel[item.choices[j].key] = false;
-					}
-				}
+				//
+				//////////
 			}
-			//
-			//////////
 		}
 	}
 

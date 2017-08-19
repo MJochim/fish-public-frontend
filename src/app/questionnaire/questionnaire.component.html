@@ -100,8 +100,8 @@
 					<input mdInput floatingPlaceholder
 					       [placeholder]="item.caption"
 					       [required]="!item.optional"
-					       [(ngModel)]="inputModel[item.key]"
-					       [ngModelOptions]="{standalone: true}">
+					       [value]="inputModel[item.key]"
+					       (change)="changeInputModel(item.key, $event.target.value)">
 					<md-hint>{{item.hint}}</md-hint>
 				</md-input-container>
 			</md-card-content>
@@ -132,8 +132,8 @@
 			<md-card-content *ngIf="!currentlyEditing[item.key]">
 				<p>{{item.caption}}</p>
 
-				<md-radio-group [(ngModel)]="inputModel[item.key]"
-				                [ngModelOptions]="{standalone: true}">
+				<md-radio-group [value]="inputModel[item.key]"
+				                (change)="changeInputModel(item.key, $event.value)">
 					<md-list>
 						<md-list-item *ngFor="let choice of item.choices">
 							<md-radio-button [value]="choice.key" [name]="item.key">
@@ -196,8 +196,8 @@
 
 				<md-list>
 					<md-list-item *ngFor="let choice of item.choices">
-						<md-checkbox [ngModelOptions]="{standalone: true}"
-						             [(ngModel)]="inputModel[choice.key]">
+						<md-checkbox [value]="inputModel[choice.key]"
+						             (change)="changeInputModel(item.key, $event.checked)">
 							{{choice.caption}}
 						</md-checkbox>
 					</md-list-item>
