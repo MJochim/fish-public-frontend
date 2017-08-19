@@ -25,6 +25,7 @@ import {UserAlertComponent} from "app/user-alert/user-alert.component";
 export class QuestionnaireComponent implements OnChanges {
 	@Input() conferenceKey: string;
 	@Input() editable: boolean;
+	@Input() readonly: boolean;
 
 	@Input() set items(i: Array<CaptionItem
 		| LinkItem

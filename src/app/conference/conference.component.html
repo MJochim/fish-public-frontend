@@ -11,6 +11,7 @@
 
 	<confreg-questionnaire [conferenceKey]="conference?.key"
 	                       [items]="conference?.registration"
+	                       [readonly]="readonly"
 	                       (onChange)="inputModel = $event"></confreg-questionnaire>
 
 	<md-toolbar class="bottom">

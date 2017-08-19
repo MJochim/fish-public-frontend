@@ -35,6 +35,7 @@ export class ConferenceComponent implements OnInit {
 		errorInvalidForm: 'Das Formular ist nicht richtig ausgefüllt. Bitte' +
 		' noch einmal überprüfen!'
 	};
+	readonly: boolean = false;
 
 	sub: any;
 
@@ -146,10 +147,13 @@ export class ConferenceComponent implements OnInit {
 		dialogRef.afterClosed().subscribe(result => {
 			if (result === true) {
 				console.log(JSON.stringify(this.inputModel));
+				this.readonly = true;
+
 				this.submitToServer().then((value) => {
 					alert('Die Anmeldung wurde gespeichert.');
 				}).catch((reason) => {
 					alert('Die Anmeldung wurde NICHT gespeichert.');
+					this.readonly = false;
 				});
 			}
 		});

@@ -101,7 +101,8 @@
 					       [placeholder]="item.caption"
 					       [required]="!item.optional"
 					       [value]="inputModel[item.key]"
-					       (change)="changeInputModel(item.key, $event.target.value)">
+					       (change)="changeInputModel(item.key, $event.target.value)"
+					       [disabled]="readonly">
 					<md-hint>{{item.hint}}</md-hint>
 				</md-input-container>
 			</md-card-content>
@@ -136,7 +137,7 @@
 				                (change)="changeInputModel(item.key, $event.value)">
 					<md-list>
 						<md-list-item *ngFor="let choice of item.choices">
-							<md-radio-button [value]="choice.key" [name]="item.key">
+							<md-radio-button [value]="choice.key" [name]="item.key" [disabled]="readonly">
 								{{choice.caption}}
 							</md-radio-button>
 						</md-list-item>
@@ -197,7 +198,8 @@
 				<md-list>
 					<md-list-item *ngFor="let choice of item.choices">
 						<md-checkbox [value]="inputModel[choice.key]"
-						             (change)="changeInputModel(item.key, $event.checked)">
+						             (change)="changeInputModel(item.key, $event.checked)"
+						             [disabled]="readonly">
 							{{choice.caption}}
 						</md-checkbox>
 					</md-list-item>
