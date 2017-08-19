@@ -33,9 +33,14 @@ export class ConferenceComponent implements OnInit {
 		back: 'Zurück',
 		submitQuestion: 'Soll die Anmeldung abgeschickt werden?',
 		errorInvalidForm: 'Das Formular ist nicht richtig ausgefüllt. Bitte' +
-		' noch einmal überprüfen!'
+		' noch einmal überprüfen!',
+		errorDuringSubmission: 'Fehler bei der Anmeldung. Bitte noch einmal' +
+		' versuchen!',
+		registrationSuccessful: 'Vielen Dank für die Anmeldung. Du wirst in' +
+		' Kürze eine E-Mail  erhalten.'
 	};
 	readonly: boolean = false;
+	succesfullySaved: boolean = false;
 
 	sub: any;
 
@@ -75,6 +80,12 @@ export class ConferenceComponent implements OnInit {
 	}
 
 	private submitToServer(): Promise<string> {
+		if (this.succesfullySaved) {
+			// The app should never be in a state where successfullySaved is
+			// true but submitToServer() is called
+			return Promise.reject('Registration already sent');
+		}
+
 		return new Promise<string>((resolve, reject) => {
 			var request: XMLHttpRequest = new XMLHttpRequest();
 			request.timeout = 20000; // milliseconds
@@ -150,10 +161,15 @@ export class ConferenceComponent implements OnInit {
 				this.readonly = true;
 
 				this.submitToServer().then((value) => {
-					alert('Die Anmeldung wurde gespeichert.');
+					this.succesfullySaved = true;
 				}).catch((reason) => {
-					alert('Die Anmeldung wurde NICHT gespeichert.');
 					this.readonly = false;
+
+					this.dialog.open(UserAlertComponent, {
+						data: {
+							message: this.labels.errorDuringSubmission
+						}
+					});
 				});
 			}
 		});

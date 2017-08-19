@@ -5,4 +5,6 @@ export interface LabelList {
 	back?: string;
 	submitQuestion?: string;
 	errorInvalidForm?: string;
+	errorDuringSubmission?: string;
+	registrationSuccessful?: string;
 }

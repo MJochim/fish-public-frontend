@@ -9,12 +9,18 @@
 		</div>
 	</md-toolbar>
 
+	<p *ngIf="succesfullySaved">
+		{{labels.registrationSuccessful}}
+	</p>
+
 	<confreg-questionnaire [conferenceKey]="conference?.key"
 	                       [items]="conference?.registration"
 	                       [readonly]="readonly"
-	                       (onChange)="inputModel = $event"></confreg-questionnaire>
+	                       (onChange)="inputModel = $event"
+	                       *ngIf="!succesfullySaved"></confreg-questionnaire>
 
-	<md-toolbar class="bottom">
+	<md-toolbar class="bottom"
+	            *ngIf="!succesfullySaved">
 	    <span>
 	      <button color="primary" md-raised-button type="submit">
 	        {{labels.submit}}
