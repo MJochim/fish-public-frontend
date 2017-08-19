@@ -4,4 +4,5 @@ export interface LabelList {
 	abort?: string;
 	back?: string;
 	submitQuestion?: string;
+	errorInvalidForm?: string;
 }

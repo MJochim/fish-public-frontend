@@ -5,6 +5,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ConferenceStoreService} from "../core/conference-store.service";
 import {Conference} from "../core/conference.interface";
 import {LabelList} from "../core/label-list.interface";
+import {MdDialog} from "@angular/material";
+import {UserConfirmationComponent} from "../user-confirmation/user-confirmation.component";
+import {UserAlertComponent} from "../user-alert/user-alert.component";
 
 // TextDecoder is an experimental browser API
 interface TextDecoder {
@@ -28,12 +31,17 @@ export class ConferenceComponent implements OnInit {
 		submit: 'Abschicken',
 		abort: 'Abbrechen',
 		back: 'Zurück',
-		submitQuestion: 'Soll die Anmeldung abgeschickt werden?'
+		submitQuestion: 'Soll die Anmeldung abgeschickt werden?',
+		errorInvalidForm: 'Das Formular ist nicht richtig ausgefüllt. Bitte' +
+		' noch einmal überprüfen!'
 	};
 
 	sub: any;
 
-	constructor(private router: Router, private route: ActivatedRoute, private _conferenceStore: ConferenceStoreService) {
+	constructor(private router: Router,
+	            private route: ActivatedRoute,
+	            private _conferenceStore: ConferenceStoreService,
+	            private dialog: MdDialog) {
 	}
 
 	ngOnInit() {
@@ -104,12 +112,46 @@ export class ConferenceComponent implements OnInit {
 		});
 	}
 
-	public submit() {
-		console.log(JSON.stringify(this.inputModel));
-		this.submitToServer().then((value) => {
-			alert('Die Anmeldung wurde gespeichert.');
-		}).catch((reason) => {
-			alert('Die Anmeldung wurde NICHT gespeichert.');
+	public confirm(form) {
+		/**
+		 * Try different APIs (reportValidity [which informs the user] and
+		 * checkValidity [which does not inform the user]) for checking the
+		 * user input
+		 */
+		if (form.reportValidity) {
+			if (form.reportValidity() === false) {
+				return;
+			}
+		} else {
+			if (form.checkValidity === false) {
+				this.dialog.open(UserAlertComponent, {
+					data: {
+						message: this.labels.errorInvalidForm
+					}
+				});
+				return;
+			}
+		}
+
+		// Validity checks have passed - ask user for final confirmation
+		let dialogRef = this.dialog.open(UserConfirmationComponent, {
+			data: {
+				submitQuestion: this.labels.submitQuestion,
+				submit: this.labels.submit,
+				abort: this.labels.abort
+			}
+		});
+
+		// Once user confirms, send data to server
+		dialogRef.afterClosed().subscribe(result => {
+			if (result === true) {
+				console.log(JSON.stringify(this.inputModel));
+				this.submitToServer().then((value) => {
+					alert('Die Anmeldung wurde gespeichert.');
+				}).catch((reason) => {
+					alert('Die Anmeldung wurde NICHT gespeichert.');
+				});
+			}
 		});
 	}
 

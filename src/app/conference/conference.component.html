@@ -1,5 +1,4 @@
-<form action="submit.php" (submit)="sidenav.opened = true"
-      (change)="sidenav.opened = false">
+<form (submit)="confirm($event.target)">
 	<md-toolbar color="primary" class="top">
 		<img [src]="conference?.avatar" alt="..." style="width: 40px;">
 
@@ -10,29 +9,9 @@
 		</div>
 	</md-toolbar>
 
-	<md-sidenav-container>
-		<md-sidenav #sidenav align="end"
-		            (open)="abortBtn.focus();">
-			<div>
-				<p>{{labels.submitQuestion}}</p>
-				<button #submitBtn md-raised-button type="button" color="primary"
-				        (click)="submit()">
-					{{labels.submit}}
-				</button>
-				<button #abortBtn md-raised-button type="button" color="warn"
-				        (click)="sidenav.opened = false">
-					{{labels.abort}}
-				</button>
-			</div>
-		</md-sidenav>
-
-		<div class="items">
-			<confreg-questionnaire [conferenceKey]="conference?.key"
-			                       [items]="conference?.registration"
-			                       (onChange)="inputModel = $event"></confreg-questionnaire>
-		</div>
-	</md-sidenav-container>
-
+	<confreg-questionnaire [conferenceKey]="conference?.key"
+	                       [items]="conference?.registration"
+	                       (onChange)="inputModel = $event"></confreg-questionnaire>
 
 	<md-toolbar class="bottom">
 	    <span>
@@ -40,9 +19,9 @@
 	        {{labels.submit}}
 	      </button>
 	    </span>
-			<span class="fill-space"></span>
-			<span>
-	      <button *ngIf="!sidenav.opened && conference?.showBackButton"
+		<span class="fill-space"></span>
+		<span>
+	      <button *ngIf="conference?.showBackButton"
 	              color="warn" md-raised-button type="button"
 	              (click)="navigateBack()">
 	        {{labels.back}}

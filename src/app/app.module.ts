@@ -28,6 +28,7 @@ import {
 import {QuestionnaireComponent} from "./questionnaire/questionnaire.component";
 import {EditorComponent} from "./editor/editor.component";
 import {UserAlertComponent} from "./user-alert/user-alert.component";
+import {UserConfirmationComponent} from "./user-confirmation/user-confirmation.component";
 
 @NgModule({
 	declarations: [
@@ -37,6 +38,7 @@ import {UserAlertComponent} from "./user-alert/user-alert.component";
 		QuestionnaireComponent,
 		EditorComponent,
 		UserAlertComponent,
+		UserConfirmationComponent,
 	],
 	imports: [
 		// Angular stuff
@@ -62,7 +64,8 @@ import {UserAlertComponent} from "./user-alert/user-alert.component";
 	],
 	bootstrap: [ConferenceRegistrationComponent],
 	entryComponents: [
-		UserAlertComponent
+		UserAlertComponent,
+		UserConfirmationComponent
 	],
 	providers: [
 		ConferenceStoreService

@@ -36,22 +36,12 @@ md-toolbar img {
     margin-right: 20px;
 }
 
-:host {
-    display: flex;
+md-sidenav {
+    position: sticky;
+    top: 0;
 }
 
-:host > form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-md-sidenav-layout {
-    flex-basis: 100%;
-    flex-grow: 1;
-}
-
-:host md-sidenav-layout > md-sidenav {
+/deep/ md-sidenav-container > md-sidenav {
     width: 33%;
     padding: 10px;
 
@@ -60,11 +50,6 @@ md-sidenav-layout {
     flex-direction: column;
     justify-content: space-around;
     text-align: center;
-}
-
-:host > form > md-toolbar {
-    flex-basis: 40px;
-    flex-grow: 0;
 }
 
 :host md-card {
