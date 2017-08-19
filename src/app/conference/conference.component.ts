@@ -162,6 +162,7 @@ export class ConferenceComponent implements OnInit {
 
 				this.submitToServer().then((value) => {
 					this.succesfullySaved = true;
+					window.scrollTo(0, 0);
 				}).catch((reason) => {
 					this.readonly = false;
 
