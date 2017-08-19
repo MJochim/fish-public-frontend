@@ -91,7 +91,7 @@ export class ConferenceComponent implements OnInit {
 			request.timeout = 20000; // milliseconds
 			request.responseType = 'arraybuffer';
 
-			request.open('GET', 'https://anmeldung.stuts.de/register.php?registration=' + JSON.stringify(this.inputModel));
+			request.open('GET', 'https://anmeldung.stuts.de/backend/register.php?registration=' + JSON.stringify(this.inputModel));
 
 			request.addEventListener('load', () => {
 				if (request.response === null) {
