@@ -198,7 +198,7 @@
 				<md-list>
 					<md-list-item *ngFor="let choice of item.choices">
 						<md-checkbox [value]="inputModel[choice.key]"
-						             (change)="changeInputModel(item.key, $event.checked)"
+						             (change)="changeInputModel(choice.key, $event.checked)"
 						             [disabled]="readonly">
 							{{choice.caption}}
 						</md-checkbox>
