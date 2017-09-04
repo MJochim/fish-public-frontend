@@ -45,7 +45,8 @@
 				{{item.title}}
 			</md-card-title>
 
-			<md-card-content *ngIf="item.text && !currentlyEditing[item.key]">
+			<md-card-content *ngIf="item.text && !currentlyEditing[item.key]"
+			                 class="long-text">
 				{{item.text}}
 			</md-card-content>
 
@@ -153,7 +154,7 @@
 
 		<div *ngSwitchCase="'SingleChoice'">
 			<md-card-content *ngIf="!currentlyEditing[item.key]">
-				<p>{{item.caption}}</p>
+				<p class="long-text">{{item.caption}}</p>
 
 				<md-radio-group [value]="inputModel[item.key]"
 				                (change)="changeInputModel(item.key, $event.value)">
@@ -173,10 +174,11 @@
 				</p>
 
 				<md-input-container>
-					<input mdInput floatingPlaceholder
-					       [required]="true"
-					       placeholder="Caption"
-					       [(ngModel)]="item.caption">
+					<textarea mdInput floatingPlaceholder
+					          [required]="true"
+					          placeholder="Caption"
+					          [(ngModel)]="item.caption">
+					</textarea>
 				</md-input-container>
 
 				<h2>Options:</h2>
@@ -215,7 +217,7 @@
 
 		<div *ngSwitchCase="'MultipleChoice'">
 			<md-card-content *ngIf="!currentlyEditing[item.key]">
-				<p>{{item.caption}}</p>
+				<p class="long-text">{{item.caption}}</p>
 
 				<md-list>
 					<md-list-item *ngFor="let choice of item.choices">
@@ -234,10 +236,11 @@
 				</p>
 
 				<md-input-container>
-					<input mdInput floatingPlaceholder
-					       [required]="true"
-					       placeholder="Caption"
-					       [(ngModel)]="item.caption">
+					<textarea mdInput floatingPlaceholder
+					          [required]="true"
+					          placeholder="Caption"
+					          [(ngModel)]="item.caption">
+					</textarea>
 				</md-input-container>
 
 				<h2>Options:</h2>
