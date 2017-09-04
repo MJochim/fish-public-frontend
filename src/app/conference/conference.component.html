@@ -1,6 +1,9 @@
 <form (submit)="confirm($event.target)">
 	<md-toolbar color="primary" class="top">
-		<img [src]="conference?.avatar" alt="..." style="width: 40px;">
+		<img *ngIf="conference"
+		     [src]="conference?.avatar"
+		     alt="..."
+		     style="width: 40px;">
 
 		<div class="flex">
 			<span> {{conference?.name}} </span>
