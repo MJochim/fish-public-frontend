@@ -5,4 +5,6 @@ export interface TextInputItem {
 	optional?: boolean;
 	hint?: string;
 	pattern?: string;
+	longText?: boolean;
+	rows?: number;
 }

@@ -97,7 +97,16 @@
 		<div *ngSwitchCase="'TextInput'">
 			<md-card-content *ngIf="!currentlyEditing[item.key]">
 				<md-input-container>
-					<input mdInput floatingPlaceholder
+					<textarea *ngIf="item.longText"
+					          mdInput floatingPlaceholder
+					          [placeholder]="item.caption"
+					          [required]="!item.optional"
+					          [value]="inputModel[item.key]"
+					          (change)="changeInputModel(item.key, $event.target.value)"
+					          [disabled]="readonly"
+					          [rows]="item.rows"></textarea>
+					<input *ngIf="!item.longText"
+					       mdInput floatingPlaceholder
 					       [placeholder]="item.caption"
 					       [required]="!item.optional"
 					       [value]="inputModel[item.key]"
@@ -126,6 +135,19 @@
 				</md-input-container>
 
 				<md-checkbox [(ngModel)]="item.optional">Optional</md-checkbox>
+
+				<br>
+
+				<md-checkbox [(ngModel)]="item.longText">Long text</md-checkbox>
+				<md-input-container class="non-full-width">
+					<input mdInput floatingPlaceholder
+					       [required]="true"
+					       placeholder="Rows"
+					       [(ngModel)]="item.rows"
+					       [disabled]="!item.longText"
+					       type="number">
+					<md-hint>This only affects how large the user’s text area appears (which they can change).</md-hint>
+				</md-input-container>
 			</md-card-content>
 		</div>
 
