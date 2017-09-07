@@ -1,4 +1,13 @@
-# 0.1.0
+# 0.2.0 (2017-09-07)
+
+- Conferences are now loaded via AJAX instead of being hard-coded
+- Now features a password-protected questionnaire editor
+- Route /conference/<name> is now /<name>
+- CaptionsItems and captions in other items allow HTML and line breaks
+- The backend is now no longer in this codebase
+- Updated dependencies and re-structured some code
+
+# 0.1.0 (2017-01-15)
 
 - Updated dependencies
 -- angular to 2.3.1 (from angular2-rc.4)
