@@ -14,7 +14,7 @@ import {MultipleChoiceItem} from "../core/multiple-choice-item.interface";
 import {isTextInputItem} from "../core/type-guards/is-text-input-item.function";
 import {isSingleChoiceItem} from "../core/type-guards/is-single-choice-item.function";
 import {isMultipleChoiceItem} from "app/core/type-guards/is-multiple-choice-item.function";
-import {MatDialog} from "@angular/material";
+import { MatDialog } from "@angular/material/dialog";
 import {UserAlertComponent} from "app/user-alert/user-alert.component";
 
 @Component({

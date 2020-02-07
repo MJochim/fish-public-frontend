@@ -9,22 +9,20 @@ import {ConferenceRegistrationComponent} from "./conference-registration.compone
 import {ConferenceListComponent} from "./conference-list/conference-list.component";
 import {ConferenceComponent} from "./conference/conference.component";
 import {ConferenceStoreService} from "./core/conference-store.service";
-import {
-	MatButtonModule,
-	MatButtonToggleModule,
-	MatCardModule,
-	MatCheckboxModule,
-	MatChipsModule,
-	MatDialogModule,
-	MatIconModule,
-	MatInputModule,
-	MatListModule,
-	MatProgressSpinnerModule,
-	MatRadioModule,
-	MatSidenavModule,
-	MatSlideToggleModule,
-	MatToolbarModule
-} from "@angular/material";
+import { MatButtonModule } from "@angular/material/button";
+import { MatButtonToggleModule } from "@angular/material/button-toggle";
+import { MatCardModule } from "@angular/material/card";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatChipsModule } from "@angular/material/chips";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
+import { MatListModule } from "@angular/material/list";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatRadioModule } from "@angular/material/radio";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { MatToolbarModule } from "@angular/material/toolbar";
 import {QuestionnaireComponent} from "./questionnaire/questionnaire.component";
 import {EditorComponent} from "./editor/editor.component";
 import {UserAlertComponent} from "./user-alert/user-alert.component";
