@@ -14,22 +14,22 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.1.10",
-    "@angular/cdk": "^2.0.0-beta.8",
+    "@angular/cdk": "^9.0.0",
     "@angular/common": "^6.1.10",
     "@angular/compiler": "^6.1.10",
     "@angular/core": "^6.1.10",
     "@angular/forms": "^6.1.10",
     "@angular/http": "^6.1.10",
-    "@angular/material": "^2.0.0-beta.6",
+    "@angular/material": "^9.0.0",
     "@angular/platform-browser": "^6.1.10",
     "@angular/platform-browser-dynamic": "^6.1.10",
     "@angular/platform-server": "^6.1.10",
     "@angular/router": "^6.1.10",
     "core-js": "^2.4.1",
     "rxjs": "^6.5.4",
+    "rxjs-compat": "^6.0.0-rc.0",
     "ts-helpers": "^1.1.2",
-    "zone.js": "^0.8.29",
-    "rxjs-compat": "^6.0.0-rc.0"
+    "zone.js": "^0.8.29"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.8.0",
