@@ -5,7 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ConferenceStoreService} from "../core/conference-store.service";
 import {Conference} from "../core/conference.interface";
 import {LabelList} from "../core/label-list.interface";
-import {MdDialog} from "@angular/material";
+import {MatDialog} from "@angular/material";
 import {UserConfirmationComponent} from "../user-confirmation/user-confirmation.component";
 import {UserAlertComponent} from "../user-alert/user-alert.component";
 
@@ -47,7 +47,7 @@ export class ConferenceComponent implements OnInit {
 	constructor(private router: Router,
 	            private route: ActivatedRoute,
 	            private _conferenceStore: ConferenceStoreService,
-	            private dialog: MdDialog) {
+	            private dialog: MatDialog) {
 	}
 
 	ngOnInit() {
