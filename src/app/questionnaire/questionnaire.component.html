@@ -1,75 +1,75 @@
 <div *ngFor="let item of items; let i = index" class="registrationItem"
      #itemContainer>
-	<md-card [ngSwitch]="item.type">
-		<md-card-actions *ngIf="editable">
-			<button md-icon-button
+	<mat-card [ngSwitch]="item.type">
+		<mat-card-actions *ngIf="editable">
+			<button mat-icon-button
 			        (click)="moveUp(itemContainer, item.key)"
 			        [disabled]="i === 0">
 				<span class="material-icons">arrow_upward</span>
 			</button>
 
-			<button md-icon-button
+			<button mat-icon-button
 			        (click)="moveDown(itemContainer, item.key)"
 			        [disabled]="i + 1 === items.length">
 				<span class="material-icons">arrow_downward</span>
 			</button>
 
-			<md-slide-toggle (change)="toggleEditing(item.key)">
+			<mat-slide-toggle (change)="toggleEditing(item.key)">
 				Edit
-			</md-slide-toggle>
+			</mat-slide-toggle>
 
 			<span class="fill-space"></span>
 
 			<form (submit)="changeKey(item, newKey.value)">
-				<md-input-container class="non-full-width">
-					<input mdInput floatingPlaceholder
+				<mat-form-field class="non-full-width">
+					<input matInput floatingPlaceholder
 					       placeholder="Key"
 					       [value]="item.key"
 					       #newKey>
-				</md-input-container>
+				</mat-form-field>
 
-				<button md-button>
+				<button mat-button>
 					Change key
 				</button>
 			</form>
 
-			<button md-button
+			<button mat-button
 			        (click)="removeItem(item.key)"
 			        color="warn">
 				Delete
 			</button>
-		</md-card-actions>
+		</mat-card-actions>
 
 		<div *ngSwitchCase="'Caption'">
-			<md-card-title *ngIf="item.title && !currentlyEditing[item.key]">
+			<mat-card-title *ngIf="item.title && !currentlyEditing[item.key]">
 				{{item.title}}
-			</md-card-title>
+			</mat-card-title>
 
-			<md-card-content *ngIf="item.text && !currentlyEditing[item.key]"
+			<mat-card-content *ngIf="item.text && !currentlyEditing[item.key]"
 			                 class="long-text"
 			                 [innerHTML]="item.text">
-			</md-card-content>
+			</mat-card-content>
 
-			<md-card-content *ngIf="currentlyEditing[item.key]">
+			<mat-card-content *ngIf="currentlyEditing[item.key]">
 				<p>
 					Key: {{item.key}}
 				</p>
 				<p>
-					<md-input-container>
-						<input mdInput floatingPlaceholder
+					<mat-form-field>
+						<input matInput floatingPlaceholder
 						       placeholder="Title"
 						       [(ngModel)]="item.title">
-					</md-input-container>
+					</mat-form-field>
 				</p>
 				<p>
-					<md-input-container>
-						<textarea mdInput floatingPlaceholder
+					<mat-form-field>
+						<textarea matInput floatingPlaceholder
 						          placeholder="Text"
 						          [(ngModel)]="item.text">
 						</textarea>
-					</md-input-container>
+					</mat-form-field>
 				</p>
-			</md-card-content>
+			</mat-card-content>
 		</div>
 
 		<div *ngSwitchCase="'Link'">
@@ -81,25 +81,25 @@
 				<p>
 					Key: {{item.key}}
 				</p>
-				<md-input-container>
-					<input mdInput floatingPlaceHolder
+				<mat-form-field>
+					<input matInput floatingPlaceHolder
 					       placeholder="Label"
 					       [(ngModel)]="item.label">
-				</md-input-container>
+				</mat-form-field>
 
-				<md-input-container>
-					<input mdInput floatingPlaceholder
+				<mat-form-field>
+					<input matInput floatingPlaceholder
 					       placeholder="Address"
 					       [(ngModel)]="item.href">
-				</md-input-container>
+				</mat-form-field>
 			</div>
 		</div>
 
 		<div *ngSwitchCase="'TextInput'">
-			<md-card-content *ngIf="!currentlyEditing[item.key]">
-				<md-input-container>
+			<mat-card-content *ngIf="!currentlyEditing[item.key]">
+				<mat-form-field>
 					<textarea *ngIf="item.longText"
-					          mdInput floatingPlaceholder
+					          matInput floatingPlaceholder
 					          [placeholder]="item.caption"
 					          [required]="!item.optional"
 					          [value]="inputModel[item.key]"
@@ -107,174 +107,174 @@
 					          [disabled]="readonly"
 					          [rows]="item.rows"></textarea>
 					<input *ngIf="!item.longText"
-					       mdInput floatingPlaceholder
+					       matInput floatingPlaceholder
 					       [placeholder]="item.caption"
 					       [required]="!item.optional"
 					       [value]="inputModel[item.key]"
 					       (change)="changeInputModel(item.key, $event.target.value)"
 					       [disabled]="readonly">
-					<md-hint>{{item.hint}}</md-hint>
-				</md-input-container>
-			</md-card-content>
+					<mat-hint>{{item.hint}}</mat-hint>
+				</mat-form-field>
+			</mat-card-content>
 
-			<md-card-content *ngIf="currentlyEditing[item.key]">
+			<mat-card-content *ngIf="currentlyEditing[item.key]">
 				<p>
 					Key: {{item.key}}
 				</p>
 
-				<md-input-container>
-					<input mdInput floatingPlaceholder
+				<mat-form-field>
+					<input matInput floatingPlaceholder
 					       [required]="true"
 					       placeholder="Caption"
 					       [(ngModel)]="item.caption">
-				</md-input-container>
+				</mat-form-field>
 
-				<md-input-container>
-					<input mdInput floatingPlaceholder
+				<mat-form-field>
+					<input matInput floatingPlaceholder
 					       placeholder="Hint"
 					       [(ngModel)]="item.hint">
-				</md-input-container>
+				</mat-form-field>
 
-				<md-checkbox [(ngModel)]="item.optional">Optional</md-checkbox>
+				<mat-checkbox [(ngModel)]="item.optional">Optional</mat-checkbox>
 
 				<br>
 
-				<md-checkbox [(ngModel)]="item.longText">Long text</md-checkbox>
-				<md-input-container class="non-full-width">
-					<input mdInput floatingPlaceholder
+				<mat-checkbox [(ngModel)]="item.longText">Long text</mat-checkbox>
+				<mat-form-field class="non-full-width">
+					<input matInput floatingPlaceholder
 					       [required]="true"
 					       placeholder="Rows"
 					       [(ngModel)]="item.rows"
 					       [disabled]="!item.longText"
 					       type="number">
-					<md-hint>This only affects how large the user’s text area appears (which they can change).</md-hint>
-				</md-input-container>
-			</md-card-content>
+					<mat-hint>This only affects how large the user’s text area appears (which they can change).</mat-hint>
+				</mat-form-field>
+			</mat-card-content>
 		</div>
 
 		<div *ngSwitchCase="'SingleChoice'">
-			<md-card-content *ngIf="!currentlyEditing[item.key]">
+			<mat-card-content *ngIf="!currentlyEditing[item.key]">
 				<p class="long-text" [innerHTML]="item.caption"></p>
 
-				<md-radio-group [value]="inputModel[item.key]"
+				<mat-radio-group [value]="inputModel[item.key]"
 				                (change)="changeInputModel(item.key, $event.value)">
-					<md-list>
-						<md-list-item *ngFor="let choice of item.choices">
-							<md-radio-button [value]="choice.key" [name]="item.key" [disabled]="readonly">
+					<mat-list>
+						<mat-list-item *ngFor="let choice of item.choices">
+							<mat-radio-button [value]="choice.key" [name]="item.key" [disabled]="readonly">
 								{{choice.caption}}
-							</md-radio-button>
-						</md-list-item>
-					</md-list>
-				</md-radio-group>
-			</md-card-content>
+							</mat-radio-button>
+						</mat-list-item>
+					</mat-list>
+				</mat-radio-group>
+			</mat-card-content>
 
-			<md-card-content *ngIf="currentlyEditing[item.key]">
+			<mat-card-content *ngIf="currentlyEditing[item.key]">
 				<p>
 					Key: {{item.key}}
 				</p>
 
-				<md-input-container>
-					<textarea mdInput floatingPlaceholder
+				<mat-form-field>
+					<textarea matInput floatingPlaceholder
 					          [required]="true"
 					          placeholder="Caption"
 					          [(ngModel)]="item.caption">
 					</textarea>
-				</md-input-container>
+				</mat-form-field>
 
 				<h2>Options:</h2>
 
 				<p>
-					<button md-icon-button
+					<button mat-icon-button
 					        (click)="addChoice(item)">
 						<span class="material-icons">add_circle</span>
 					</button>
 				</p>
 
-				<md-list>
-					<md-list-item *ngFor="let choice of item.choices">
-						<button md-icon-button
+				<mat-list>
+					<mat-list-item *ngFor="let choice of item.choices">
+						<button mat-icon-button
 						        (click)="removeChoice(item, choice.key)">
 							<span class="material-icons">remove_circle</span>
 						</button>
 
-						<md-input-container>
-							<input mdInput floatingPlaceholder
+						<mat-form-field>
+							<input matInput floatingPlaceholder
 							       [required]="true"
 							       placeholder="Key"
 							       [(ngModel)]="choice.key">
-						</md-input-container>
+						</mat-form-field>
 
-						<md-input-container>
-							<input mdInput floatingPlaceholder
+						<mat-form-field>
+							<input matInput floatingPlaceholder
 							       [required]="true"
 							       placeholder="Caption"
 							       [(ngModel)]="choice.caption">
-						</md-input-container>
-					</md-list-item>
-				</md-list>
-			</md-card-content>
+						</mat-form-field>
+					</mat-list-item>
+				</mat-list>
+			</mat-card-content>
 		</div>
 
 		<div *ngSwitchCase="'MultipleChoice'">
-			<md-card-content *ngIf="!currentlyEditing[item.key]">
+			<mat-card-content *ngIf="!currentlyEditing[item.key]">
 				<p class="long-text" [innerHTML]="item.caption"></p>
 
-				<md-list>
-					<md-list-item *ngFor="let choice of item.choices">
-						<md-checkbox [value]="inputModel[choice.key]"
+				<mat-list>
+					<mat-list-item *ngFor="let choice of item.choices">
+						<mat-checkbox [value]="inputModel[choice.key]"
 						             (change)="changeInputModel(choice.key, $event.checked)"
 						             [disabled]="readonly">
 							{{choice.caption}}
-						</md-checkbox>
-					</md-list-item>
-				</md-list>
-			</md-card-content>
+						</mat-checkbox>
+					</mat-list-item>
+				</mat-list>
+			</mat-card-content>
 
-			<md-card-content *ngIf="currentlyEditing[item.key]">
+			<mat-card-content *ngIf="currentlyEditing[item.key]">
 				<p>
 					Key: {{item.key}}
 				</p>
 
-				<md-input-container>
-					<textarea mdInput floatingPlaceholder
+				<mat-form-field>
+					<textarea matInput floatingPlaceholder
 					          [required]="true"
 					          placeholder="Caption"
 					          [(ngModel)]="item.caption">
 					</textarea>
-				</md-input-container>
+				</mat-form-field>
 
 				<h2>Options:</h2>
 
 				<p>
-					<button md-icon-button
+					<button mat-icon-button
 					        (click)="addChoice(item)">
 						<span class="material-icons">add_circle</span>
 					</button>
 				</p>
 
-				<md-list>
-					<md-list-item *ngFor="let choice of item.choices">
-						<button md-icon-button
+				<mat-list>
+					<mat-list-item *ngFor="let choice of item.choices">
+						<button mat-icon-button
 						        (click)="removeChoice(item, choice.key)">
 							<span class="material-icons">remove_circle</span>
 						</button>
 
-						<md-input-container>
-							<input mdInput floatingPlaceholder
+						<mat-form-field>
+							<input matInput floatingPlaceholder
 							       [required]="true"
 							       placeholder="Key"
 							       [(ngModel)]="choice.key">
-						</md-input-container>
+						</mat-form-field>
 
-						<md-input-container>
-							<input mdInput floatingPlaceholder
+						<mat-form-field>
+							<input matInput floatingPlaceholder
 							       [required]="true"
 							       placeholder="Caption"
 							       [(ngModel)]="choice.caption">
-						</md-input-container>
-					</md-list-item>
-				</md-list>
-			</md-card-content>
+						</mat-form-field>
+					</mat-list-item>
+				</mat-list>
+			</mat-card-content>
 		</div>
-	</md-card>
+	</mat-card>
 </div>

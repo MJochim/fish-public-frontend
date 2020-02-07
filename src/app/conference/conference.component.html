@@ -1,5 +1,5 @@
 <form (submit)="confirm($event.target)">
-	<md-toolbar color="primary" class="top">
+	<mat-toolbar color="primary" class="top">
 		<img *ngIf="conference"
 		     [src]="conference?.avatar"
 		     alt="..."
@@ -10,7 +10,7 @@
 
 			<span>{{labels.headline}}</span>
 		</div>
-	</md-toolbar>
+	</mat-toolbar>
 
 	<p *ngIf="succesfullySaved">
 		{{labels.registrationSuccessful}}
@@ -22,20 +22,20 @@
 	                       (onChange)="inputModel = $event"
 	                       *ngIf="!succesfullySaved"></confreg-questionnaire>
 
-	<md-toolbar class="bottom"
+	<mat-toolbar class="bottom"
 	            *ngIf="!succesfullySaved">
 	    <span>
-	      <button color="primary" md-raised-button type="submit">
+	      <button color="primary" mat-raised-button type="submit">
 	        {{labels.submit}}
 	      </button>
 	    </span>
 		<span class="fill-space"></span>
 		<span>
 	      <button *ngIf="conference?.showBackButton"
-	              color="warn" md-raised-button type="button"
+	              color="warn" mat-raised-button type="button"
 	              (click)="navigateBack()">
 	        {{labels.back}}
 	      </button>
 	    </span>
-	</md-toolbar>
+	</mat-toolbar>
 </form>

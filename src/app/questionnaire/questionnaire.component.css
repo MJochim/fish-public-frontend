@@ -2,7 +2,7 @@
     flex: 1 1 auto;
 }
 
-md-card {
+mat-card {
     margin: 10px 20px 20px 20px;
 }
 
@@ -10,28 +10,28 @@ md-card {
     white-space: pre-line;
 }
 
-md-card-actions {
+mat-card-actions {
     display: flex;
     flex-direction: row;
     align-items: center;
     border-bottom: 1px solid #CCC;
 }
 
-md-input-container {
+mat-form-field {
     width: 100%;
 }
 
-md-input-container.non-full-width {
+mat-form-field.non-full-width {
     width: auto;
     margin-left: 10px;
     margin-right: 10px;
 }
 
-md-slide-toggle {
+mat-slide-toggle {
     vertical-align: middle;
 }
 
-md-radio-button {
+mat-radio-button {
     overflow-x: auto;
     overflow-y: hidden;
 }

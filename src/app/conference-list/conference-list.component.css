@@ -2,16 +2,16 @@
     flex: 1 1 auto;
 }
 
-md-toolbar {
+mat-toolbar {
     overflow: auto;
 }
 
-/deep/ .conference-list-toolbar md-toolbar-row {
+/deep/ .conference-list-toolbar mat-toolbar-row {
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
-md-toolbar.small-font {
+mat-toolbar.small-font {
     font-size: 16px;
 }
 
@@ -19,6 +19,6 @@ md-toolbar.small-font {
     vertical-align: text-bottom;
 }
 
-md-spinner {
+mat-spinner {
     height: 50%;
 }

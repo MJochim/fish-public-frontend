@@ -1,4 +1,4 @@
-<md-toolbar color="primary">
+<mat-toolbar color="primary">
     <span *ngIf="!previewMode" class="toolbar-heading">
 	    Conference data
     </span>
@@ -12,49 +12,49 @@
 	<span class="fill-space"></span>
 
 	<div class="toolbar-actions">
-		<md-slide-toggle (change)="previewMode = $event.checked">
+		<mat-slide-toggle (change)="previewMode = $event.checked">
 			Preview
-		</md-slide-toggle>
+		</mat-slide-toggle>
 	</div>
-</md-toolbar>
+</mat-toolbar>
 
-<md-card *ngIf="!previewMode">
-	<md-card-content>
-		<md-input-container>
-			<input mdInput placeholder="Name" [(ngModel)]="conference.name">
-		</md-input-container>
+<mat-card *ngIf="!previewMode">
+	<mat-card-content>
+		<mat-form-field>
+			<input matInput placeholder="Name" [(ngModel)]="conference.name">
+		</mat-form-field>
 
-		<md-input-container>
-			<input mdInput placeholder="Key" [(ngModel)]="conference.key">
-		</md-input-container>
+		<mat-form-field>
+			<input matInput placeholder="Key" [(ngModel)]="conference.key">
+		</mat-form-field>
 
-		<md-input-container>
-			<input mdInput placeholder="Place" [(ngModel)]="conference.place">
-		</md-input-container>
+		<mat-form-field>
+			<input matInput placeholder="Place" [(ngModel)]="conference.place">
+		</mat-form-field>
 
-		<md-input-container>
-			<input mdInput placeholder="Date" [(ngModel)]="conference.date">
-		</md-input-container>
+		<mat-form-field>
+			<input matInput placeholder="Date" [(ngModel)]="conference.date">
+		</mat-form-field>
 
-		<md-input-container>
-			<input mdInput placeholder="Picture URL" [(ngModel)]="conference.avatar">
-		</md-input-container>
-	</md-card-content>
-</md-card>
+		<mat-form-field>
+			<input matInput placeholder="Picture URL" [(ngModel)]="conference.avatar">
+		</mat-form-field>
+	</mat-card-content>
+</mat-card>
 
-<md-toolbar *ngIf="!previewMode" color="primary">
+<mat-toolbar *ngIf="!previewMode" color="primary">
 	<span class="toolbar-heading">Registration items/questions</span>
 
 	<span class="fill-space"></span>
 
 	<div class="toolbar-actions">
-		<button md-button (click)="questionnaire.addItem('Caption')">Caption</button>
-		<button md-button (click)="questionnaire.addItem('Link')">Link</button>
-		<button md-button (click)="questionnaire.addItem('TextInput')">Text input</button>
-		<button md-button (click)="questionnaire.addItem('SingleChoice')">Single choice</button>
-		<button md-button (click)="questionnaire.addItem('MultipleChoice')">Multiple choice</button>
+		<button mat-button (click)="questionnaire.addItem('Caption')">Caption</button>
+		<button mat-button (click)="questionnaire.addItem('Link')">Link</button>
+		<button mat-button (click)="questionnaire.addItem('TextInput')">Text input</button>
+		<button mat-button (click)="questionnaire.addItem('SingleChoice')">Single choice</button>
+		<button mat-button (click)="questionnaire.addItem('MultipleChoice')">Multiple choice</button>
 	</div>
-</md-toolbar>
+</mat-toolbar>
 
 <confreg-questionnaire #questionnaire
                        [conferenceKey]="conference.key"

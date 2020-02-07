@@ -313,8 +313,8 @@ export class QuestionnaireComponent implements OnChanges {
 				let otherButton = itemContainer.nextElementSibling.querySelector('button');
 
 				let distance = otherButton.getBoundingClientRect().top - clickedButton.getBoundingClientRect().top;
-				distance -= itemContainer.querySelector('md-card').clientHeight;
-				distance += itemContainer.nextElementSibling.querySelector('md-card').clientHeight;
+				distance -= itemContainer.querySelector('mat-card').clientHeight;
+				distance += itemContainer.nextElementSibling.querySelector('mat-card').clientHeight;
 
 				if (window.scrollY + window.innerHeight + distance <= document.querySelector('body').scrollHeight) {
 					window.scrollBy(0, distance);

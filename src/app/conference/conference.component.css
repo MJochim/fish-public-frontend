@@ -7,21 +7,21 @@ p {
     flex: 1 1 auto;
 }
 
-md-toolbar {
+mat-toolbar {
     overflow: auto;
     position: sticky;
     z-index: 10;
 }
 
-md-toolbar.top {
+mat-toolbar.top {
     top: 0;
 }
 
-md-toolbar.bottom {
+mat-toolbar.bottom {
     bottom: 0;
 }
 
-/deep/ md-toolbar-row .flex {
+/deep/ mat-toolbar-row .flex {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -33,20 +33,20 @@ md-toolbar.bottom {
     margin-bottom: 20px;
 }
 
-md-input {
+mat-input {
     width: 100%;
 }
 
-md-toolbar img {
+mat-toolbar img {
     margin-right: 20px;
 }
 
-md-sidenav {
+mat-sidenav {
     position: sticky;
     top: 0;
 }
 
-/deep/ md-sidenav-container > md-sidenav {
+/deep/ mat-sidenav-container > mat-sidenav {
     width: 33%;
     padding: 10px;
 
@@ -57,6 +57,6 @@ md-sidenav {
     text-align: center;
 }
 
-:host md-card {
+:host mat-card {
     overflow: auto;
 }

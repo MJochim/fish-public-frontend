@@ -1,12 +1,12 @@
-<md-toolbar color="primary" class="conference-list-toolbar">
+<mat-toolbar color="primary" class="conference-list-toolbar">
 	<span>Conference Registration</span>
 	<span>Junge Sprachwissenschaft e. V.</span>
-</md-toolbar>
+</mat-toolbar>
 
-<md-toolbar class="small-font">
+<mat-toolbar class="small-font">
 	<span class="fill-space"></span>
 
-	<button md-button
+	<button mat-button
 	        (click)="toggleSignInForm()"
 	        [disabled]="loginState === 'Trying'"
 	        *ngIf="loginState !== 'Successful'">
@@ -22,45 +22,45 @@
 		Login successful!
 	</span>
 
-	<md-toolbar-row *ngIf="showSignInForm && loginState !== 'Successful'">
+	<mat-toolbar-row *ngIf="showSignInForm && loginState !== 'Successful'">
 		<span class="fill-space"></span>
 
-		<md-spinner *ngIf="loginState === 'Trying'"></md-spinner>
+		<mat-spinner *ngIf="loginState === 'Trying'"></mat-spinner>
 
 		<form (submit)="signIn()" *ngIf="loginState !== 'Successful'">
-			<md-input-container>
-				<input mdInput type="password"
+			<mat-form-field>
+				<input matInput type="password"
 				       placeholder="Password"
 				       [(ngModel)]="password"
 				       name="password">
-			</md-input-container>
+			</mat-form-field>
 
 			<span *ngIf="loginState==='Unsuccessful'">
 				<i class="material-icons">thumb_down</i>
 			</span>
 
-			<button md-button color="primary" type="submit">
+			<button mat-button color="primary" type="submit">
 				Sign in
 			</button>
 		</form>
-	</md-toolbar-row>
-</md-toolbar>
+	</mat-toolbar-row>
+</mat-toolbar>
 
-<md-nav-list>
-	<md-list-item *ngFor="let conf of conferences" [routerLink]="['/', conf.key]">
-		<img md-list-avatar [src]="conf.avatar" alt="Conference logo">
+<mat-nav-list>
+	<mat-list-item *ngFor="let conf of conferences" [routerLink]="['/', conf.key]">
+		<img mat-list-avatar [src]="conf.avatar" alt="Conference logo">
 
-		<a md-line>{{conf.name}}</a>
+		<a mat-line>{{conf.name}}</a>
 
-		<p md-line>
+		<p mat-line>
 			<span> {{conf.date}} </span>
 			<span class="demo-2"> -- {{conf.place}} </span>
 		</p>
 
-		<button md-icon-button
+		<button mat-icon-button
 		        *ngIf="loginState === 'Successful'"
 		        [routerLink]="['/editor', conf.key]">
 			<span class="material-icons">edit</span>
 		</button>
-	</md-list-item>
-</md-nav-list>
+	</mat-list-item>
+</mat-nav-list>
