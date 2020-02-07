@@ -1,7 +1,7 @@
 // (c) 2016 Markus Jochim <markus.jochim@phonetik.uni-muenchen.de>
 
 import {Injectable} from "@angular/core";
-import {Http} from "@angular/http";
+import {HttpClient} from "@angular/common/http";
 import {Conference} from "app/core/conference.interface";
 import {Observable} from "rxjs/Observable";
 import "rxjs/add/observable/of";
@@ -18,7 +18,7 @@ export class ConferenceStoreService {
 		pushConference: 'https://anmeldung.stuts.de/backend/push-conference.php'
 	};
 
-	constructor(private http: Http) {
+	constructor(private http: HttpClient) {
 	}
 
 	authenticate(password?: string): Promise<boolean> {
@@ -27,9 +27,8 @@ export class ConferenceStoreService {
 		}
 
 		return this.http.post(this.urls.authenticate, {password: this.password})
-			.map(response => {
-				let object = response.json();
-				return (object.success === true);
+			.map((response: {success: boolean}) => {
+				return (response.success === true);
 			})
 			.catch(() => {
 				return Observable.of(false);
@@ -38,9 +37,8 @@ export class ConferenceStoreService {
 	}
 
 	getConferences(): Promise<Conference[]> {
-		return this.http.get(this.urls.getConferences)
+		return this.http.get<Conference[]>(this.urls.getConferences)
 			.toPromise()
-			.then(response => response.json() as Conference[])
 			.catch(() => {
 				return Promise.reject('Could not load conferences');
 			});

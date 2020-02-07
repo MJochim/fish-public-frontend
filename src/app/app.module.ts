@@ -2,7 +2,7 @@ import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FormsModule} from "@angular/forms";
-import {HttpModule} from "@angular/http";
+import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
 import {appRoutes} from "./app.routes";
 import {ConferenceRegistrationComponent} from "./conference-registration.component";
@@ -44,7 +44,7 @@ import {UserConfirmationComponent} from "./user-confirmation/user-confirmation.c
 		// Angular stuff
 		BrowserModule,
 		FormsModule,
-		HttpModule,
+		HttpClientModule,
 		RouterModule.forRoot(appRoutes),
 		BrowserAnimationsModule,
 		MdButtonModule,
