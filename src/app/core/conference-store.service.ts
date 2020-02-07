@@ -1,9 +1,12 @@
 // (c) 2016 Markus Jochim <markus.jochim@phonetik.uni-muenchen.de>
 
+
+import {of as observableOf, Observable} from 'rxjs';
+
+import {catchError, map} from 'rxjs/operators';
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Conference} from "app/core/conference.interface";
-import {Observable} from "rxjs/Observable";
 import "rxjs/add/observable/of";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/map";
@@ -26,13 +29,13 @@ export class ConferenceStoreService {
 			this.password = password;
 		}
 
-		return this.http.post(this.urls.authenticate, {password: this.password})
-			.map((response: {success: boolean}) => {
+		return this.http.post(this.urls.authenticate, {password: this.password}).pipe(
+			map((response: {success: boolean}) => {
 				return (response.success === true);
-			})
-			.catch(() => {
-				return Observable.of(false);
-			})
+			}),
+			catchError(() => {
+				return observableOf(false);
+			}),)
 			.toPromise();
 	}
 

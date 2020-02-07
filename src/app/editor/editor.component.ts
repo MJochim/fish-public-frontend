@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {ConferenceStoreService} from "../core/conference-store.service";
 import {Conference} from "../core/conference.interface";
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
