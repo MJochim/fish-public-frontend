@@ -3,6 +3,7 @@
 import {Component, OnInit} from "@angular/core";
 import {ConferenceStoreService} from "../core/conference-store.service";
 import {Conference} from "../core/conference.interface";
+import {AuthService} from "../auth/auth.service";
 
 
 @Component({
@@ -12,15 +13,10 @@ import {Conference} from "../core/conference.interface";
 })
 export class ConferenceListComponent implements OnInit {
 	public conferences: Conference[] = [];
-	public loginState:
-		'NotTried'
-		| 'Trying'
-		| 'Successful'
-		| 'Unsuccessful' = 'NotTried';
-	public password: string = '';
-	public showSignInForm: boolean = false;
+	public isLoggedIn: boolean = false;
 
-	constructor(private _conferenceStoreService: ConferenceStoreService) {
+	constructor(private _conferenceStoreService: ConferenceStoreService,
+		    private authService: AuthService) {
 	}
 
 	ngOnInit() {
@@ -32,33 +28,14 @@ export class ConferenceListComponent implements OnInit {
 				console.log(error);
 			});
 
-		this.signIn('NotTried');
+		this.authService.loginStatus.subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
 	}
 
-	public toggleSignInForm() {
-		this.showSignInForm = !this.showSignInForm;
+	public login() {
+		this.authService.startAuthentication();
 	}
 
-	public signIn(errorState:
-		              'NotTried'
-		              | 'Trying'
-		              | 'Successful'
-		              | 'Unsuccessful' = 'Unsuccessful') {
-		if (this.loginState !== 'Trying') {
-			this.loginState = 'Trying';
-
-			this._conferenceStoreService.authenticate(this.password)
-				.then((success) => {
-					if (success) {
-						this.loginState = 'Successful';
-						this.showSignInForm = false;
-					} else {
-						this.loginState = errorState;
-					}
-				})
-				.catch(() => {
-					this.loginState = errorState;
-				});
-		}
+	public logout() {
+		this.authService.startSignout();
 	}
 }

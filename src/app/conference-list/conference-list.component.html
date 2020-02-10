@@ -7,43 +7,16 @@
 	<span class="fill-space"></span>
 
 	<button mat-button
-	        (click)="toggleSignInForm()"
-	        [disabled]="loginState === 'Trying'"
-	        *ngIf="loginState !== 'Successful'">
-		<span *ngIf="showSignInForm">Cancel</span>
-		<span *ngIf="!showSignInForm">Admin</span>
+	        *ngIf="!isLoggedIn"
+		(click)="login()">
+		Admin
 	</button>
 
-	<span *ngIf="loginState==='Successful'" class="iconAndText">
-		<i class="material-icons">
-			thumb_up
-		</i>
-
-		Login successful!
-	</span>
-
-	<mat-toolbar-row *ngIf="showSignInForm && loginState !== 'Successful'">
-		<span class="fill-space"></span>
-
-		<mat-spinner *ngIf="loginState === 'Trying'"></mat-spinner>
-
-		<form (submit)="signIn()" *ngIf="loginState !== 'Successful'">
-			<mat-form-field>
-				<input matInput type="password"
-				       placeholder="Password"
-				       [(ngModel)]="password"
-				       name="password">
-			</mat-form-field>
-
-			<span *ngIf="loginState==='Unsuccessful'">
-				<i class="material-icons">thumb_down</i>
-			</span>
-
-			<button mat-button color="primary" type="submit">
-				Sign in
-			</button>
-		</form>
-	</mat-toolbar-row>
+	<button mat-button
+	        *ngIf="isLoggedIn"
+		(click)="logout()">
+		Log out
+	</button>
 </mat-toolbar>
 
 <mat-nav-list>
@@ -58,7 +31,7 @@
 		</p>
 
 		<button mat-icon-button
-		        *ngIf="loginState === 'Successful'"
+		        *ngIf="isLoggedIn"
 		        [routerLink]="['/editor', conf.key]">
 			<span class="material-icons">edit</span>
 		</button>
