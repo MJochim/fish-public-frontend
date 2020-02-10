@@ -1,6 +1,7 @@
 // (c) 2016 Markus Jochim <markus.jochim@phonetik.uni-muenchen.de>
 
 import {Component, OnInit} from "@angular/core";
+import {AuthService} from "./auth/auth.service";
 
 @Component({
 	selector: 'conference-registration-app',
@@ -12,9 +13,10 @@ import {Component, OnInit} from "@angular/core";
 	`],
 })
 export class ConferenceRegistrationComponent implements OnInit {
-	constructor() {
+	constructor(private authService: AuthService) {
 	}
 
 	ngOnInit(): any {
+		this.authService.completeAuthentication();
 	}
 }

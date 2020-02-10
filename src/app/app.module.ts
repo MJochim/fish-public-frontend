@@ -9,6 +9,8 @@ import {ConferenceRegistrationComponent} from "./conference-registration.compone
 import {ConferenceListComponent} from "./conference-list/conference-list.component";
 import {ConferenceComponent} from "./conference/conference.component";
 import {ConferenceStoreService} from "./core/conference-store.service";
+import {AuthService} from "./auth/auth.service";
+import {AuthGuardService} from "./auth/auth-guard.service";
 import { MatButtonModule } from "@angular/material/button";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatCardModule } from "@angular/material/card";
@@ -66,7 +68,9 @@ import {UserConfirmationComponent} from "./user-confirmation/user-confirmation.c
 		UserConfirmationComponent
 	],
 	providers: [
-		ConferenceStoreService
+		ConferenceStoreService,
+		AuthService,
+		AuthGuardService
 	]
 })
 export class AppModule {
