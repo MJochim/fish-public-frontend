@@ -35,7 +35,12 @@ export class AuthService {
 	}
 
 	getAuthorizationHeaderValue(): string {
-		return `${this.user.token_type} ${this.user.access_token}`;
+		const stored_type = this.user.token_type;
+		if (stored_type.toLowerCase() == "bearer") {
+			return `Bearer ${this.user.access_token}`;
+		} else {
+			return `${this.user.token_type} ${this.user.access_token}`;
+		}
 	}
 
 	startAuthentication(): Promise<void> {
