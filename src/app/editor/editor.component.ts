@@ -51,7 +51,11 @@ export class EditorComponent implements OnInit {
 	edited(event) {
 		this.conference.registration = event;
 		if (this.conference.key) {
-			this.conferenceStoreService.pushConference(this.conference);
+			this.conferenceStoreService
+				.pushConference(this.conference)
+				.catch (error => {
+					alert("Problem in saving your changes. Your changes have not been saved.");
+				});
 		}
 	}
 }
