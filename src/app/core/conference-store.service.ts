@@ -5,34 +5,20 @@ import {of as observableOf} from 'rxjs';
 
 import {catchError, map} from 'rxjs/operators';
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Conference} from "app/core/conference.interface";
+import {AuthService} from "app/auth/auth.service";
 
 @Injectable()
 export class ConferenceStoreService {
 	private password: string = '';
 	private urls = {
-		authenticate: 'https://anmeldung.stuts.de/backend/authenticate.php',
-		getConferences: 'https://anmeldung.stuts.de/data/conferences.json',
-		pushConference: 'https://anmeldung.stuts.de/backend/push-conference.php'
+		getConferences: 'https://api.example.com/data/conferences.json',
+		pushConference: 'https://api.example.com/questionnaire-data/questionnaires/'
 	};
 
-	constructor(private http: HttpClient) {
-	}
-
-	authenticate(password?: string): Promise<boolean> {
-		if (password) {
-			this.password = password;
-		}
-
-		return this.http.post(this.urls.authenticate, {password: this.password}).pipe(
-			map((response: {success: boolean}) => {
-				return (response.success === true);
-			}),
-			catchError(() => {
-				return observableOf(false);
-			}),)
-			.toPromise();
+	constructor(private http: HttpClient,
+		    private authService: AuthService) {
 	}
 
 	getConferences(): Promise<Conference[]> {
@@ -60,12 +46,10 @@ export class ConferenceStoreService {
 	}
 
 	pushConference(conference: Conference) {
-		let data = {
-			password: this.password,
-			conference: conference
-		};
+		const headers = new HttpHeaders({ 'Authorization': this.authService.getAuthorizationHeaderValue() });
+		const url = this.urls.pushConference + encodeURIComponent(conference.key);
 
-		return this.http.post(this.urls.pushConference, data)
+		return this.http.put(url, conference, {headers: headers})
 			.toPromise()
 			.then(() => true)
 			.catch(() => {
