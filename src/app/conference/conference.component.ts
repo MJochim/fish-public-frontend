@@ -79,49 +79,14 @@ export class ConferenceComponent implements OnInit {
 		});
 	}
 
-	private submitToServer(): Promise<string> {
+	private submitToServer(): Promise<void> {
 		if (this.succesfullySaved) {
 			// The app should never be in a state where successfullySaved is
 			// true but submitToServer() is called
 			return Promise.reject('Registration already sent');
 		}
 
-		return new Promise<string>((resolve, reject) => {
-			var request: XMLHttpRequest = new XMLHttpRequest();
-			request.timeout = 20000; // milliseconds
-			request.responseType = 'arraybuffer';
-
-			request.open('GET', 'https://anmeldung.stuts.de/backend/register.php?registration=' + encodeURIComponent(JSON.stringify(this.inputModel)));
-
-			request.addEventListener('load', () => {
-				if (request.response === null) {
-					reject('Request repsonse is null');
-				} else if (request.status < 200 || request.status >= 300) {
-					reject('HTTP error: ' + request.status + '/' + request.statusText);
-				} else {
-					// @todo TextDecoder not supported in IE
-					var dataView = new DataView(request.response);
-					var decoder = new TextDecoder();
-					var status = decoder.decode(dataView);
-
-					if (status.substr(0, 7) === 'SUCCESS') {
-						resolve(decoder.decode(dataView));
-					} else {
-						reject();
-					}
-				}
-			});
-
-			request.addEventListener('error', () => {
-				reject('Unknown error');
-			});
-
-			request.addEventListener('timeout', () => {
-				reject('Timeout')
-			});
-
-			request.send();
-		});
+		return this._conferenceStore.register(this.conference.key, this.inputModel);
 	}
 
 	public confirm(form) {

@@ -62,4 +62,15 @@ export class ConferenceStoreService {
 				throw 'Storing conference data on the server failed.'
 			});
 	}
+
+	register(conferenceKey: string, registration: any) {
+		const url = this.apiUrl + '/questionnaires/' + encodeURIComponent(conferenceKey) + '/responses';
+
+		return this.http.post(url, registration)
+			.toPromise()
+			.then(() => null)
+			.catch(() => {
+				throw 'Registering failed.'
+			});
+	}
 }
