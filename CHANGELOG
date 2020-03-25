@@ -1,3 +1,13 @@
+# 0.3.0 (2020-03-25)
+
+- Rename to fish-public-frontend; together with its backend and its admin frontend, this will now form the fish software (Forms in Speech/Signing and Hearing or Fragebögen in der Sprachwissenschaft)
+- Re-licensed from MIT to GNU AGPL v3
+- Updated dependencies (angular v4 to v9)
+- The shared admin password does not exist anymore
+- Now supports OpenID Connect (OAuth)
+- The backend API was previously split over two backend and has now been unified as the Fish API
+- Removed default brand (Junge Sprachwissenschaft e.V.)
+
 # 0.2.1 (2018-10-15)
 
 - Bugfix: Registration object is now correctly URI-encoded
