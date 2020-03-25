@@ -21,14 +21,7 @@
 
 <mat-nav-list>
 	<mat-list-item *ngFor="let conf of conferences" [routerLink]="['/', conf.key]">
-		<img mat-list-avatar [src]="conf.avatar" alt="Conference logo">
-
-		<a mat-line>{{conf.name}}</a>
-
-		<p mat-line>
-			<span> {{conf.date}} </span>
-			<span class="demo-2"> -- {{conf.place}} </span>
-		</p>
+		<a mat-line>{{conf.key}}</a>
 
 		<button mat-icon-button
 		        *ngIf="isLoggedIn && conf.admin"
