@@ -23,7 +23,7 @@ mat-toolbar.bottom {
     bottom: 0;
 }
 
-/deep/ mat-toolbar-row .flex {
+/deep/ mat-toolbar .flex {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;

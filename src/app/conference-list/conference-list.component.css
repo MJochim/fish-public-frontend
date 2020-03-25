@@ -8,7 +8,7 @@ mat-toolbar {
     overflow: auto;
 }
 
-/deep/ .conference-list-toolbar mat-toolbar-row {
+/deep/ mat-toolbar.conference-list-toolbar {
     justify-content: space-between;
     flex-wrap: wrap;
 }
