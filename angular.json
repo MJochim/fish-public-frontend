@@ -18,7 +18,6 @@
             "tsConfig": "src/tsconfig.json",
             "assets": [
               "src/assets",
-              "src/esh-32.png",
               "src/.htaccess"
             ],
             "styles": [
