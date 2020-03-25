@@ -2,7 +2,7 @@
 
 import {Component, OnInit} from "@angular/core";
 import {ConferenceStoreService} from "../core/conference-store.service";
-import {Conference} from "../core/conference.interface";
+import {ConferenceInfo} from "../core/conference-info.interface";
 import {AuthService} from "../auth/auth.service";
 
 
@@ -12,7 +12,7 @@ import {AuthService} from "../auth/auth.service";
 	styleUrls: ['conference-list.component.css'],
 })
 export class ConferenceListComponent implements OnInit {
-	public conferences: Conference[] = [];
+	public conferences: ConferenceInfo[] = [];
 	public isLoggedIn: boolean = false;
 
 	constructor(private _conferenceStoreService: ConferenceStoreService,
@@ -20,6 +20,14 @@ export class ConferenceListComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.updateConferences();
+		this.authService.loginStatus.subscribe((isLoggedIn) => {
+			this.isLoggedIn = isLoggedIn;
+			this.updateConferences();
+		});
+	}
+
+        private updateConferences() {
 		this._conferenceStoreService.getConferences()
 			.then(value => {
 				this.conferences = value;
@@ -27,9 +35,7 @@ export class ConferenceListComponent implements OnInit {
 			.catch(error => {
 				console.log(error);
 			});
-
-		this.authService.loginStatus.subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
-	}
+        }
 
 	public login() {
 		this.authService.startAuthentication();

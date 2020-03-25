@@ -31,7 +31,7 @@
 		</p>
 
 		<button mat-icon-button
-		        *ngIf="isLoggedIn"
+		        *ngIf="isLoggedIn && conf.admin"
 		        [routerLink]="['/editor', conf.key]">
 			<span class="material-icons">edit</span>
 		</button>

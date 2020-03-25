@@ -6,22 +6,28 @@ import {catchError, map} from 'rxjs/operators';
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Conference} from "app/core/conference.interface";
+import {ConferenceInfo} from "app/core/conference-info.interface";
 import {AuthService} from "app/auth/auth.service";
 
 @Injectable()
 export class ConferenceStoreService {
 	private password: string = '';
-	private urls = {
-		getConferences: 'https://api.example.com/data/conferences.json',
-		pushConference: 'https://api.example.com/questionnaire-data/questionnaires/'
-	};
+	private apiUrl: string = 'https://api.example.com/fish';
+        private isLoggedIn: boolean = false;
 
 	constructor(private http: HttpClient,
 		    private authService: AuthService) {
+		this.authService.loginStatus.subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
 	}
 
-	getConferences(): Promise<Conference[]> {
-		return this.http.get<Conference[]>(this.urls.getConferences)
+	getConferences(): Promise<ConferenceInfo[]> {
+		let headers = new HttpHeaders();
+		if (this.isLoggedIn) {
+			headers = headers.append('Authorization', this.authService.getAuthorizationHeaderValue());
+		}
+		const url = this.apiUrl + '/questionnaires';
+
+		return this.http.get<ConferenceInfo[]>(url, {headers: headers})
 			.toPromise()
 			.catch(() => {
 				return Promise.reject('Could not load conferences');
@@ -29,24 +35,25 @@ export class ConferenceStoreService {
 	}
 
 	getConference(key: string): Promise<Conference> {
-		return this.getConferences()
-			.then(conferences => {
-				for (let i = 0; i < conferences.length; ++i) {
-					if (conferences[i].key === key) {
-						return conferences[i];
-					}
-				}
+		let headers = new HttpHeaders();
+		if (this.isLoggedIn) {
+			headers = headers.append('Authorization', this.authService.getAuthorizationHeaderValue());
+		}
+		const url = this.apiUrl + '/questionnaires/' + encodeURIComponent(key);
 
-				return null;
-			})
+		return this.http.get<Conference>(url, {headers: headers})
+			.toPromise()
 			.catch(() => {
-				return Promise.reject('Could not load conferences');
+				return Promise.reject('Could not load conference');
 			});
 	}
 
 	pushConference(conference: Conference) {
-		const headers = new HttpHeaders({ 'Authorization': this.authService.getAuthorizationHeaderValue() });
-		const url = this.urls.pushConference + encodeURIComponent(conference.key);
+		let headers = new HttpHeaders();
+		if (this.isLoggedIn) {
+			headers = headers.append('Authorization', this.authService.getAuthorizationHeaderValue());
+		}
+		const url = this.apiUrl + '/questionnaires/' + encodeURIComponent(conference.key);
 
 		return this.http.put(url, conference, {headers: headers})
 			.toPromise()
