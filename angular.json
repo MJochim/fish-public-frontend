@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "conference-registration": {
+    "fish-public-frontend": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -69,21 +69,21 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "conference-registration:build"
+            "browserTarget": "fish-public-frontend:build"
           },
           "configurations": {
             "dev": {
-              "browserTarget": "conference-registration:build:dev"
+              "browserTarget": "fish-public-frontend:build:dev"
             },
             "production": {
-              "browserTarget": "conference-registration:build:production"
+              "browserTarget": "fish-public-frontend:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "conference-registration:build"
+            "browserTarget": "fish-public-frontend:build"
           }
         },
         "test": {
@@ -111,7 +111,7 @@
         }
       }
     },
-    "conference-registration-e2e": {
+    "fish-public-frontend-e2e": {
       "root": "e2e",
       "sourceRoot": "e2e",
       "projectType": "application",
@@ -120,7 +120,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "conference-registration:serve"
+            "devServerTarget": "fish-public-frontend:serve"
           }
         },
         "lint": {
@@ -133,7 +133,7 @@
       }
     }
   },
-  "defaultProject": "conference-registration",
+  "defaultProject": "fish-public-frontend",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

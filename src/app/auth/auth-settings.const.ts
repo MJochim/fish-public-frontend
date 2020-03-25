@@ -4,9 +4,9 @@ import {UserManagerSettings} from 'oidc-client';
 
 export const authSettings: UserManagerSettings = {
 	authority: 'https://keycloak.example.com/auth/realms/master/',
-	client_id: 'my-client-id',
-	redirect_uri: 'http://localhost:4200/',
-	post_logout_redirect_uri: 'http://localhost:4200/',
+	client_id: 'fish-frontend',
+	redirect_uri: 'https://example.com/fish/public/',
+	post_logout_redirect_uri: 'https://example.com/fish/public/',
 	response_type:"id_token token",
 	scope:"openid profile",
 	filterProtocolClaims: true,

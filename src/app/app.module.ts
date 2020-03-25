@@ -7,7 +7,7 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
 import {appRoutes} from "./app.routes";
-import {ConferenceRegistrationComponent} from "./conference-registration.component";
+import {FishPublicFrontendComponent} from "./fish-public-frontend.component";
 import {ConferenceListComponent} from "./conference-list/conference-list.component";
 import {ConferenceComponent} from "./conference/conference.component";
 import {ConferenceStoreService} from "./core/conference-store.service";
@@ -34,7 +34,7 @@ import {UserConfirmationComponent} from "./user-confirmation/user-confirmation.c
 
 @NgModule({
 	declarations: [
-		ConferenceRegistrationComponent,
+		FishPublicFrontendComponent,
 		ConferenceListComponent,
 		ConferenceComponent,
 		QuestionnaireComponent,
@@ -64,7 +64,7 @@ import {UserConfirmationComponent} from "./user-confirmation/user-confirmation.c
 		MatSlideToggleModule,
 		MatToolbarModule
 	],
-	bootstrap: [ConferenceRegistrationComponent],
+	bootstrap: [FishPublicFrontendComponent],
 	entryComponents: [
 		UserAlertComponent,
 		UserConfirmationComponent

@@ -1,4 +1,6 @@
-# conference-registration
+# fish-public-frontend
+
+*This used to be the conference-registration webapp. It is now considered a more generic online questionnaire application called Fish. Documentation will be updated.*
 
 This is a webapp that lets visitors register for your conference. It is 
 hosted on your premises to make sure that your vistors’ data is in your hands

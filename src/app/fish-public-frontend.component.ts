@@ -4,7 +4,7 @@ import {Component, OnInit} from "@angular/core";
 import {AuthService} from "./auth/auth.service";
 
 @Component({
-	selector: 'conference-registration-app',
+	selector: 'fish-public-frontend-app',
 	template: '<router-outlet></router-outlet>',
 	styles: [`
         :host > app-conference, :host > app-conference-list {
@@ -12,7 +12,7 @@ import {AuthService} from "./auth/auth.service";
         }
 	`],
 })
-export class ConferenceRegistrationComponent implements OnInit {
+export class FishPublicFrontendComponent implements OnInit {
 	constructor(private authService: AuthService) {
 	}
 
