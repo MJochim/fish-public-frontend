@@ -1,3 +1,5 @@
+// (c) 2016-2020 Markus Jochim <markus.jochim@phonetik.uni-muenchen.de>
+
 import './polyfills.ts';
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';

@@ -1,3 +1,5 @@
+// (c) 2016-2020 Markus Jochim <markus.jochim@phonetik.uni-muenchen.de>
+
 import {Routes} from "@angular/router";
 import {ConferenceListComponent} from "./conference-list/conference-list.component";
 import {ConferenceComponent} from "./conference/conference.component";

@@ -1,3 +1,5 @@
+// (c) 2016-2020 Markus Jochim <markus.jochim@phonetik.uni-muenchen.de>
+
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
 
 import {QuestionnaireComponent} from "./questionnaire.component";

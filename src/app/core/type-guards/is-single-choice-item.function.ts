@@ -1,3 +1,5 @@
+// (c) 2016-2020 Markus Jochim <markus.jochim@phonetik.uni-muenchen.de>
+
 import {CaptionItem} from "../caption-item.interface";
 import {LinkItem} from "../link-item.interface";
 import {TextInputItem} from "../text-input-item.interface";

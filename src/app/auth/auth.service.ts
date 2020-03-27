@@ -1,3 +1,5 @@
+// (c) 2016-2020 Markus Jochim <markus.jochim@phonetik.uni-muenchen.de>
+
 import { Injectable } from '@angular/core';
 import { UserManager, UserManagerSettings, User } from 'oidc-client';
 import {authSettings} from './auth-settings.const';
