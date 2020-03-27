@@ -3,10 +3,10 @@
 import {UserManagerSettings} from 'oidc-client';
 
 export const authSettings: UserManagerSettings = {
-	authority: 'https://keycloak.example.com/auth/realms/master/',
+	authority: 'https://account.junge-sprachwissenschaft.de/auth/realms/master/',
 	client_id: 'fish-frontend',
-	redirect_uri: 'https://example.com/fish/public/',
-	post_logout_redirect_uri: 'https://example.com/fish/public/',
+	redirect_uri: 'https://anmeldung.stuts.de/',
+	post_logout_redirect_uri: 'https://anmeldung.stuts.de/',
 	response_type:"id_token token",
 	scope:"openid profile",
 	filterProtocolClaims: true,

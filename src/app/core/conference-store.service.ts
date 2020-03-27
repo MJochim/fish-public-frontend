@@ -12,7 +12,7 @@ import {AuthService} from "app/auth/auth.service";
 @Injectable()
 export class ConferenceStoreService {
 	private password: string = '';
-	private apiUrl: string = 'https://api.example.com/fish';
+	private apiUrl: string = 'https://admin.junge-sprachwissenschaft.de/fish';
         private isLoggedIn: boolean = false;
 
 	constructor(private http: HttpClient,
