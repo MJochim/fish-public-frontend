@@ -17,6 +17,8 @@ mat-toolbar {
 
 mat-toolbar.top {
     top: 0;
+    background-color: #80ced6;
+    color: white;
 }
 
 mat-toolbar.bottom {
@@ -61,4 +63,9 @@ mat-sidenav {
 
 :host mat-card {
     overflow: auto;
+}
+
+button[type=submit] {
+    background-color: #595959;
+    color: white;
 }

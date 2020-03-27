@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar>
 	<span *ngIf="!previewMode" class="toolbar-heading">
 	        Editing questionnaire: {{conference?.key}}
 	</span>
@@ -18,7 +18,7 @@
 	</div>
 </mat-toolbar>
 
-<mat-toolbar *ngIf="!previewMode" color="secondary">
+<mat-toolbar *ngIf="!previewMode">
 	<span class="toolbar-heading">Add items/questions</span>
 
 	<span class="fill-space"></span>

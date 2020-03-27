@@ -1,5 +1,5 @@
 <form (submit)="confirm($event.target)">
-	<mat-toolbar color="primary" class="top">
+	<mat-toolbar class="top">
 		<img *ngIf="conference"
 		     [src]="conference?.avatar"
 		     alt="..."
@@ -25,7 +25,7 @@
 	<mat-toolbar class="bottom"
 	            *ngIf="!succesfullySaved">
 	    <span>
-	      <button color="primary" mat-raised-button type="submit">
+	      <button mat-raised-button type="submit">
 	        {{labels.submit}}
 	      </button>
 	    </span>

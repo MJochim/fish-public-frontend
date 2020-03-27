@@ -6,11 +6,15 @@
 
 mat-toolbar {
     overflow: auto;
+    background-color: #595959;
+    color: white;
 }
 
 /deep/ mat-toolbar.conference-list-toolbar {
     justify-content: space-between;
     flex-wrap: wrap;
+    background-color: #80ced6;
+    color: black;
 }
 
 mat-toolbar.small-font {

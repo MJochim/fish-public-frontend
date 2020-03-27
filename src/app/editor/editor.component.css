@@ -10,6 +10,16 @@ mat-toolbar {
     z-index: 2;
 }
 
+mat-toolbar:first-child {
+    background-color: #80ced6;
+    color: black;
+}
+
+mat-toolbar:nth-child(2) {
+    background-color: #595959;
+    color: white;
+}
+
 mat-toolbar img {
     width: 40px;
     margin-right: 20px;
