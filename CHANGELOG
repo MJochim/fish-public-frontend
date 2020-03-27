@@ -1,4 +1,4 @@
-# 0.3.0 (2020-03-25)
+# 0.3.0 (2020-03-27)
 
 - Rename to fish-public-frontend; together with its backend and its admin frontend, this will now form the fish software (Forms in Speech/Signing and Hearing or Fragebögen in der Sprachwissenschaft)
 - Re-licensed from MIT to GNU AGPL v3
