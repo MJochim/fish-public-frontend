@@ -64,8 +64,8 @@ need advise or want to make the guide happen more quickly ;-).
 
 ## Author
 
-The [fɪʃ] suite was developed by Markus Johim for the association
-[Junge Sprachwissenschaft e. V.](https://www.junge-sprachwissenschaft.de/en/).
+The [fɪʃ] suite was developed by Markus Jochim for the association
+[Junge Sprachwissenschaft e. V](https://www.junge-sprachwissenschaft.de/en/).
 It is licensed under the terms of the
 [GNU AGPLv3](https://www.gnu.org/licenses/why-affero-gpl).
 
