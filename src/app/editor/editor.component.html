@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
-    <span *ngIf="!previewMode" class="toolbar-heading">
-	    Conference data
-    </span>
+	<span *ngIf="!previewMode" class="toolbar-heading">
+	        Editing questionnaire: {{conference?.key}}
+	</span>
 
 	<img *ngIf="previewMode" [src]="conference?.avatar">
 
@@ -18,32 +18,8 @@
 	</div>
 </mat-toolbar>
 
-<mat-card *ngIf="!previewMode">
-	<mat-card-content>
-		<mat-form-field>
-			<input matInput placeholder="Name" [(ngModel)]="conference.name">
-		</mat-form-field>
-
-		<mat-form-field>
-			<input matInput placeholder="Key" [(ngModel)]="conference.key">
-		</mat-form-field>
-
-		<mat-form-field>
-			<input matInput placeholder="Place" [(ngModel)]="conference.place">
-		</mat-form-field>
-
-		<mat-form-field>
-			<input matInput placeholder="Date" [(ngModel)]="conference.date">
-		</mat-form-field>
-
-		<mat-form-field>
-			<input matInput placeholder="Picture URL" [(ngModel)]="conference.avatar">
-		</mat-form-field>
-	</mat-card-content>
-</mat-card>
-
-<mat-toolbar *ngIf="!previewMode" color="primary">
-	<span class="toolbar-heading">Registration items/questions</span>
+<mat-toolbar *ngIf="!previewMode" color="secondary">
+	<span class="toolbar-heading">Add items/questions</span>
 
 	<span class="fill-space"></span>
 
