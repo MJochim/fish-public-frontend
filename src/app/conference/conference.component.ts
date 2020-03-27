@@ -140,8 +140,4 @@ export class ConferenceComponent implements OnInit {
 			}
 		});
 	}
-
-	public navigateBack() {
-		this.router.navigate(['/']);
-	}
 }

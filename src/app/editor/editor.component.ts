@@ -26,7 +26,6 @@ export class EditorComponent implements OnInit {
 			place: '',
 			date: '',
 			avatar: '',
-			showBackButton: true,
 			labels: {},
 			registration: []
 		};

@@ -13,7 +13,6 @@ export interface Conference {
 	place: string;
 	date: string;
 	avatar: string;
-	showBackButton: boolean;
 	labels: LabelList;
 	registration: Array<CaptionItem
 		| LinkItem

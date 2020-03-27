@@ -9,6 +9,7 @@
 - Removed default brand (Junge Sprachwissenschaft e.V.)
 - The place and location properties are no longer used
 - Name und picture URL now have to be edited via the admin frontend app
+- Removed the showBackButton option
 
 # 0.2.1 (2018-10-15)
 
