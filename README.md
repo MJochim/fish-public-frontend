@@ -25,7 +25,7 @@ managing some other details.
 
 ## Supported types of questionnaires/forms
 
-The [fɪʃ] suite allows text input field, single choice and multiple choice
+The [fɪʃ] suite allows text input fields, single choice and multiple choice
 questions. Text input fields can be marked optional.
 
 ![Visualization of item types](docs/item-types.png)
