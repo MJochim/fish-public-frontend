@@ -3,7 +3,7 @@
 fish-public-frontend is one of three parts of the [fɪʃ] suite. Fish lets you
 create online forms/questionnaires using a simple graphical interface and then
 host them on-prem (i. e. on your own servers). User responses are collected in
-a table and can be downloaded as CSV files.
+a table and can be viewed online or downloaded as CSV files.
 
 ## The components
 
