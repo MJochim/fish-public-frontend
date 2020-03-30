@@ -71,8 +71,9 @@ It is licensed under the terms of the
 
 ## Hosting
 
-Junge Sprachwissenschaft e. V. also offers to host questionnaires for you,
-especially if you are a student (group) in a linguistics-related field. While
-this, to some degree, defeats the purpose of self-hosted questionnaires, it can
-be more appropriate than resorting to commercial hosting providers. Get in touch
-if you are interested: <https://www.junge-sprachwissenschaft.de/en/contact/>
+Junge Sprachwissenschaft e. V. (recognised in Germany as a “gemeinnütziger
+Verein”) also offers to host questionnaires for you, especially if you are a
+student (group) in a linguistics-related field. While this, to some degree,
+defeats the purpose of self-hosted questionnaires, it can be more appropriate
+than resorting to commercial hosting providers. Get in touch if you are
+interested: <https://www.junge-sprachwissenschaft.de/en/contact/>
