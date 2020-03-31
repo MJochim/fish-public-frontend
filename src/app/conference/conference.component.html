@@ -1,8 +1,8 @@
 <form (submit)="confirm($event.target)">
 	<mat-toolbar color="primary" class="top">
-		<img *ngIf="conference"
-		     [src]="conference?.avatar"
-		     alt="..."
+		<img *ngIf="conference?.pictureUrl"
+		     [src]="conference?.pictureUrl"
+		     alt="Questionnaire logo"
 		     style="width: 40px;">
 
 		<div class="flex">

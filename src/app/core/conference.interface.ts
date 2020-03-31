@@ -12,7 +12,7 @@ export interface Conference {
 	key: string;
 	place: string;
 	date: string;
-	avatar: string;
+	pictureUrl: string;
 	labels: LabelList;
 	registration: Array<CaptionItem
 		| LinkItem

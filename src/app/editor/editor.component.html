@@ -3,7 +3,7 @@
 	        Editing questionnaire: {{conference?.key}}
 	</span>
 
-	<img *ngIf="previewMode" [src]="conference?.avatar">
+	<img *ngIf="previewMode" [src]="conference?.pictureUrl" alt="Questionnaire logo">
 
 	<span *ngIf="previewMode">
 		{{conference?.name}}

@@ -25,7 +25,7 @@ export class EditorComponent implements OnInit {
 			key: '',
 			place: '',
 			date: '',
-			avatar: '',
+			pictureUrl: '',
 			labels: {},
 			registration: []
 		};
