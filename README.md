@@ -39,6 +39,16 @@ of results.
 
 ![A glance at the questionnaire editor](docs/editor.png)
 
+## The Fish API
+
+Communication between the backend and the two frontends utilizes a REST API. A
+description of the API is available in the OpenAPI v3 format. It is a part of
+the fish-backend repository.
+
+The description file: <https://github.com/MJochim/fish-backend/blob/master/fish-api.yaml>
+
+Use Swagger UI to visualize the API: <https://petstore.swagger.io/?url=https://raw.githubusercontent.com/MJochim/fish-backend/master/fish-api.yaml>
+
 ## Installation and configuration
 
 To install an instance on your own server, you need a web server and an OpenID
